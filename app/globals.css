@@ -1,0 +1,357 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Bleus principaux TEKKIL — basés sur le brand blue officiel #2B52EE */
+  --blue-950: #06091C;
+  --blue-900: #080E2E;
+  --blue-800: #0C1648;
+  --blue-700: #112060;
+  --blue-600: #1630B8;
+  --blue-500: #2040D8;
+  --blue-400: #2B52EE;
+  --blue-300: #5478F5;
+  --blue-200: #8FA5FA;
+  --blue-100: #E8EDFF;
+
+  /* Accent or/doré — brand yellow officiel #F9C623 */
+  --gold-500: #F9C623;
+  --gold-400: #FBD354;
+  --gold-100: rgba(249, 198, 35, 0.12);
+
+  /* Accent rose/corail — brand pink officiel #F94B6A */
+  --pink-500: #F94B6A;
+  --pink-400: #FB7090;
+  --pink-100: rgba(249, 75, 106, 0.12);
+
+  /* Neutres */
+  --white: #FFFFFF;
+  --gray-50:  #F8FAFD;
+  --gray-100: #F4F7FC;
+  --gray-200: #E4EAF4;
+  --gray-300: #C8D5E8;
+  --gray-400: #A0B4CC;
+  --gray-500: #7A90B0;
+  --gray-600: #546A88;
+  --gray-900: #080E2E;
+
+  /* Textes */
+  --text-primary:   #080E2E;
+  --text-secondary: #546A88;
+  --text-muted:     #7A90B0;
+  --text-on-dark:   #FFFFFF;
+  --text-muted-dark: #C8D5E8;
+
+  /* Design tokens */
+  --background: var(--white);
+  --foreground: var(--text-primary);
+  --card: var(--white);
+  --card-foreground: var(--text-primary);
+  --primary: var(--blue-400);
+  --primary-foreground: var(--white);
+  --secondary: var(--gray-50);
+  --secondary-foreground: var(--text-primary);
+  --muted: var(--gray-100);
+  --muted-foreground: var(--text-secondary);
+  --accent: var(--gold-500);
+  --accent-foreground: var(--gray-900);
+  --border: var(--gray-200);
+  --input: var(--gray-200);
+  --ring: var(--blue-400);
+  --radius: 0.625rem;
+}
+
+@theme inline {
+  --font-sans: var(--font-roboto), system-ui, sans-serif;
+  --font-serif: var(--font-roboto-condensed), Georgia, serif;
+  --font-mono: 'Geist Mono', monospace;
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* TEKKIL Custom Colors */
+  --color-blue-950: var(--blue-950);
+  --color-blue-900: var(--blue-900);
+  --color-blue-800: var(--blue-800);
+  --color-blue-700: var(--blue-700);
+  --color-blue-600: var(--blue-600);
+  --color-blue-500: var(--blue-500);
+  --color-blue-400: var(--blue-400);
+  --color-blue-300: var(--blue-300);
+  --color-blue-200: var(--blue-200);
+  --color-blue-100: var(--blue-100);
+  --color-gold-500: var(--gold-500);
+  --color-gold-400: var(--gold-400);
+  --color-gold-100: var(--gold-100);
+  --color-pink-500: var(--pink-500);
+  --color-pink-400: var(--pink-400);
+  --color-pink-100: var(--pink-100);
+  --color-gray-50: var(--gray-50);
+  --color-gray-100: var(--gray-100);
+  --color-gray-200: var(--gray-200);
+  --color-gray-300: var(--gray-300);
+  --color-gray-400: var(--gray-400);
+  --color-gray-500: var(--gray-500);
+  --color-gray-600: var(--gray-600);
+  --color-gray-900: var(--gray-900);
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-text-on-dark: var(--text-on-dark);
+  --color-text-muted-dark: var(--text-muted-dark);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+  }
+
+  /* Headings use Roboto Condensed */
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-roboto-condensed), system-ui, sans-serif;
+    letter-spacing: -0.03em;
+    line-height: 1.05;
+  }
+}
+
+/* Noise texture overlay */
+.noise-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+/* Dot pattern background */
+.dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Float animation for hero illustration */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Bounce animation for scroll indicator */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s ease-in-out infinite;
+}
+
+/* Pulse animation for gold accents */
+@keyframes pulse-gold {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-gold {
+  animation: pulse-gold 2s ease-in-out infinite;
+}
+
+/* Gradient text utility — brand blue officiel */
+.gradient-text {
+  background: linear-gradient(135deg, #2B52EE, #5478F5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glassmorphism effect */
+.glass {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Star twinkle animation */
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.animate-twinkle {
+  animation: twinkle 3s ease-in-out infinite;
+}
+
+.animate-twinkle-delay-1 {
+  animation: twinkle 3s ease-in-out infinite 1s;
+}
+
+.animate-twinkle-delay-2 {
+  animation: twinkle 3s ease-in-out infinite 2s;
+}
+
+/* Parallax scroll container */
+.parallax-container {
+  perspective: 1000px;
+  overflow: hidden;
+}
+
+/* Smooth parallax layers */
+@keyframes parallax-slow {
+  from { transform: translateY(0); }
+  to { transform: translateY(-20px); }
+}
+
+/* Gradient shimmer effect for CTAs */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-effect {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+/* Glow effect for premium elements — brand gold */
+@keyframes glow-pulse {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(249, 198, 35, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(249, 198, 35, 0.5);
+  }
+}
+
+.animate-glow {
+  animation: glow-pulse 3s ease-in-out infinite;
+}
+
+/* Slide up reveal */
+@keyframes slide-up-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    filter: blur(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up-reveal 0.6s ease-out forwards;
+}
+
+/* Stagger delay utilities */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }
+.stagger-6 { animation-delay: 0.6s; }
+
+/* Mobile optimizations */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--gray-100);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gray-300);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gray-400);
+}
+
+/* Touch-friendly tap targets */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Improved focus states */
+*:focus-visible {
+  outline: 2px solid var(--blue-400);
+  outline-offset: 2px;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
