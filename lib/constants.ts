@@ -30,6 +30,12 @@ export const FEATURES = [
     color: '#F59E0B',
   },
   {
+    icon: 'Trophy',
+    title: 'Examens Blancs',
+    description: 'Simule les conditions reelles du jour J : mode Complet, Verbal ou Numerique. Chrono, scoring et bilan detaille a la fin.',
+    color: '#EF4444',
+  },
+  {
     icon: 'WifiOff',
     title: 'Mode hors-ligne',
     description: 'Telecharge tes modules et revise sans connexion. Parfait pour les zones a faible connectivite au Senegal.',
@@ -41,7 +47,7 @@ export const STEPS = [
   {
     number: '01',
     title: 'Cree ton profil',
-    description: 'Inscris-toi en 30 secondes. Choisis ton concours (ENA Cycle A ou B) et ta matiere. TEKKIL calibre ton parcours immediatement.',
+    description: 'Inscris-toi en 30 secondes. Choisis ton concours et ta filiere. TEKKIL calibre ton parcours immediatement.',
     icon: 'UserPlus',
   },
   {
@@ -59,9 +65,9 @@ export const STEPS = [
 ] as const
 
 export const STATS = [
-  { value: 510, suffix: '+', label: 'Questions disponibles' },
-  { value: 13, suffix: '', label: 'Sous-tests couverts' },
-  { value: 9, suffix: '', label: 'Modules de formation' },
+  { value: 500, suffix: '+', label: 'Questions disponibles' },
+  { value: 15, suffix: '+', label: 'Rubriques psychotechniques' },
+  { value: 3, suffix: '', label: 'Modes d\'examen blanc' },
   { value: 100, suffix: '%', label: 'Mobile-first' },
 ] as const
 
@@ -72,7 +78,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'Quels concours sont couverts par TEKKIL ?',
-    answer: 'TEKKIL se concentre sur la preparation aux concours de l\'ENA (Ecole Nationale d\'Administration) - Cycle A et Cycle B, avec des matieres comme le Droit Administratif. D\'autres concours nationaux senegalais seront ajoutes.',
+    answer: 'TEKKIL couvre les epreuves psychotechniques des grands concours nationaux senegalais — ENA, fonctions publiques, grandes ecoles. Les epreuves sont organisees en deux filieres : Verbal (synonymes, analogies, intrus...) et Numerique (calcul, series logiques...). D\'autres concours sont ajoutes regulierement.',
   },
   {
     question: 'Comment fonctionne l\'assistant IA Tekkil ?',
