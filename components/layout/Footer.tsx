@@ -1,13 +1,62 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Instagram, Twitter, Linkedin } from 'lucide-react'
+import { Instagram, Twitter, Linkedin, Facebook, Youtube } from 'lucide-react'
+import Image from 'next/image'
 import { FOOTER_LINKS } from '@/lib/constants'
 
-const socialLinks = [
-  { icon: Instagram, href: 'https://instagram.com/tekkil.app', label: 'Instagram' },
-  { icon: Twitter, href: 'https://twitter.com/tekkil_app', label: 'Twitter' },
-  { icon: Linkedin, href: 'https://linkedin.com/company/tekkil', label: 'LinkedIn' },
+function TikTokIcon({ size = 18 }: { size?: number }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor">
+      <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V9.01a8.16 8.16 0 0 0 4.77 1.52V7.07a4.85 4.85 0 0 1-1-.38z" />
+    </svg>
+  )
+}
+
+type SocialLink = {
+  label: string
+  href: string
+  color: string
+  icon: React.ReactNode
+}
+
+const socialLinks: SocialLink[] = [
+  {
+    label: 'Facebook',
+    href: 'https://facebook.com/tekkil.app',
+    color: 'hover:bg-[#1877F2]/20 hover:border-[#1877F2]/40',
+    icon: <Facebook size={18} />,
+  },
+  {
+    label: 'Instagram',
+    href: 'https://instagram.com/tekkil.app',
+    color: 'hover:bg-[#E1306C]/20 hover:border-[#E1306C]/40',
+    icon: <Instagram size={18} />,
+  },
+  {
+    label: 'TikTok',
+    href: 'https://tiktok.com/@tekkil.app',
+    color: 'hover:bg-white/20 hover:border-white/40',
+    icon: <TikTokIcon size={18} />,
+  },
+  {
+    label: 'YouTube',
+    href: 'https://youtube.com/@tekkil',
+    color: 'hover:bg-[#FF0000]/20 hover:border-[#FF0000]/40',
+    icon: <Youtube size={18} />,
+  },
+  {
+    label: 'Twitter / X',
+    href: 'https://twitter.com/tekkil_app',
+    color: 'hover:bg-white/20 hover:border-white/40',
+    icon: <Twitter size={18} />,
+  },
+  {
+    label: 'LinkedIn',
+    href: 'https://linkedin.com/company/tekkil',
+    color: 'hover:bg-[#0A66C2]/20 hover:border-[#0A66C2]/40',
+    icon: <Linkedin size={18} />,
+  },
 ]
 
 export function Footer() {
@@ -18,19 +67,16 @@ export function Footer() {
           {/* Column 1 - Brand */}
           <div className="text-center md:text-left">
             {/* Logo */}
-            <div className="flex items-center justify-center md:justify-start gap-1 mb-4">
-              <span
-                className="text-2xl font-extrabold text-white"
-                style={{ fontFamily: 'var(--font-roboto-condensed)' }}
-              >
-                TEKK
-              </span>
-              <span
-                className="text-2xl font-extrabold text-gold-500"
-                style={{ fontFamily: 'var(--font-roboto-condensed)' }}
-              >
-                IL
-              </span>
+            <div className="flex items-center justify-center md:justify-start mb-4">
+              <div className="bg-white/95 rounded-xl px-3 py-1.5">
+                <Image
+                  src="/tekkil-logo.png"
+                  alt="Tekkil"
+                  width={120}
+                  height={40}
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
             </div>
 
             {/* Tagline */}
@@ -41,20 +87,22 @@ export function Footer() {
             {/* Flag */}
             <div className="text-2xl mb-6">🇸🇳</div>
 
-            {/* Social Links */}
-            <div className="flex items-center justify-center md:justify-start gap-3">
-              {socialLinks.map(({ icon: Icon, href, label }) => (
+            {/* Social Links — 2 rows of 3 */}
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-2.5">
+              {socialLinks.map(({ label, href, color, icon }) => (
                 <motion.a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
+                  title={label}
                   whileHover={{ scale: 1.1, y: -2 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-full glass flex items-center justify-center hover:bg-[rgba(255,255,255,0.15)] transition-colors"
+                  className={`w-10 h-10 rounded-full flex items-center justify-center border border-white/10 transition-all duration-200 text-gray-300 hover:text-white ${color}`}
+                  style={{ background: 'rgba(255,255,255,0.04)' }}
                 >
-                  <Icon size={18} />
+                  {icon}
                 </motion.a>
               ))}
             </div>
@@ -94,7 +142,7 @@ export function Footer() {
               Sois le premier à savoir quand iOS sera disponible.
             </p>
 
-            {/* Email input - UI only, links to mailto as fallback */}
+            {/* Email input */}
             <form
               action="mailto:newsletter@tekkil.app"
               method="GET"
@@ -104,17 +152,23 @@ export function Footer() {
                 type="email"
                 name="subject"
                 placeholder="Ton email"
-                className="flex-1 px-4 py-3 rounded-xl glass text-white placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
+                className="flex-1 px-4 py-3 rounded-xl text-white placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
+                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
               />
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-6 py-3 bg-blue-400 hover:bg-blue-300 rounded-xl text-sm font-medium transition-colors"
+                className="px-6 py-3 bg-blue-500 hover:bg-blue-400 rounded-xl text-sm font-medium transition-colors"
               >
                 S&apos;inscrire
               </motion.button>
             </form>
+
+            {/* Social hint */}
+            <p className="text-gray-500 text-xs mt-4">
+              Ou suis-nous sur les réseaux pour les actus et tips de révision.
+            </p>
           </div>
         </div>
 
@@ -126,7 +180,7 @@ export function Footer() {
             </p>
             <div className="flex items-center gap-6">
               <a
-                href="#privacy"
+                href="/privacy"
                 className="text-gray-400 hover:text-white text-sm transition-colors"
               >
                 Confidentialité
