@@ -13,8 +13,8 @@ const testimonials = [
     avatar: 'AD',
     location: 'Dakar',
     rating: 5,
-    text: 'Grace a TEKKIL, j\'ai pu reviser le Droit Administratif de maniere structuree. Les QCM chronometres m\'ont vraiment prepare aux conditions reelles du concours. J\'ai gagne 20 points en 2 mois !',
-    highlight: 'gagne 20 points en 2 mois',
+    text: 'Grâce à TEKKIL, j\'ai pu réviser le Droit Administratif de manière structurée. Les QCM chronométrés m\'ont vraiment préparé aux conditions réelles du concours. J\'ai gagné 20 points en 2 mois !',
+    highlight: 'gagné 20 points en 2 mois',
   },
   {
     id: 2,
@@ -23,7 +23,7 @@ const testimonials = [
     avatar: 'MS',
     location: 'Saint-Louis',
     rating: 5,
-    text: 'L\'assistant IA est incroyable. Il m\'a explique des concepts complexes comme la decentralisation avec des exemples concrets senegalais. C\'est comme avoir un tuteur personnel 24h/24.',
+    text: 'L\'assistant IA est incroyable. Il m\'a expliqué des concepts complexes comme la décentralisation avec des exemples concrets sénégalais. C\'est comme avoir un tuteur personnel 24h/24.',
     highlight: 'tuteur personnel 24h/24',
   },
   {
@@ -31,9 +31,9 @@ const testimonials = [
     name: 'Fatou Ndiaye',
     role: 'Candidate ENA Cycle B',
     avatar: 'FN',
-    location: 'Thies',
+    location: 'Thiès',
     rating: 5,
-    text: 'Les flashcards sont parfaites pour reviser dans le transport. J\'utilise TEKKIL chaque jour pendant mes trajets. La progression est vraiment motivante, je vois mes statistiques s\'ameliorer.',
+    text: 'Les flashcards sont parfaites pour réviser dans le transport. J\'utilise TEKKIL chaque jour pendant mes trajets. La progression est vraiment motivante, je vois mes statistiques s\'améliorer.',
     highlight: 'progression vraiment motivante',
   },
   {
@@ -43,7 +43,7 @@ const testimonials = [
     avatar: 'IF',
     location: 'Ziguinchor',
     rating: 5,
-    text: 'Le mode hors-ligne est essentiel pour moi. La connexion n\'est pas toujours stable ici, mais je peux continuer a reviser sans probleme. TEKKIL a pense a nous.',
+    text: 'Le mode hors-ligne est essentiel pour moi. La connexion n\'est pas toujours stable ici, mais je peux continuer à réviser sans problème. TEKKIL a pensé à nous.',
     highlight: 'mode hors-ligne essentiel',
   },
   {
@@ -53,8 +53,8 @@ const testimonials = [
     avatar: 'OB',
     location: 'Kaolack',
     rating: 5,
-    text: 'J\'ai essaye plusieurs applis mais TEKKIL est la seule adaptee au programme senegalais. Les contenus sont precis et conformes aux exigences de l\'ENA. Je recommande a 100%.',
-    highlight: 'adaptee au programme senegalais',
+    text: 'J\'ai essayé plusieurs applis mais TEKKIL est la seule adaptée au programme sénégalais. Les contenus sont précis et conformes aux exigences de l\'ENA. Je recommande à 100%.',
+    highlight: 'adaptée au programme sénégalais',
   },
 ]
 
@@ -104,7 +104,7 @@ export function Testimonials() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         {/* Header */}
         <div className="text-center mb-16">
-          <SectionLabel className="mb-4">Temoignages</SectionLabel>
+          <SectionLabel className="mb-4">Témoignages</SectionLabel>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -114,7 +114,7 @@ export function Testimonials() {
             className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4"
             style={{ fontFamily: 'var(--font-roboto-condensed)', letterSpacing: '-0.03em' }}
           >
-            Ils ont reussi avec TEKKIL
+            Ils ont réussi avec TEKKIL
           </motion.h2>
 
           <motion.p
@@ -124,7 +124,7 @@ export function Testimonials() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 text-lg max-w-2xl mx-auto"
           >
-            Decouvre les retours de nos utilisateurs qui preparent ou ont reussi les concours nationaux
+            Découvre les retours de nos utilisateurs qui préparent ou ont réussi les concours nationaux
           </motion.p>
         </div>
 
@@ -212,7 +212,7 @@ export function Testimonials() {
               whileTap={{ scale: 0.9 }}
               onClick={prevSlide}
               className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:border-blue-300 hover:text-blue-500 transition-colors shadow-sm"
-              aria-label="Temoignage precedent"
+              aria-label="Témoignage précédent"
             >
               <ChevronLeft className="w-5 h-5" />
             </motion.button>
@@ -231,7 +231,7 @@ export function Testimonials() {
                       ? 'bg-blue-500 w-8' 
                       : 'bg-gray-300 hover:bg-gray-400'
                   }`}
-                  aria-label={`Aller au temoignage ${index + 1}`}
+                  aria-label={`Aller au témoignage ${index + 1}`}
                 />
               ))}
             </div>
@@ -241,7 +241,7 @@ export function Testimonials() {
               whileTap={{ scale: 0.9 }}
               onClick={nextSlide}
               className="w-10 h-10 rounded-full bg-white border border-gray-200 flex items-center justify-center text-gray-600 hover:border-blue-300 hover:text-blue-500 transition-colors shadow-sm"
-              aria-label="Temoignage suivant"
+              aria-label="Témoignage suivant"
             >
               <ChevronRight className="w-5 h-5" />
             </motion.button>

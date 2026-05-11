@@ -28,7 +28,7 @@ export function Download() {
 
       <div className="relative max-w-4xl mx-auto px-5 md:px-8 text-center">
         <SectionLabel dark className="mb-4">
-          Telechargement
+          Téléchargement
         </SectionLabel>
 
         <motion.h2
@@ -39,7 +39,7 @@ export function Download() {
           className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-white mb-4"
           style={{ fontFamily: 'var(--font-roboto-condensed)', letterSpacing: '-0.03em' }}
         >
-          Commence ta preparation aujourd&apos;hui
+          Commence ta préparation aujourd&apos;hui
         </motion.h2>
 
         <motion.p
@@ -49,7 +49,7 @@ export function Download() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-gray-300 text-lg font-light mb-12"
         >
-          Gratuit pour demarrer. Disponible sur Android, bientot sur iOS.
+          Gratuit pour démarrer. Disponible sur Android, bientôt sur iOS.
         </motion.p>
 
         {/* Store Buttons */}
@@ -111,7 +111,7 @@ export function Download() {
               />
             </svg>
             <div className="text-left">
-              <p className="text-gray-400 text-xs">Bientot sur</p>
+              <p className="text-gray-400 text-xs">Bientôt sur</p>
               <p className="text-white font-semibold text-lg">App Store</p>
             </div>
 
@@ -124,7 +124,7 @@ export function Download() {
                 color: '#F9C623',
               }}
             >
-              Bientot
+              Bientôt
             </span>
           </motion.div>
         </motion.div>

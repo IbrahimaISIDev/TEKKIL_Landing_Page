@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Mail, MessageCircle, Instagram, type LucideIcon } from 'lucide-react'
+import { Mail, MessageCircle, Instagram, Facebook, Youtube, type LucideIcon } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { CONTACT_CHANNELS } from '@/lib/constants'
 
@@ -9,6 +9,8 @@ const iconMap: Record<string, LucideIcon> = {
   Mail,
   MessageCircle,
   Instagram,
+  Facebook,
+  Youtube,
 }
 
 export function Contact() {
@@ -42,7 +44,7 @@ export function Contact() {
         </div>
 
         {/* Contact Cards */}
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
           {CONTACT_CHANNELS.map((channel, index) => {
             const Icon = iconMap[channel.icon] || Mail
 
@@ -61,7 +63,7 @@ export function Contact() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 whileHover={{ y: -6 }}
-                className="group bg-white rounded-[20px] border border-gray-200 p-8 text-center hover:border-blue-200 transition-all cursor-pointer"
+                className="group bg-white rounded-[20px] border border-gray-200 p-5 md:p-6 text-center hover:border-blue-200 transition-all cursor-pointer"
                 style={{
                   transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 }}

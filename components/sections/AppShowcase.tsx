@@ -1,22 +1,23 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 
 const SCREENSHOTS = [
   {
-    src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YyT8SOF7GkB7gQ6vfb6Z6rJjoqBsbr.png',
-    alt: 'Page cours ENA - Droit Administratif',
+    src: '/screenshot-cours.png',
+    alt: 'Page cours ENA — Droit Administratif',
     label: 'Cours structurés',
   },
   {
-    src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-6n37sywYHnXjB4J21jFyPzRh3eO9dt.png',
+    src: '/screenshot-qcm.png',
     alt: 'QCM avec timer et progression',
     label: 'QCM chronométrés',
   },
   {
-    src: 'https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-6Z4oE4fkiQ3ebwr10fO9QcS1ZzoE7V.png',
-    alt: 'Mode Flashcards',
+    src: '/screenshot-flashcards.png',
+    alt: 'Mode Flashcards — Révision espacée',
     label: 'Flashcards',
   },
 ]
@@ -27,7 +28,7 @@ export function AppShowcase() {
       <div className="max-w-7xl mx-auto px-5 md:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <SectionLabel className="mb-4">Apercu</SectionLabel>
+          <SectionLabel className="mb-4">Aperçu</SectionLabel>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -48,7 +49,7 @@ export function AppShowcase() {
             className="text-text-secondary text-lg font-light max-w-2xl mx-auto"
           >
             Navigue facilement entre tes cours, tes quiz et tes statistiques.
-            Tout est concu pour maximiser ton temps de revision.
+            Tout est conçu pour maximiser ton temps de révision.
           </motion.p>
         </div>
 
@@ -85,9 +86,11 @@ export function AppShowcase() {
                 
                 {/* Screen */}
                 <div className="w-full rounded-[26px] overflow-hidden bg-white">
-                  <img
+                  <Image
                     src={screenshot.src}
                     alt={screenshot.alt}
+                    width={390}
+                    height={844}
                     className="w-full h-auto"
                   />
                 </div>
@@ -126,7 +129,7 @@ export function AppShowcase() {
             { value: 'ENA', label: 'Concours nationaux' },
             { value: '75%', label: 'Progression visible' },
             { value: '5+', label: 'Formats de contenu' },
-            { value: '24/7', label: 'Acces illimite' },
+            { value: '24/7', label: 'Accès illimité' },
           ].map((item, index) => (
             <motion.div
               key={item.label}

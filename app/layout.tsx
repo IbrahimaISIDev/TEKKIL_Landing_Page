@@ -19,6 +19,7 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://tekkil.app'),
   title: 'TEKKIL — Prépare ton concours national sénégalais',
   description:
     'La plateforme intelligente de préparation aux concours nationaux au Sénégal. QCM adaptatifs, révision espacée, leaderboard 3D. Disponible sur Android.',
@@ -39,14 +40,23 @@ export const metadata: Metadata = {
     url: 'https://tekkil.app',
     title: 'TEKKIL — Prépare ton concours national sénégalais',
     description:
-      'QCM adaptatifs, révision espacée, leaderboard 3D. Tout pour réussir ton concours.',
+      'QCM adaptatifs, révision espacée, classement en direct. Tout pour réussir ton concours au Sénégal.',
     siteName: 'TEKKIL',
+    images: [
+      {
+        url: '/opengraph-image',
+        width: 1200,
+        height: 630,
+        alt: 'TEKKIL — Prépare ton concours national sénégalais',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'TEKKIL — Prépare ton concours national sénégalais',
     description:
-      'QCM adaptatifs, révision espacée, leaderboard 3D. Tout pour réussir ton concours.',
+      'QCM adaptatifs, révision espacée, classement en direct. Tout pour réussir ton concours au Sénégal.',
+    images: ['/opengraph-image'],
   },
   robots: { index: true, follow: true },
 }

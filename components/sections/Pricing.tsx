@@ -8,22 +8,22 @@ import { cn } from '@/lib/utils'
 const plans = [
   {
     name: 'Gratuit',
-    subtitle: 'Pour decouvrir',
+    subtitle: 'Pour découvrir',
     price: '0',
     currency: 'FCFA',
     period: '/mois',
-    description: 'Acces limite pour tester la plateforme et commencer ta preparation.',
+    description: 'Accès limité pour tester la plateforme et commencer ta préparation.',
     features: [
-      'Acces a 2 matieres',
+      'Accès à 2 matières',
       '50 questions QCM',
-      '10 flashcards par matiere',
+      '10 flashcards par matière',
       'Progression basique',
-      'Mode hors-ligne (limite)',
+      'Mode hors-ligne (limité)',
     ],
     notIncluded: [
       'Assistant IA Tekkil',
-      'Contenus audio/video',
-      'QCM illimites',
+      'Contenus audio/vidéo',
+      'QCM illimités',
     ],
     cta: 'Commencer gratuitement',
     popular: false,
@@ -35,14 +35,14 @@ const plans = [
     price: '4 900',
     currency: 'FCFA',
     period: '/mois',
-    description: 'Acces complet a tous les contenus et fonctionnalites pour reussir ton concours.',
+    description: 'Accès complet à tous les contenus et fonctionnalités pour réussir ton concours.',
     features: [
-      'Toutes les matieres ENA',
-      'QCM illimites + corrections',
-      'Flashcards illimitees',
+      'Toutes les matières ENA',
+      'QCM illimités + corrections',
+      'Flashcards illimitées',
       'Assistant IA Tekkil',
-      'Contenus audio et video',
-      'Progression detaillee',
+      'Contenus audio et vidéo',
+      'Progression détaillée',
       'Mode hors-ligne complet',
       'Support prioritaire',
     ],
@@ -87,7 +87,7 @@ export function Pricing() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 text-lg max-w-2xl mx-auto"
           >
-            Commence gratuitement ou passe a Premium pour debloquer tout le potentiel de TEKKIL
+            Commence gratuitement ou passe à Premium pour débloquer tout le potentiel de TEKKIL
           </motion.p>
         </div>
 
@@ -267,7 +267,7 @@ export function Pricing() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-center text-gray-500 text-sm mt-8"
         >
-          Paiement securise via Orange Money, Wave ou carte bancaire. Annulation possible a tout moment.
+          Paiement sécurisé via Orange Money, Wave ou carte bancaire. Annulation possible à tout moment.
         </motion.p>
       </div>
     </section>

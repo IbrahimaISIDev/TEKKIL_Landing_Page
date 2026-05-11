@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { Sparkles, MessageCircle, Lightbulb, BookOpen } from 'lucide-react'
 
@@ -66,9 +67,11 @@ export function AIAssistant() {
                 
                 {/* Screen with actual screenshot */}
                 <div className="w-full rounded-[32px] overflow-hidden bg-white">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-UKgppWic8Tn5YrOsZaTeadSJgMIoxH.png"
-                    alt="Tekkil AI Assistant - Chat contextuel"
+                  <Image
+                    src="/screenshot-chatbot.png"
+                    alt="Tekkil AI — Assistant contextuel"
+                    width={390}
+                    height={844}
                     className="w-full h-auto"
                   />
                 </div>

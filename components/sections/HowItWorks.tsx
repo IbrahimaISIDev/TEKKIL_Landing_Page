@@ -27,7 +27,7 @@ export function HowItWorks() {
             className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-text-primary"
             style={{ fontFamily: 'var(--font-roboto-condensed)', letterSpacing: '-0.03em' }}
           >
-            En 3 etapes vers la reussite
+            En 3 étapes vers la réussite
           </motion.h2>
         </div>
 

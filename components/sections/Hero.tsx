@@ -2,6 +2,7 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
+import Image from 'next/image'
 import { Download, Play, Check, ChevronDown } from 'lucide-react'
 
 export function Hero() {
@@ -81,7 +82,7 @@ export function Hero() {
               }}
             >
               <span className="text-lg">🇸🇳</span>
-              <span className="text-blue-300 text-sm">Fait pour les candidats senegalais</span>
+              <span className="text-blue-300 text-sm">Fait pour les candidats sénégalais</span>
             </motion.div>
 
             {/* H1 */}
@@ -94,7 +95,7 @@ export function Hero() {
             >
               Transforme ta
               <br />
-              preparation aux
+              préparation aux
               <br />
               <span className="gradient-text">concours</span>
             </motion.h1>
@@ -106,9 +107,9 @@ export function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-gray-300 text-base md:text-lg font-light leading-relaxed max-w-xl mx-auto lg:mx-0 mb-8"
             >
-              La plateforme intelligente qui s&apos;adapte a ton niveau.
+              La plateforme intelligente qui s&apos;adapte à ton niveau.
               QCM adaptatifs, flashcards, assistant IA et suivi de progression —
-              tout pour reussir ton concours ENA du premier coup.
+              tout pour réussir ton concours ENA du premier coup.
             </motion.p>
 
             {/* CTA Buttons */}
@@ -128,7 +129,7 @@ export function Hero() {
                 }}
               >
                 <Download size={20} />
-                Telecharger sur Android
+                Télécharger sur Android
               </motion.a>
 
               <motion.a
@@ -141,7 +142,7 @@ export function Hero() {
                 }}
               >
                 <Play size={18} />
-                Voir comment ca marche
+                Voir comment ça marche
               </motion.a>
             </motion.div>
 
@@ -194,10 +195,13 @@ export function Hero() {
                 
                 {/* Screen with actual app screenshot */}
                 <div className="w-full rounded-[32px] overflow-hidden bg-white">
-                  <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-U4whEXxc5C1v7Dtc18dxDM7TptMvd7.png"
-                    alt="Tekkil App - Ecran d'accueil"
+                  <Image
+                    src="/screenshot-home.png"
+                    alt="Tekkil App — Écran d'accueil"
+                    width={390}
+                    height={844}
                     className="w-full h-auto"
+                    priority
                   />
                 </div>
 
@@ -238,7 +242,7 @@ export function Hero() {
           transition={{ duration: 1.5, repeat: Infinity }}
           className="flex flex-col items-center gap-2 text-gray-400"
         >
-          <span className="text-xs">Decouvrir</span>
+          <span className="text-xs">Découvrir</span>
           <ChevronDown size={20} />
         </motion.div>
       </motion.div>

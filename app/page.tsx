@@ -5,6 +5,7 @@ import { Stats } from '@/components/sections/Stats'
 import { Features } from '@/components/sections/Features'
 import { AppShowcase } from '@/components/sections/AppShowcase'
 import { AIAssistant } from '@/components/sections/AIAssistant'
+import { Leaderboard } from '@/components/sections/Leaderboard'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { Pricing } from '@/components/sections/Pricing'
 import { HowItWorks } from '@/components/sections/HowItWorks'
@@ -22,6 +23,7 @@ export default function Home() {
       <Features />
       <AppShowcase />
       <AIAssistant />
+      <Leaderboard />
       <Testimonials />
       <Pricing />
       <HowItWorks />

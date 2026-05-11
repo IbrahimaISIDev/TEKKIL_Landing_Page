@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Download, Menu, X } from 'lucide-react'
+import Image from 'next/image'
 import { useScrollY } from '@/hooks/useScrollY'
 import { NAV_LINKS } from '@/lib/constants'
 
@@ -67,22 +68,23 @@ export function Navbar() {
         <div className="max-w-7xl mx-auto px-5 md:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-1">
-              <motion.span
-                className="text-xl md:text-2xl font-extrabold text-white"
-                style={{ fontFamily: 'var(--font-roboto-condensed)' }}
-              >
-                TEKK
-              </motion.span>
-              <motion.span
-                className="text-xl md:text-2xl font-extrabold text-gold-500"
-                style={{ fontFamily: 'var(--font-roboto-condensed)' }}
-                whileHover={{ scale: 1.1 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 10 }}
-              >
-                IL
-              </motion.span>
-            </a>
+            <motion.a
+              href="#"
+              whileHover={{ scale: 1.02 }}
+              transition={{ type: 'spring', stiffness: 400, damping: 20 }}
+              className="flex items-center"
+            >
+              <div className="bg-white/95 backdrop-blur-sm rounded-xl px-3 py-1.5 shadow-sm">
+                <Image
+                  src="/tekkil-logo.png"
+                  alt="Tekkil"
+                  width={120}
+                  height={40}
+                  priority
+                  className="h-8 w-auto object-contain"
+                />
+              </div>
+            </motion.a>
 
             {/* Desktop Nav Links */}
             <div className="hidden md:flex items-center gap-8">
