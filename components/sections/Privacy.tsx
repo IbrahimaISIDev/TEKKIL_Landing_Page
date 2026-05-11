@@ -83,6 +83,23 @@ export function Privacy() {
             </motion.div>
           ))}
         </div>
+
+        {/* Link to full policy */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="mt-12 pt-8 border-t border-gray-100 text-center"
+        >
+          <a
+            href="/privacy"
+            className="inline-flex items-center gap-2 text-sm font-medium text-[#0B50DA] hover:underline"
+          >
+            Lire la politique de confidentialité complète
+            <span aria-hidden="true">→</span>
+          </a>
+        </motion.div>
       </div>
     </section>
   )
