@@ -23,19 +23,19 @@ type SocialLink = {
 const socialLinks: SocialLink[] = [
   {
     label: 'Facebook',
-    href: 'https://facebook.com/tekkil.app',
+    href: 'https://facebook.com/tekkil',
     color: 'hover:bg-[#1877F2]/20 hover:border-[#1877F2]/40',
     icon: <Facebook size={18} />,
   },
   {
     label: 'Instagram',
-    href: 'https://instagram.com/tekkil.app',
+    href: 'https://instagram.com/tekkil',
     color: 'hover:bg-[#E1306C]/20 hover:border-[#E1306C]/40',
     icon: <Instagram size={18} />,
   },
   {
     label: 'TikTok',
-    href: 'https://tiktok.com/@tekkil.app',
+    href: 'https://tiktok.com/@tekkil',
     color: 'hover:bg-white/20 hover:border-white/40',
     icon: <TikTokIcon size={18} />,
   },
@@ -144,7 +144,7 @@ export function Footer() {
 
             {/* Email input */}
             <form
-              action="mailto:newsletter@tekkil.app"
+              action="mailto:newsletter@tekkil.sn"
               method="GET"
               className="flex flex-col sm:flex-row gap-3"
             >

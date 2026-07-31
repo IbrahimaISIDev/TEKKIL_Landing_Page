@@ -102,8 +102,8 @@ export const CONTACT_CHANNELS = [
   {
     icon: 'Mail',
     title: 'Email',
-    value: 'support@tekkil.app',
-    href: 'mailto:support@tekkil.app',
+    value: 'support@tekkil.sn',
+    href: 'mailto:support@tekkil.sn',
     description: 'Réponse sous 24h',
   },
   {
@@ -116,15 +116,15 @@ export const CONTACT_CHANNELS = [
   {
     icon: 'Instagram',
     title: 'Instagram',
-    value: '@tekkil.app',
-    href: 'https://instagram.com/tekkil.app',
+    value: '@tekkil',
+    href: 'https://instagram.com/tekkil',
     description: 'Actus & tips quotidiens',
   },
   {
     icon: 'Facebook',
     title: 'Facebook',
-    value: 'tekkil.app',
-    href: 'https://facebook.com/tekkil.app',
+    value: 'tekkil',
+    href: 'https://facebook.com/tekkil',
     description: 'Communauté & entraide',
   },
   {
