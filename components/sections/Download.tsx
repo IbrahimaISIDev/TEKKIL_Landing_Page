@@ -62,7 +62,7 @@ export function Download() {
         >
           {/* Google Play Button */}
           <motion.a
-            href="https://play.google.com/store/apps/details?id=com.tekkil.app"
+            href="https://play.google.com/store/apps/details?id=com.tekkil.tekkil_mobile"
             target="_blank"
             rel="noopener noreferrer"
             whileHover={{ y: -3, backgroundColor: 'rgba(255,255,255,0.12)' }}
