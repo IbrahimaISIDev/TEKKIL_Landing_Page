@@ -168,7 +168,7 @@ export default function OGImage() {
           }}
         >
           <span style={{ fontSize: 24 }}>🇸🇳</span>
-          <span style={{ color: '#475569', fontSize: 16 }}>tekkil.app</span>
+          <span style={{ color: '#475569', fontSize: 16 }}>tekkil.sn</span>
         </div>
       </div>
     ),

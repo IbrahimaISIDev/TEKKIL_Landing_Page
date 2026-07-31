@@ -19,7 +19,7 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tekkil.app'),
+  metadataBase: new URL('https://tekkil.sn'),
   title: 'TEKKIL — Prépare ton concours national sénégalais',
   description:
     'La plateforme intelligente de préparation aux concours nationaux au Sénégal. QCM adaptatifs, révision espacée, leaderboard 3D. Disponible sur Android.',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_SN',
-    url: 'https://tekkil.app',
+    url: 'https://tekkil.sn',
     title: 'TEKKIL — Prépare ton concours national sénégalais',
     description:
       'QCM adaptatifs, révision espacée, classement en direct. Tout pour réussir ton concours au Sénégal.',
