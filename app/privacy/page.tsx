@@ -233,8 +233,8 @@ export default function PrivacyPage() {
                 <p className="font-semibold text-gray-900 mb-1">K-Edtech — TEKKIL</p>
                 <p className="text-gray-600 text-sm">
                   E-mail :{' '}
-                  <a href="mailto:support@tekkil.app" className="text-[#0B50DA] hover:underline">
-                    support@tekkil.app
+                  <a href="mailto:ibrahimadev6@k-edtech.com" className="text-[#0B50DA] hover:underline">
+                    ibrahimadev6@k-edtech.com
                   </a>
                 </p>
               </div>

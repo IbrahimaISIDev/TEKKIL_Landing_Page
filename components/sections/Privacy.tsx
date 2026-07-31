@@ -22,12 +22,12 @@ const privacySections = [
   {
     title: 'Tes droits',
     content:
-      'Tu disposes d\'un droit d\'accès, de rectification et de suppression de tes données personnelles à tout moment. Pour exercer ces droits ou poser des questions sur notre politique de confidentialité, contacte-nous à privacy@tekkil.app.',
+      'Tu disposes d\'un droit d\'accès, de rectification et de suppression de tes données personnelles à tout moment. Pour exercer ces droits ou poser des questions sur notre politique de confidentialité, contacte-nous à ibrahimadev6@k-edtech.com.',
   },
   {
     title: 'Nous contacter',
     content:
-      'Pour toute question relative à la protection de tes données personnelles, tu peux nous joindre par email à support@tekkil.app. Nous nous engageons à répondre dans un délai de 48 heures ouvrées.',
+      'Pour toute question relative à la protection de tes données personnelles, tu peux nous joindre par email à ibrahimadev6@k-edtech.com. Nous nous engageons à répondre dans un délai de 48 heures ouvrées.',
   },
 ]
 
@@ -57,7 +57,7 @@ export function Privacy() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-text-secondary text-sm"
           >
-            Dernière mise à jour : 30 avril 2026
+            Dernière mise à jour : 5 mai 2026
           </motion.p>
         </div>
 
