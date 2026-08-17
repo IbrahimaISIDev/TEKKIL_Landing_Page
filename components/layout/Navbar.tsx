@@ -117,19 +117,29 @@ export function Navbar() {
               })}
             </div>
 
-            {/* Desktop CTA Button */}
-            <motion.a
-              href="#download"
-              whileHover={{ scale: 1.02, y: -1 }}
-              whileTap={{ scale: 0.98 }}
-              className="hidden md:flex items-center gap-2 bg-blue-400 hover:bg-blue-300 text-white px-5 py-2.5 rounded-[10px] text-sm font-medium transition-all"
-              style={{
-                boxShadow: '0 4px 20px rgba(43, 82, 238, 0.3)',
-              }}
-            >
-              <Download size={16} />
-              Télécharger gratuitement
-            </motion.a>
+            {/* Desktop CTAs */}
+            <div className="hidden md:flex items-center gap-3">
+              <motion.a
+                href="https://app.tekkilapp.com/login"
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-2 text-white border border-white/20 hover:border-white/40 hover:bg-white/5 px-5 py-2.5 rounded-[10px] text-sm font-medium transition-all"
+              >
+                Se connecter
+              </motion.a>
+              <motion.a
+                href="#download"
+                whileHover={{ scale: 1.02, y: -1 }}
+                whileTap={{ scale: 0.98 }}
+                className="flex items-center gap-2 bg-blue-400 hover:bg-blue-300 text-white px-5 py-2.5 rounded-[10px] text-sm font-medium transition-all"
+                style={{
+                  boxShadow: '0 4px 20px rgba(43, 82, 238, 0.3)',
+                }}
+              >
+                <Download size={16} />
+                Télécharger gratuitement
+              </motion.a>
+            </div>
 
             {/* Mobile Menu Button */}
             <motion.button
@@ -210,6 +220,17 @@ export function Navbar() {
               >
                 <Download size={20} />
                 Télécharger
+              </motion.a>
+
+              <motion.a
+                href="https://app.tekkilapp.com/login"
+                onClick={handleLinkClick}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, delay: 0.45 }}
+                className="flex items-center gap-2 text-white border border-white/20 px-8 py-4 rounded-xl text-lg font-medium"
+              >
+                Se connecter
               </motion.a>
             </motion.div>
           </motion.div>
