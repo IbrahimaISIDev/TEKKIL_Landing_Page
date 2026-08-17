@@ -20,7 +20,7 @@ export const FEATURES = [
   {
     icon: 'BookOpen',
     title: 'Contenus multimédias',
-    description: 'Cours, résumés, audio, vidéo et QCM — 5 formats pour apprendre selon ton style. Préparation ENA complète.',
+    description: 'Cours, résumés, audio, vidéo et QCM — 5 formats pour apprendre selon ton style. Préparation complète à ton concours.',
     color: '#F5C842',
   },
   {
@@ -83,7 +83,7 @@ export const STEPS = [
 ] as const
 
 export const STATS = [
-  { value: 500, suffix: '+', label: 'Questions disponibles' },
+  { value: 10000, suffix: '+', label: 'Questions disponibles' },
   { value: 15, suffix: '+', label: 'Rubriques psychotechniques' },
   { value: 3, suffix: '', label: 'Modes d\'examen blanc' },
   { value: 100, suffix: '%', label: 'Mobile-first' },
@@ -96,7 +96,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'Quels concours sont couverts par TEKKIL ?',
-    answer: 'TEKKIL couvre les épreuves psychotechniques des grands concours nationaux sénégalais — ENA, fonctions publiques, grandes écoles. Les épreuves sont organisées en deux filières : Verbal (synonymes, analogies, intrus…) et Numérique (calcul, séries logiques…). D\'autres concours sont ajoutés régulièrement.',
+    answer: 'TEKKIL couvre les épreuves psychotechniques des concours de niveau national au Sénégal — CREM, ENA, fonctions publiques, grandes écoles, et bien d\'autres. Les concours ouverts changent selon les sessions (le CREM est actuellement ouvert). Les épreuves sont organisées en deux filières : Verbal (synonymes, analogies, intrus…) et Numérique (calcul, séries logiques…).',
   },
   {
     question: 'Comment fonctionne l\'assistant IA Tekkil ?',

@@ -109,7 +109,8 @@ export function Hero() {
             >
               La plateforme intelligente qui s&apos;adapte à ton niveau.
               QCM adaptatifs, flashcards, assistant IA et suivi de progression —
-              tout pour réussir ton concours ENA du premier coup.
+              que tu prépares le CREM, l&apos;ENA ou un autre concours national,
+              tout pour réussir du premier coup.
             </motion.p>
 
             {/* CTA Buttons */}

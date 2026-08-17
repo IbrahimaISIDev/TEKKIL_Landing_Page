@@ -9,7 +9,7 @@ const testimonials = [
   {
     id: 1,
     name: 'Aminata Diallo',
-    role: 'Candidate ENA Cycle B',
+    role: 'Candidate au CREM',
     avatar: 'AD',
     location: 'Dakar',
     rating: 5,
@@ -19,7 +19,7 @@ const testimonials = [
   {
     id: 2,
     name: 'Moussa Sow',
-    role: 'Admis ENA Cycle A 2025',
+    role: 'Admis à l\'ENA 2025',
     avatar: 'MS',
     location: 'Saint-Louis',
     rating: 5,
@@ -29,7 +29,7 @@ const testimonials = [
   {
     id: 3,
     name: 'Fatou Ndiaye',
-    role: 'Candidate ENA Cycle B',
+    role: 'Candidate au CREM',
     avatar: 'FN',
     location: 'Thiès',
     rating: 5,
@@ -39,7 +39,7 @@ const testimonials = [
   {
     id: 4,
     name: 'Ibrahima Fall',
-    role: 'Candidat ENA Cycle A',
+    role: 'Candidat à l\'ENA',
     avatar: 'IF',
     location: 'Ziguinchor',
     rating: 5,
@@ -49,11 +49,11 @@ const testimonials = [
   {
     id: 5,
     name: 'Oumar Ba',
-    role: 'Admis ENA 2025',
+    role: 'Admis à un concours national 2025',
     avatar: 'OB',
     location: 'Kaolack',
     rating: 5,
-    text: 'J\'ai essayé plusieurs applis mais TEKKIL est la seule adaptée au programme sénégalais. Les contenus sont précis et conformes aux exigences de l\'ENA. Je recommande à 100%.',
+    text: 'J\'ai essayé plusieurs applis mais TEKKIL est la seule adaptée au programme sénégalais. Les contenus sont précis et conformes aux exigences des concours nationaux. Je recommande à 100%.',
     highlight: 'adaptée au programme sénégalais',
   },
 ]

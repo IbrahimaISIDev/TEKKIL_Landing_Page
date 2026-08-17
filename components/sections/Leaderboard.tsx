@@ -93,7 +93,7 @@ export function Leaderboard() {
               >
                 <div className="flex items-center gap-2">
                   <Trophy className="w-5 h-5 text-gold-500" style={{ color: '#F9C623' }} />
-                  <span className="text-white font-semibold text-sm">Classement ENA — Cette semaine</span>
+                  <span className="text-white font-semibold text-sm">Classement — Cette semaine</span>
                 </div>
                 <span
                   className="text-xs px-2.5 py-1 rounded-full font-medium"

@@ -54,7 +54,7 @@ export function AnimatedCounter({
 
   return (
     <span ref={ref} className={className}>
-      {count}
+      {count.toLocaleString('fr-FR')}
       {suffix && <span className="text-gold-500">{suffix}</span>}
     </span>
   )

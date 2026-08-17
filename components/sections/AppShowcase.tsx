@@ -7,7 +7,7 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 const SCREENSHOTS = [
   {
     src: '/screenshot-cours.png',
-    alt: 'Page cours ENA — Droit Administratif',
+    alt: 'Page cours — Droit Administratif',
     label: 'Cours structurés',
   },
   {
@@ -126,7 +126,7 @@ export function AppShowcase() {
           className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8"
         >
           {[
-            { value: 'ENA', label: 'Concours nationaux' },
+            { value: 'CREM, ENA...', label: 'Concours nationaux' },
             { value: '75%', label: 'Progression visible' },
             { value: '5+', label: 'Formats de contenu' },
             { value: '24/7', label: 'Accès illimité' },
