@@ -8,6 +8,10 @@ import {
   BookOpen,
   Sparkles,
   WifiOff,
+  Trophy,
+  FileCheck,
+  FileText,
+  Headphones,
   type LucideIcon,
 } from 'lucide-react'
 
@@ -26,6 +30,10 @@ const iconMap: Record<string, LucideIcon> = {
   BookOpen,
   Sparkles,
   WifiOff,
+  Trophy,
+  FileCheck,
+  FileText,
+  Headphones,
 }
 
 export function FeatureCard({ icon, title, description, color, index }: FeatureCardProps) {

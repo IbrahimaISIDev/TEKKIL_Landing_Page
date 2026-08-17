@@ -11,43 +11,42 @@ const plans = [
     subtitle: 'Pour découvrir',
     price: '0',
     currency: 'FCFA',
-    period: '/mois',
-    description: 'Accès limité pour tester la plateforme et commencer ta préparation.',
+    period: '',
+    priceNote: '',
+    description: 'Un aperçu de 3 contenus gratuits par pack pour tester la plateforme avant d\'acheter.',
     features: [
-      'Accès à 2 matières',
-      '50 questions QCM',
-      '10 flashcards par matière',
-      'Progression basique',
-      'Mode hors-ligne (limité)',
+      '3 contenus gratuits par pack',
+      'Accès à tous les packs en aperçu',
+      'Assistant IA Tekkil (limité)',
     ],
     notIncluded: [
-      'Assistant IA Tekkil',
-      'Contenus audio/vidéo',
-      'QCM illimités',
+      'Accès intégral aux packs',
+      'QCM et flashcards illimités',
+      'Examens blancs',
     ],
     cta: 'Commencer gratuitement',
     popular: false,
     icon: Zap,
   },
   {
-    name: 'Premium',
-    subtitle: 'Recommande',
-    price: '4 900',
+    name: 'Accès Pack',
+    subtitle: 'Recommandé',
+    price: '5 000',
     currency: 'FCFA',
-    period: '/mois',
-    description: 'Accès complet à tous les contenus et fonctionnalités pour réussir ton concours.',
+    period: '/pack',
+    priceNote: 'À partir de',
+    description: 'Achète un pack et débloque automatiquement l\'intégralité de son contenu, sans abonnement.',
     features: [
-      'Toutes les matières ENA',
-      'QCM illimités + corrections',
-      'Flashcards illimitées',
+      'Accès complet et intégral au pack acheté',
+      'Cours, fiches de lecture et audios',
+      'QCM et flashcards illimités',
+      'Annales corrigées',
       'Assistant IA Tekkil',
-      'Contenus audio et vidéo',
-      'Progression détaillée',
-      'Mode hors-ligne complet',
-      'Support prioritaire',
+      'Examens blancs',
+      'Suivi de progression détaillé',
     ],
     notIncluded: [],
-    cta: 'Passer a Premium',
+    cta: 'Choisir un pack',
     popular: true,
     icon: Sparkles,
   },
@@ -87,7 +86,7 @@ export function Pricing() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 text-lg max-w-2xl mx-auto"
           >
-            Commence gratuitement ou passe à Premium pour débloquer tout le potentiel de TEKKIL
+            Commence gratuitement, puis achète un pack pour débloquer tout son contenu
           </motion.p>
         </div>
 
@@ -163,8 +162,16 @@ export function Pricing() {
 
                 {/* Price */}
                 <div className="mb-6">
+                  {plan.priceNote && (
+                    <p className={cn(
+                      'text-xs font-medium mb-1',
+                      plan.popular ? 'text-blue-200' : 'text-gray-500'
+                    )}>
+                      {plan.priceNote}
+                    </p>
+                  )}
                   <div className="flex items-baseline gap-1">
-                    <span 
+                    <span
                       className={cn(
                         'text-4xl md:text-5xl font-extrabold',
                         plan.popular ? 'text-white' : 'text-gray-900'
@@ -267,7 +274,7 @@ export function Pricing() {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="text-center text-gray-500 text-sm mt-8"
         >
-          Paiement sécurisé via Orange Money, Wave ou carte bancaire. Annulation possible à tout moment.
+          Paiement sécurisé via Orange Money, Wave ou carte bancaire. Achat unique par pack, accès valable jusqu'à la date du concours.
         </motion.p>
       </div>
     </section>

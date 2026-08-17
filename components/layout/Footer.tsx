@@ -139,7 +139,7 @@ export function Footer() {
               Reste informé
             </h4>
             <p className="text-gray-300 text-sm mb-4">
-              Sois le premier à savoir quand iOS sera disponible.
+              Sois le premier informé du lancement des applications mobiles.
             </p>
 
             {/* Email input */}

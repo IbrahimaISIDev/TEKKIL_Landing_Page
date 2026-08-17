@@ -43,8 +43,8 @@ const testimonials = [
     avatar: 'IF',
     location: 'Ziguinchor',
     rating: 5,
-    text: 'Le mode hors-ligne est essentiel pour moi. La connexion n\'est pas toujours stable ici, mais je peux continuer à réviser sans problème. TEKKIL a pensé à nous.',
-    highlight: 'mode hors-ligne essentiel',
+    text: 'Les annales corrigées m\'ont permis de comprendre exactement le niveau attendu au concours. Je m\'entraîne sur les sujets des sessions précédentes avec la correction complète, un vrai plus.',
+    highlight: 'annales corrigées',
   },
   {
     id: 5,

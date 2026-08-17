@@ -41,6 +41,24 @@ export const FEATURES = [
     description: 'Télécharge tes modules et révise sans connexion. Parfait pour les zones à faible connectivité au Sénégal.',
     color: '#06B6D4',
   },
+  {
+    icon: 'FileCheck',
+    title: 'Annales corrigées',
+    description: 'Consulte les sujets des sessions précédentes avec leurs corrigés détaillés pour t\'entraîner en conditions réelles.',
+    color: '#EC4899',
+  },
+  {
+    icon: 'FileText',
+    title: 'Fiches de lecture',
+    description: 'Chaque rubrique dispose d\'une fiche de cours claire et structurée, en complément des QCM et flashcards.',
+    color: '#0EA5E9',
+  },
+  {
+    icon: 'Headphones',
+    title: 'Audios des packs',
+    description: 'Écoute les résumés audio de chaque module, idéal pour réviser en déplacement.',
+    color: '#F97316',
+  },
 ] as const
 
 export const STEPS = [
@@ -74,7 +92,7 @@ export const STATS = [
 export const FAQ_ITEMS = [
   {
     question: 'TEKKIL est-il gratuit ?',
-    answer: 'TEKKIL propose un accès gratuit pour démarrer ta préparation. Des modules premium sont disponibles pour débloquer l\'intégralité des contenus et les fonctionnalités avancées comme l\'assistant IA.',
+    answer: 'TEKKIL te donne un aperçu gratuit de 3 contenus par pack pour démarrer ta préparation. L\'achat d\'un pack débloque ensuite automatiquement l\'intégralité de son contenu — cours, QCM, flashcards, annales corrigées et assistant IA.',
   },
   {
     question: 'Quels concours sont couverts par TEKKIL ?',
@@ -90,7 +108,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'Sur quels appareils puis-je utiliser TEKKIL ?',
-    answer: 'TEKKIL est disponible sur Android via le Google Play Store. La version iOS (App Store) arrive très prochainement. L\'application est optimisée pour tous les smartphones et tablettes.',
+    answer: 'TEKKIL est disponible dès maintenant sur le web, accessible depuis n\'importe quel smartphone, tablette ou ordinateur. Les applications Android et iOS arrivent prochainement.',
   },
   {
     question: 'Mes données sont-elles en sécurité ?',

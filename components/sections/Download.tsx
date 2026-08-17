@@ -49,7 +49,7 @@ export function Download() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-gray-300 text-lg font-light mb-12"
         >
-          Gratuit pour démarrer. Disponible sur Android, bientôt sur iOS.
+          Gratuit pour démarrer sur le web. Applications Android et iOS bientôt disponibles.
         </motion.p>
 
         {/* Store Buttons */}
@@ -61,13 +61,9 @@ export function Download() {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           {/* Google Play Button */}
-          <motion.a
-            href="https://play.google.com/store/apps/details?id=com.tekkil.tekkil_mobile"
-            target="_blank"
-            rel="noopener noreferrer"
-            whileHover={{ y: -3, backgroundColor: 'rgba(255,255,255,0.12)' }}
-            whileTap={{ scale: 0.98 }}
-            className="w-full sm:w-auto flex items-center gap-4 px-6 py-4 rounded-2xl glass hover:shadow-lg transition-all"
+          <motion.div
+            whileHover={{ y: -3 }}
+            className="relative w-full sm:w-auto flex items-center gap-4 px-6 py-4 rounded-2xl glass opacity-80 cursor-not-allowed"
           >
             {/* Android Icon */}
             <svg
@@ -87,10 +83,22 @@ export function Download() {
               />
             </svg>
             <div className="text-left">
-              <p className="text-gray-400 text-xs">Disponible sur</p>
+              <p className="text-gray-400 text-xs">Bientôt sur</p>
               <p className="text-white font-semibold text-lg">Google Play</p>
             </div>
-          </motion.a>
+
+            {/* Coming Soon Badge */}
+            <span
+              className="absolute -top-2 -right-2 px-2.5 py-1 rounded-full text-[0.65rem] font-semibold uppercase tracking-wider"
+              style={{
+                background: 'rgba(249,198,35,0.15)',
+                border: '1px solid rgba(249,198,35,0.3)',
+                color: '#F9C623',
+              }}
+            >
+              Bientôt
+            </span>
+          </motion.div>
 
           {/* App Store Button */}
           <motion.div
