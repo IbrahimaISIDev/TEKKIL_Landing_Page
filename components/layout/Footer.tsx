@@ -1,9 +1,12 @@
 'use client'
 
+import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Instagram, Twitter, Linkedin, Facebook, Youtube } from 'lucide-react'
+import { Instagram, Twitter, Linkedin, Facebook, Youtube, Check } from 'lucide-react'
 import Image from 'next/image'
 import { FOOTER_LINKS } from '@/lib/constants'
+
+const WAITLIST_API_URL = 'https://api.tekkilapp.com/api/v1/waitlist'
 
 function TikTokIcon({ size = 18 }: { size?: number }) {
   return (
@@ -60,6 +63,28 @@ const socialLinks: SocialLink[] = [
 ]
 
 export function Footer() {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (status === 'loading') return
+
+    setStatus('loading')
+    try {
+      const res = await fetch(WAITLIST_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: 'landing-footer' }),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      setStatus('success')
+      setEmail('')
+    } catch {
+      setStatus('error')
+    }
+  }
+
   return (
     <footer className="bg-blue-900 text-white">
       <div className="max-w-7xl mx-auto px-5 md:px-8 py-16 md:py-20">
@@ -143,27 +168,40 @@ export function Footer() {
             </p>
 
             {/* Email input */}
-            <form
-              action="mailto:newsletter@tekkil.sn"
-              method="GET"
-              className="flex flex-col sm:flex-row gap-3"
-            >
-              <input
-                type="email"
-                name="subject"
-                placeholder="Ton email"
-                className="flex-1 px-4 py-3 rounded-xl text-white placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all"
-                style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
-              />
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-6 py-3 bg-blue-500 hover:bg-blue-400 rounded-xl text-sm font-medium transition-colors"
-              >
-                S&apos;inscrire
-              </motion.button>
-            </form>
+            {status === 'success' ? (
+              <p className="flex items-center justify-center md:justify-start gap-2 text-emerald-400 text-sm font-medium py-3">
+                <Check size={18} />
+                Merci ! Tu seras prévenu(e) du lancement.
+              </p>
+            ) : (
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="Ton email"
+                  disabled={status === 'loading'}
+                  className="flex-1 px-4 py-3 rounded-xl text-white placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all disabled:opacity-60"
+                  style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
+                />
+                <motion.button
+                  type="submit"
+                  disabled={status === 'loading'}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="px-6 py-3 bg-blue-500 hover:bg-blue-400 rounded-xl text-sm font-medium transition-colors disabled:opacity-60"
+                >
+                  {status === 'loading' ? 'Inscription...' : 'S’inscrire'}
+                </motion.button>
+              </form>
+            )}
+
+            {status === 'error' && (
+              <p className="text-red-400 text-xs mt-2">
+                Une erreur est survenue. Réessaie dans un instant.
+              </p>
+            )}
 
             {/* Social hint */}
             <p className="text-gray-500 text-xs mt-4">
