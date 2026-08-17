@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from 'next'
 import { Roboto_Condensed, Roboto } from 'next/font/google'
-import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
 const robotoCondensed = Roboto_Condensed({
@@ -19,7 +18,7 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tekkil.sn'),
+  metadataBase: new URL('https://tekkilapp.com'),
   title: 'TEKKIL — Prépare ton concours national sénégalais',
   description:
     'La plateforme intelligente de préparation aux concours nationaux au Sénégal. QCM adaptatifs, révision espacée, leaderboard 3D.',
@@ -37,7 +36,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_SN',
-    url: 'https://tekkil.sn',
+    url: 'https://tekkilapp.com',
     title: 'TEKKIL — Prépare ton concours national sénégalais',
     description:
       'QCM adaptatifs, révision espacée, classement en direct. Tout pour réussir ton concours au Sénégal.',
@@ -76,7 +75,6 @@ export default function RootLayout({
     <html lang="fr" className={`${robotoCondensed.variable} ${roboto.variable} bg-blue-900`}>
       <body className="font-sans antialiased">
         {children}
-        {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>
   )
