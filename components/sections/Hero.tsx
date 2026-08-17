@@ -3,7 +3,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
-import { Download, Play, Check, ChevronDown } from 'lucide-react'
+import { LogIn, Play, Check, ChevronDown } from 'lucide-react'
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -120,7 +120,7 @@ export function Hero() {
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8"
             >
               <motion.a
-                href="#download"
+                href="https://app.tekkilapp.com/login"
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full sm:w-auto flex items-center justify-center gap-3 bg-blue-400 hover:bg-blue-300 text-white px-8 py-4 rounded-xl text-base font-medium transition-all"
@@ -128,8 +128,8 @@ export function Hero() {
                   boxShadow: '0 4px 24px rgba(43,82,238,0.4)',
                 }}
               >
-                <Download size={20} />
-                Télécharger sur Android
+                <LogIn size={20} />
+                Se connecter
               </motion.a>
 
               <motion.a
