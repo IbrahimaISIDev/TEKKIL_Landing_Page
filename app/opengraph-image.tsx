@@ -107,6 +107,8 @@ export default function OGImage() {
         {/* Main headline */}
         <div
           style={{
+            display: 'flex',
+            flexDirection: 'column',
             fontSize: 56,
             fontWeight: 800,
             color: '#FFFFFF',
@@ -168,7 +170,7 @@ export default function OGImage() {
           }}
         >
           <span style={{ fontSize: 24 }}>🇸🇳</span>
-          <span style={{ color: '#475569', fontSize: 16 }}>tekkil.sn</span>
+          <span style={{ color: '#475569', fontSize: 16 }}>tekkilapp.com</span>
         </div>
       </div>
     ),
