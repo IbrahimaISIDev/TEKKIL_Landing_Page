@@ -245,22 +245,23 @@ export function Pricing() {
                 </ul>
 
                 {/* CTA Button */}
-                <motion.button
+                <motion.a
+                  href="https://app.tekkilapp.com/register"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className={cn(
-                    'w-full py-3.5 px-6 rounded-xl font-semibold text-sm transition-all duration-200',
+                    'flex w-full items-center justify-center py-3.5 px-6 rounded-xl font-semibold text-sm transition-all duration-200',
                     plan.popular
                       ? 'bg-gradient-to-r from-gold-500 to-gold-400 text-blue-900 hover:shadow-lg hover:shadow-gold-500/25'
                       : 'bg-blue-500 text-white hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25'
                   )}
-                  style={plan.popular ? { 
+                  style={plan.popular ? {
                     background: 'linear-gradient(135deg, #F9C623, #FBD354)',
                     color: '#080E2E'
                   } : {}}
                 >
                   {plan.cta}
-                </motion.button>
+                </motion.a>
               </motion.div>
             )
           })}
