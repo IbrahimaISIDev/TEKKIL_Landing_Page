@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import Image from 'next/image'
 import { LogIn, Play, Check, ChevronDown } from 'lucide-react'
+import { LOGIN_URL } from '@/lib/urls'
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -121,7 +122,7 @@ export function Hero() {
               className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-8"
             >
               <motion.a
-                href="https://app.tekkilapp.com/login"
+                href={LOGIN_URL}
                 whileHover={{ scale: 1.02, y: -2 }}
                 whileTap={{ scale: 0.98 }}
                 className="w-full sm:w-auto flex items-center justify-center gap-3 bg-blue-400 hover:bg-blue-300 text-white px-8 py-4 rounded-xl text-base font-medium transition-all"

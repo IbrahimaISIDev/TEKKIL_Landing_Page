@@ -6,6 +6,7 @@ import { Download, Menu, X } from 'lucide-react'
 import Image from 'next/image'
 import { useScrollY } from '@/hooks/useScrollY'
 import { NAV_LINKS } from '@/lib/constants'
+import { LOGIN_URL } from '@/lib/urls'
 
 export function Navbar() {
   const scrollY = useScrollY()
@@ -120,7 +121,7 @@ export function Navbar() {
             {/* Desktop CTAs */}
             <div className="hidden md:flex items-center gap-3">
               <motion.a
-                href="https://app.tekkilapp.com/login"
+                href={LOGIN_URL}
                 whileHover={{ scale: 1.02, y: -1 }}
                 whileTap={{ scale: 0.98 }}
                 className="flex items-center gap-2 text-white border border-white/20 hover:border-white/40 hover:bg-white/5 px-5 py-2.5 rounded-[10px] text-sm font-medium transition-all"
@@ -147,7 +148,7 @@ export function Navbar() {
               <AnimatePresence>
                 {isScrolled && !isMenuOpen && (
                   <motion.a
-                    href="https://app.tekkilapp.com/login"
+                    href={LOGIN_URL}
                     initial={{ opacity: 0, scale: 0.9, width: 0 }}
                     animate={{ opacity: 1, scale: 1, width: 'auto' }}
                     exit={{ opacity: 0, scale: 0.9, width: 0 }}
@@ -243,7 +244,7 @@ export function Navbar() {
               </motion.a>
 
               <motion.a
-                href="https://app.tekkilapp.com/login"
+                href={LOGIN_URL}
                 onClick={handleLinkClick}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}

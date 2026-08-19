@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Check, Sparkles, Zap } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
 import { cn } from '@/lib/utils'
+import { REGISTER_URL } from '@/lib/urls'
 
 const plans = [
   {
@@ -246,7 +247,7 @@ export function Pricing() {
 
                 {/* CTA Button */}
                 <motion.a
-                  href="https://app.tekkilapp.com/register"
+                  href={REGISTER_URL}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                   className={cn(

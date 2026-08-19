@@ -5,8 +5,7 @@ import { motion } from 'framer-motion'
 import { Instagram, Twitter, Linkedin, Facebook, Youtube, Check } from 'lucide-react'
 import Image from 'next/image'
 import { FOOTER_LINKS } from '@/lib/constants'
-
-const WAITLIST_API_URL = 'https://api.tekkilapp.com/api/v1/waitlist'
+import { WAITLIST_API_URL } from '@/lib/urls'
 
 function TikTokIcon({ size = 18 }: { size?: number }) {
   return (

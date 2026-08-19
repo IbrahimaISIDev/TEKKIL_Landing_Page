@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { Roboto_Condensed, Roboto } from 'next/font/google'
+import { SITE_URL } from '@/lib/urls'
 import './globals.css'
 
 const robotoCondensed = Roboto_Condensed({
@@ -18,7 +19,7 @@ const roboto = Roboto({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://tekkilapp.com'),
+  metadataBase: new URL(SITE_URL),
   title: 'TEKKIL — Prépare ton concours national sénégalais',
   description:
     'La plateforme intelligente de préparation aux concours nationaux au Sénégal. QCM adaptatifs, révision espacée, leaderboard 3D.',
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'fr_SN',
-    url: 'https://tekkilapp.com',
+    url: SITE_URL,
     title: 'TEKKIL — Prépare ton concours national sénégalais',
     description:
       'QCM adaptatifs, révision espacée, classement en direct. Tout pour réussir ton concours au Sénégal.',

@@ -1,4 +1,5 @@
 import { ImageResponse } from 'next/og'
+import { SITE_URL } from '@/lib/urls'
 
 export const runtime = 'edge'
 export const alt = 'TEKKIL — Prépare ton concours national sénégalais'
@@ -170,7 +171,7 @@ export default function OGImage() {
           }}
         >
           <span style={{ fontSize: 24 }}>🇸🇳</span>
-          <span style={{ color: '#475569', fontSize: 16 }}>tekkilapp.com</span>
+          <span style={{ color: '#475569', fontSize: 16 }}>{SITE_URL.replace(/^https?:\/\//, '')}</span>
         </div>
       </div>
     ),
