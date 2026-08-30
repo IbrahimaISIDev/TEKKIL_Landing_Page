@@ -21,6 +21,7 @@ interface FeatureCardProps {
   description: string
   color: string
   index: number
+  badge?: string
 }
 
 const iconMap: Record<string, LucideIcon> = {
@@ -36,7 +37,7 @@ const iconMap: Record<string, LucideIcon> = {
   Headphones,
 }
 
-export function FeatureCard({ icon, title, description, color, index }: FeatureCardProps) {
+export function FeatureCard({ icon, title, description, color, index, badge }: FeatureCardProps) {
   const Icon = iconMap[icon] || Brain
 
   return (
@@ -71,12 +72,22 @@ export function FeatureCard({ icon, title, description, color, index }: FeatureC
       </motion.div>
 
       {/* Title */}
-      <h3
-        className="text-base md:text-lg font-semibold text-text-primary mb-2 md:mb-3"
-        style={{ fontFamily: 'var(--font-roboto-condensed)' }}
-      >
-        {title}
-      </h3>
+      <div className="flex flex-wrap items-center gap-2 mb-2 md:mb-3">
+        <h3
+          className="text-base md:text-lg font-semibold text-text-primary"
+          style={{ fontFamily: 'var(--font-roboto-condensed)' }}
+        >
+          {title}
+        </h3>
+        {badge && (
+          <span
+            className="px-2 py-0.5 rounded-full text-[10px] font-semibold uppercase tracking-wide whitespace-nowrap"
+            style={{ backgroundColor: 'rgba(249, 198, 35, 0.12)', color: '#B8860B' }}
+          >
+            {badge}
+          </span>
+        )}
+      </div>
 
       {/* Description */}
       <p className="text-sm text-text-secondary leading-relaxed font-light line-clamp-3 md:line-clamp-none">

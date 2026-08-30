@@ -28,6 +28,7 @@ export const FEATURES = [
     title: 'Assistant IA Tekkil',
     description: 'Pose tes questions sur le cours en temps réel. L\'IA contextuelle t\'explique avec des exemples concrets.',
     color: '#F59E0B',
+    badge: 'Bientôt disponible',
   },
   {
     icon: 'Trophy',
@@ -83,9 +84,8 @@ export const STEPS = [
 ] as const
 
 export const STATS = [
-  { value: 10000, suffix: '+', label: 'Questions disponibles' },
-  { value: 15, suffix: '+', label: 'Rubriques psychotechniques' },
-  { value: 3, suffix: '', label: 'Modes d\'examen blanc' },
+  { value: 40000, suffix: '+', label: 'Questions disponibles' },
+  { value: 100, suffix: '+', label: 'Rubriques' },
   { value: 100, suffix: '%', label: 'Mobile-first' },
 ] as const
 
@@ -155,6 +155,7 @@ export const CONTACT_CHANNELS = [
 ] as const
 
 export const NAV_LINKS = [
+  { label: 'Qui sommes-nous ?', href: '#qui-sommes-nous' },
   { label: 'Fonctionnalités', href: '#features' },
   { label: 'Tarifs', href: '#tarifs' },
   { label: 'Témoignages', href: '#temoignages' },
@@ -163,6 +164,7 @@ export const NAV_LINKS = [
 ] as const
 
 export const FOOTER_LINKS = [
+  { label: 'Qui sommes-nous ?', href: '#qui-sommes-nous' },
   { label: 'Fonctionnalités', href: '#features' },
   { label: 'Tarifs', href: '#tarifs' },
   { label: 'Témoignages', href: '#temoignages' },

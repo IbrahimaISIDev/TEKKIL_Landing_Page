@@ -6,39 +6,20 @@ import { SectionLabel } from '@/components/ui/SectionLabel'
 import { cn } from '@/lib/utils'
 import { REGISTER_URL } from '@/lib/urls'
 
+// Chaque pack a son propre prix, indépendant des autres — un pack = un
+// concours. De nouveaux packs (avec leur propre prix) s'ajoutent ici au
+// fil des sessions de concours ouvertes.
 const plans = [
   {
-    name: 'Gratuit',
-    subtitle: 'Pour découvrir',
-    price: '0',
+    name: 'Pack CREM',
+    subtitle: 'Concours CREM',
+    price: '5 900',
     currency: 'FCFA',
     period: '',
     priceNote: '',
-    description: 'Un aperçu de 3 contenus gratuits par pack pour tester la plateforme avant d\'acheter.',
+    description: 'Préparation complète aux épreuves psychotechniques du concours CREM — filières Verbal et Numérique.',
     features: [
-      '3 contenus gratuits par pack',
-      'Accès à tous les packs en aperçu',
-      'Assistant IA Tekkil (limité)',
-    ],
-    notIncluded: [
-      'Accès intégral aux packs',
-      'QCM et flashcards illimités',
-      'Examens blancs',
-    ],
-    cta: 'Commencer gratuitement',
-    popular: false,
-    icon: Zap,
-  },
-  {
-    name: 'Accès Pack',
-    subtitle: 'Recommandé',
-    price: '5 000',
-    currency: 'FCFA',
-    period: '/pack',
-    priceNote: 'À partir de',
-    description: 'Achète un pack et débloque automatiquement l\'intégralité de son contenu, sans abonnement.',
-    features: [
-      'Accès complet et intégral au pack acheté',
+      'Accès complet et intégral au pack',
       'Cours, fiches de lecture et audios',
       'QCM et flashcards illimités',
       'Annales corrigées',
@@ -47,8 +28,52 @@ const plans = [
       'Suivi de progression détaillé',
     ],
     notIncluded: [],
-    cta: 'Choisir un pack',
-    popular: true,
+    cta: 'Choisir ce pack',
+    popular: false,
+    icon: Zap,
+  },
+  {
+    name: 'Pack ENA — Cycle A',
+    subtitle: 'Concours ENA, Cycle A',
+    price: '6 900',
+    currency: 'FCFA',
+    period: '',
+    priceNote: '',
+    description: 'Préparation complète aux épreuves psychotechniques du concours ENA, Cycle A — filières Verbal et Numérique.',
+    features: [
+      'Accès complet et intégral au pack',
+      'Cours, fiches de lecture et audios',
+      'QCM et flashcards illimités',
+      'Annales corrigées',
+      'Assistant IA Tekkil',
+      'Examens blancs',
+      'Suivi de progression détaillé',
+    ],
+    notIncluded: [],
+    cta: 'Choisir ce pack',
+    popular: false,
+    icon: Sparkles,
+  },
+  {
+    name: 'Pack ENA — Cycle B',
+    subtitle: 'Concours ENA, Cycle B',
+    price: '6 900',
+    currency: 'FCFA',
+    period: '',
+    priceNote: '',
+    description: 'Préparation complète aux épreuves psychotechniques du concours ENA, Cycle B — filières Verbal et Numérique.',
+    features: [
+      'Accès complet et intégral au pack',
+      'Cours, fiches de lecture et audios',
+      'QCM et flashcards illimités',
+      'Annales corrigées',
+      'Assistant IA Tekkil',
+      'Examens blancs',
+      'Suivi de progression détaillé',
+    ],
+    notIncluded: [],
+    cta: 'Choisir ce pack',
+    popular: false,
     icon: Sparkles,
   },
 ]
@@ -87,12 +112,12 @@ export function Pricing() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-gray-600 text-lg max-w-2xl mx-auto"
           >
-            Commence gratuitement, puis achète un pack pour débloquer tout son contenu
+            Un pack par concours, chacun avec son propre tarif — un aperçu de 3 contenus gratuits avant d&apos;acheter
           </motion.p>
         </div>
 
         {/* Plans Grid */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
           {plans.map((plan, index) => {
             const Icon = plan.icon
             return (

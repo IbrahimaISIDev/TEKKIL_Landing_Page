@@ -13,16 +13,14 @@ export function Stats() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="grid grid-cols-2 md:grid-cols-4"
+          className="grid grid-cols-1 sm:grid-cols-3"
         >
           {STATS.map((stat, index) => (
             <div
               key={stat.label}
               className={`
                 flex flex-col items-center justify-center py-8 px-4
-                ${index < STATS.length - 1 ? 'md:border-r md:border-gray-200' : ''}
-                ${index < 2 ? 'border-b md:border-b-0 border-gray-200' : ''}
-                ${index === 0 || index === 2 ? 'border-r md:border-r border-gray-200 md:border-r-gray-200' : ''}
+                ${index < STATS.length - 1 ? 'border-b sm:border-b-0 sm:border-r border-gray-200' : ''}
               `}
             >
               <div
