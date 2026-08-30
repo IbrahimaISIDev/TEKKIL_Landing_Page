@@ -1,14 +1,15 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Check, Sparkles, Zap } from 'lucide-react'
+import { Check, Sparkles, Zap, Trophy, ArrowRight } from 'lucide-react'
 import { SectionLabel } from '@/components/ui/SectionLabel'
-import { cn } from '@/lib/utils'
 import { REGISTER_URL } from '@/lib/urls'
 
 // Chaque pack a son propre prix, indépendant des autres — un pack = un
 // concours. De nouveaux packs (avec leur propre prix) s'ajoutent ici au
-// fil des sessions de concours ouvertes.
+// fil des sessions de concours ouvertes. `accent` donne à chaque pack sa
+// propre identité visuelle (pas de hiérarchie "populaire" entre eux — ce
+// sont 3 concours différents, pas 3 niveaux d'offre).
 const plans = [
   {
     name: 'Pack CREM',
@@ -27,10 +28,9 @@ const plans = [
       'Examens blancs',
       'Suivi de progression détaillé',
     ],
-    notIncluded: [],
     cta: 'Choisir ce pack',
-    popular: false,
     icon: Zap,
+    accent: '#2D7AFF',
   },
   {
     name: 'Pack ENA — Cycle A',
@@ -49,10 +49,9 @@ const plans = [
       'Examens blancs',
       'Suivi de progression détaillé',
     ],
-    notIncluded: [],
     cta: 'Choisir ce pack',
-    popular: false,
     icon: Sparkles,
+    accent: '#8B5CF6',
   },
   {
     name: 'Pack ENA — Cycle B',
@@ -71,10 +70,9 @@ const plans = [
       'Examens blancs',
       'Suivi de progression détaillé',
     ],
-    notIncluded: [],
     cta: 'Choisir ce pack',
-    popular: false,
-    icon: Sparkles,
+    icon: Trophy,
+    accent: '#F97316',
   },
 ]
 
@@ -117,7 +115,7 @@ export function Pricing() {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto items-start">
           {plans.map((plan, index) => {
             const Icon = plan.icon
             return (
@@ -126,97 +124,58 @@ export function Pricing() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -8 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={cn(
-                  'relative rounded-2xl p-8 transition-all duration-300',
-                  plan.popular
-                    ? 'bg-blue-900 text-white shadow-2xl shadow-blue-900/20 scale-[1.02]'
-                    : 'bg-white border border-gray-200 hover:border-blue-200 hover:shadow-lg'
-                )}
+                className="group relative rounded-[24px] bg-white border border-gray-200/80 p-7 md:p-8 pt-8 overflow-hidden"
+                style={{
+                  boxShadow: '0 1px 2px rgba(8,14,46,0.04), 0 20px 45px -28px rgba(8,14,46,0.18)',
+                  transition: 'box-shadow 0.35s cubic-bezier(0.34,1.56,0.64,1)',
+                }}
               >
-                {/* Popular Badge */}
-                {plan.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <span 
-                      className="px-4 py-1.5 rounded-full text-xs font-semibold uppercase tracking-wider"
-                      style={{ 
-                        background: 'linear-gradient(135deg, #F9C623, #FBD354)',
-                        color: '#080E2E'
-                      }}
-                    >
-                      Recommande
-                    </span>
-                  </div>
-                )}
+                {/* Barre d'accent — identité du pack */}
+                <div
+                  className="absolute top-0 inset-x-0 h-[5px]"
+                  style={{ background: `linear-gradient(90deg, ${plan.accent}, ${plan.accent}99)` }}
+                />
 
                 {/* Plan Header */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div 
-                    className={cn(
-                      'w-10 h-10 rounded-xl flex items-center justify-center',
-                      plan.popular 
-                        ? 'bg-white/10' 
-                        : 'bg-blue-50'
-                    )}
+                <div className="flex items-start gap-3.5 mb-6">
+                  <div
+                    className="w-12 h-12 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform duration-300 group-hover:scale-105 group-hover:-rotate-3"
+                    style={{ backgroundColor: `${plan.accent}14` }}
                   >
-                    <Icon 
-                      className={cn(
-                        'w-5 h-5',
-                        plan.popular ? 'text-gold-500' : 'text-blue-500'
-                      )} 
-                      style={plan.popular ? { color: '#F9C623' } : {}}
-                    />
+                    <Icon className="w-6 h-6" style={{ color: plan.accent }} />
                   </div>
                   <div>
-                    <h3 
-                      className={cn(
-                        'text-xl font-bold',
-                        plan.popular ? 'text-white' : 'text-gray-900'
-                      )}
+                    <h3
+                      className="text-xl font-bold text-gray-900 leading-tight"
                       style={{ fontFamily: 'var(--font-roboto-condensed)' }}
                     >
                       {plan.name}
                     </h3>
-                    <p className={cn(
-                      'text-sm',
-                      plan.popular ? 'text-blue-200' : 'text-gray-500'
-                    )}>
+                    <span
+                      className="inline-block mt-1 text-[11px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded-full"
+                      style={{ backgroundColor: `${plan.accent}14`, color: plan.accent }}
+                    >
                       {plan.subtitle}
-                    </p>
+                    </span>
                   </div>
                 </div>
 
                 {/* Price */}
-                <div className="mb-6">
-                  {plan.priceNote && (
-                    <p className={cn(
-                      'text-xs font-medium mb-1',
-                      plan.popular ? 'text-blue-200' : 'text-gray-500'
-                    )}>
-                      {plan.priceNote}
-                    </p>
-                  )}
-                  <div className="flex items-baseline gap-1">
+                <div className="mb-6 pb-6 border-b border-gray-100">
+                  <div className="flex items-baseline gap-1.5">
                     <span
-                      className={cn(
-                        'text-4xl md:text-5xl font-extrabold',
-                        plan.popular ? 'text-white' : 'text-gray-900'
-                      )}
-                      style={{ fontFamily: 'var(--font-roboto-condensed)' }}
+                      className="text-5xl font-extrabold text-gray-900 tabular-nums"
+                      style={{ fontFamily: 'var(--font-roboto-condensed)', letterSpacing: '-0.02em' }}
                     >
                       {plan.price}
                     </span>
-                    <span className={cn(
-                      'text-sm font-medium',
-                      plan.popular ? 'text-blue-200' : 'text-gray-500'
-                    )}>
+                    <span className="text-sm font-semibold text-gray-500">
                       {plan.currency}{plan.period}
                     </span>
                   </div>
-                  <p className={cn(
-                    'mt-2 text-sm',
-                    plan.popular ? 'text-blue-200' : 'text-gray-500'
-                  )}>
+                  <p className="mt-3 text-sm text-gray-500 leading-relaxed">
                     {plan.description}
                   </p>
                 </div>
@@ -225,45 +184,13 @@ export function Pricing() {
                 <ul className="space-y-3 mb-8">
                   {plan.features.map((feature) => (
                     <li key={feature} className="flex items-start gap-3">
-                      <div 
-                        className={cn(
-                          'w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5',
-                          plan.popular 
-                            ? 'bg-green-400/20' 
-                            : 'bg-green-50'
-                        )}
+                      <div
+                        className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                        style={{ backgroundColor: `${plan.accent}14` }}
                       >
-                        <Check 
-                          className={cn(
-                            'w-3 h-3',
-                            plan.popular ? 'text-green-400' : 'text-green-500'
-                          )} 
-                        />
+                        <Check className="w-3 h-3" style={{ color: plan.accent }} strokeWidth={3} />
                       </div>
-                      <span className={cn(
-                        'text-sm',
-                        plan.popular ? 'text-blue-100' : 'text-gray-600'
-                      )}>
-                        {feature}
-                      </span>
-                    </li>
-                  ))}
-                  {plan.notIncluded.map((feature) => (
-                    <li key={feature} className="flex items-start gap-3 opacity-50">
-                      <div 
-                        className={cn(
-                          'w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5',
-                          plan.popular 
-                            ? 'bg-white/10' 
-                            : 'bg-gray-100'
-                        )}
-                      >
-                        <span className="w-2 h-0.5 bg-current rounded" />
-                      </div>
-                      <span className={cn(
-                        'text-sm line-through',
-                        plan.popular ? 'text-blue-200' : 'text-gray-400'
-                      )}>
+                      <span className="text-sm text-gray-600">
                         {feature}
                       </span>
                     </li>
@@ -275,18 +202,14 @@ export function Pricing() {
                   href={REGISTER_URL}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  className={cn(
-                    'flex w-full items-center justify-center py-3.5 px-6 rounded-xl font-semibold text-sm transition-all duration-200',
-                    plan.popular
-                      ? 'bg-gradient-to-r from-gold-500 to-gold-400 text-blue-900 hover:shadow-lg hover:shadow-gold-500/25'
-                      : 'bg-blue-500 text-white hover:bg-blue-600 hover:shadow-lg hover:shadow-blue-500/25'
-                  )}
-                  style={plan.popular ? {
-                    background: 'linear-gradient(135deg, #F9C623, #FBD354)',
-                    color: '#080E2E'
-                  } : {}}
+                  className="flex w-full items-center justify-center gap-2 py-3.5 px-6 rounded-xl font-semibold text-sm text-white transition-shadow duration-200"
+                  style={{
+                    background: `linear-gradient(135deg, ${plan.accent}, ${plan.accent}CC)`,
+                    boxShadow: `0 10px 24px -10px ${plan.accent}80`,
+                  }}
                 >
                   {plan.cta}
+                  <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                 </motion.a>
               </motion.div>
             )
