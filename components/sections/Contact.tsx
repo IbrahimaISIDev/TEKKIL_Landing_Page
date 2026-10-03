@@ -63,7 +63,7 @@ export function Contact() {
                   ease: [0.22, 1, 0.36, 1],
                 }}
                 whileHover={{ y: -6 }}
-                className="group bg-white rounded-[20px] border border-gray-200 p-5 md:p-6 text-center hover:border-blue-200 transition-all cursor-pointer"
+                className="group min-w-0 bg-white rounded-[20px] border border-gray-200 p-4 sm:p-5 md:p-6 text-center hover:border-blue-200 transition-all cursor-pointer"
                 style={{
                   transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
                 }}
@@ -82,7 +82,7 @@ export function Contact() {
                 </h3>
 
                 {/* Value */}
-                <p className="text-blue-500 font-medium mb-2 group-hover:underline">
+                <p className="text-blue-500 font-medium mb-2 wrap-anywhere group-hover:underline">
                   {channel.value}
                 </p>
 

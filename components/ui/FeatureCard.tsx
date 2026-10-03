@@ -90,7 +90,7 @@ export function FeatureCard({ icon, title, description, color, index, badge }: F
       </div>
 
       {/* Description */}
-      <p className="text-sm text-text-secondary leading-relaxed font-light line-clamp-3 md:line-clamp-none">
+      <p className="text-sm text-text-secondary leading-relaxed font-light">
         {description}
       </p>
 

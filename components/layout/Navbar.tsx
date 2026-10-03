@@ -88,7 +88,7 @@ export function Navbar() {
             </motion.a>
 
             {/* Desktop Nav Links */}
-            <div className="hidden md:flex items-center gap-8">
+            <div className="hidden lg:flex items-center gap-8">
               {NAV_LINKS.map((link) => {
                 const isActive = activeSection === link.href.replace('#', '')
                 return (
@@ -119,7 +119,7 @@ export function Navbar() {
             </div>
 
             {/* Desktop CTAs */}
-            <div className="hidden md:flex items-center gap-3">
+            <div className="hidden lg:flex items-center gap-3">
               <motion.a
                 href={LOGIN_URL}
                 whileHover={{ scale: 1.02, y: -1 }}
@@ -143,7 +143,7 @@ export function Navbar() {
             </div>
 
             {/* Mobile actions */}
-            <div className="flex md:hidden items-center gap-2">
+            <div className="flex lg:hidden items-center gap-2">
               {/* Se connecter — visible directement au scroll, sans passer par le menu */}
               <AnimatePresence>
                 {isScrolled && !isMenuOpen && (
@@ -205,7 +205,7 @@ export function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-blue-900/98 backdrop-blur-md md:hidden"
+            className="fixed inset-0 z-40 bg-blue-900/98 backdrop-blur-md lg:hidden"
             onClick={handleLinkClick}
           >
             <motion.div

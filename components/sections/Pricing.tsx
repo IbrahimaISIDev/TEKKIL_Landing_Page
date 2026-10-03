@@ -115,7 +115,10 @@ export function Pricing() {
         </div>
 
         {/* Plans Grid */}
-        <div className="grid md:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto items-start">
+        {/* 2 colonnes en tablette (3 cartes de ~220 px à 768 px étaient
+            illisibles), 3 à partir de lg ; la dernière carte, seule sur sa
+            ligne en tablette, est centrée à la largeur d'une colonne. */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8 max-w-6xl mx-auto items-start">
           {plans.map((plan, index) => {
             const Icon = plan.icon
             return (
@@ -126,7 +129,11 @@ export function Pricing() {
                 viewport={{ once: true }}
                 whileHover={{ y: -8 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="group relative rounded-[24px] bg-white border border-gray-200/80 p-7 md:p-8 pt-8 overflow-hidden"
+                className={`group relative rounded-[24px] bg-white border border-gray-200/80 p-7 md:p-8 pt-8 overflow-hidden ${
+                  plans.length % 2 === 1 && index === plans.length - 1
+                    ? 'md:col-span-2 md:mx-auto md:w-[calc(50%-1rem)] lg:col-span-1 lg:mx-0 lg:w-auto'
+                    : ''
+                }`}
                 style={{
                   boxShadow: '0 1px 2px rgba(8,14,46,0.04), 0 20px 45px -28px rgba(8,14,46,0.18)',
                   transition: 'box-shadow 0.35s cubic-bezier(0.34,1.56,0.64,1)',

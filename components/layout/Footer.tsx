@@ -140,12 +140,12 @@ export function Footer() {
             >
               Navigation
             </h4>
-            <ul className="space-y-3">
+            <ul className="space-y-1">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
-                    className="text-gray-300 hover:text-white text-sm transition-colors"
+                    className="inline-block py-1 text-gray-300 hover:text-white text-sm transition-colors"
                   >
                     {link.label}
                   </a>
@@ -173,7 +173,7 @@ export function Footer() {
                 Merci ! Tu seras prévenu(e) du lancement.
               </p>
             ) : (
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3">
+              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row md:flex-col lg:flex-row gap-3">
                 <input
                   type="email"
                   value={email}
@@ -181,7 +181,7 @@ export function Footer() {
                   required
                   placeholder="Ton email"
                   disabled={status === 'loading'}
-                  className="flex-1 px-4 py-3 rounded-xl text-white placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all disabled:opacity-60"
+                  className="min-w-0 flex-1 px-4 py-3 rounded-xl text-white placeholder:text-gray-400 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 transition-all disabled:opacity-60"
                   style={{ background: 'rgba(255,255,255,0.06)', border: '1px solid rgba(255,255,255,0.1)' }}
                 />
                 <motion.button
@@ -218,13 +218,13 @@ export function Footer() {
             <div className="flex items-center gap-6">
               <a
                 href="/privacy"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
+                className="inline-block py-1 text-gray-400 hover:text-white text-sm transition-colors"
               >
                 Confidentialité
               </a>
               <a
                 href="#"
-                className="text-gray-400 hover:text-white text-sm transition-colors"
+                className="inline-block py-1 text-gray-400 hover:text-white text-sm transition-colors"
               >
                 Conditions d&apos;utilisation
               </a>
