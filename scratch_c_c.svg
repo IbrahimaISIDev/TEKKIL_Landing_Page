@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Concept C: Unified Golden Ratio Dynamic Silhouette -->
+  <!-- 1. The Open Book Foundation -->
+  <!-- Left Page (Navy #27316F) -->
+  <path d="M12 70 C 26 68, 38 62, 46 54 L 46 78 C 38 84, 26 88, 12 88 Z" fill="#27316F" />
+  <!-- Right Page (Navy #27316F) -->
+  <path d="M88 70 C 74 68, 62 62, 54 54 L 54 78 C 62 84, 74 88, 88 88 Z" fill="#27316F" />
+  
+  <!-- Left Inner Page (Teal #14B09C) -->
+  <path d="M18 52 C 30 50, 40 44, 46 36 L 46 56 C 40 62, 30 66, 18 66 Z" fill="#14B09C" />
+  <!-- Right Inner Page (Teal #14B09C) -->
+  <path d="M82 52 C 70 50, 60 44, 54 36 L 54 56 C 60 62, 70 66, 82 66 Z" fill="#14B09C" />
+  
+  <!-- 2. The Soaring Learner (Dynamic upward curve) -->
+  <path d="M43 72 C 43 54, 49 38, 68 22 C 59 34, 57 52, 57 72 Z" fill="#27316F" />
+  <circle cx="51" cy="23" r="6" fill="#27316F" />
+  
+  <!-- 3. Star of Senegal / Excellence (Teal #14B09C) -->
+  <polygon points="76,8 78.5,15.5 86.5,15.5 80,20.2 82.5,27.8 76,23 69.5,27.8 72,20.2 65.5,15.5 73.5,15.5" fill="#14B09C" />
+</svg>

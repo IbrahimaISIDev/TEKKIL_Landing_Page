@@ -26,6 +26,10 @@
   --pink-400: #FB7090;
   --pink-100: rgba(249, 75, 106, 0.12);
 
+  /* Couleurs officielles Logo TEKKIL */
+  --tekkil-navy: #27316F;
+  --tekkil-teal: #14B09C;
+
   /* Neutres */
   --white: #FFFFFF;
   --gray-50:  #F8FAFD;
@@ -119,6 +123,8 @@
   --color-text-muted: var(--text-muted);
   --color-text-on-dark: var(--text-on-dark);
   --color-text-muted-dark: var(--text-muted-dark);
+  --color-tekkil-navy: var(--tekkil-navy);
+  --color-tekkil-teal: var(--tekkil-teal);
 }
 
 @layer base {
