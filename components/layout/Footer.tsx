@@ -79,10 +79,10 @@ export function Footer() {
         </div>
         
         {/* 4 Columns Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-10 sm:gap-8 lg:gap-8 relative z-10 w-full px-6 sm:px-8 lg:px-16 mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-12 gap-10 sm:gap-8 xl:gap-8 relative z-10 w-full px-6 sm:px-8 xl:px-16 mx-auto">
           
           {/* Col 1: Brand Logo + Description (span 4) */}
-          <div className="sm:col-span-2 lg:col-span-4 flex flex-col items-start gap-5">
+          <div className="sm:col-span-2 xl:col-span-4 flex flex-col items-start gap-5">
             <Image
               src="/logo-horizontal.png"
               alt="TEKKIL"
@@ -97,7 +97,7 @@ export function Footer() {
           </div>
 
           {/* Col 2: Navigation (span 2) */}
-          <div className="sm:col-span-1 lg:col-span-2 flex flex-col">
+          <div className="sm:col-span-1 xl:col-span-2 flex flex-col">
             <h4 className="text-[13px] font-semibold uppercase tracking-[0.15em] text-[#111]/60 mb-5">Explorer</h4>
             <ul className="space-y-3">
               {FOOTER_LINKS.map((link) => (
@@ -112,7 +112,7 @@ export function Footer() {
           </div>
 
           {/* Col 3: Socials (span 3) */}
-          <div className="sm:col-span-1 lg:col-span-3 flex flex-col">
+          <div className="sm:col-span-1 xl:col-span-3 flex flex-col">
             <h4 className="text-[13px] font-semibold uppercase tracking-[0.15em] text-[#111]/60 mb-5">Suivez-nous</h4>
             <ul className="space-y-3">
               {socialLinks.map(({ label, handle, href, icon }) => (
@@ -122,7 +122,7 @@ export function Footer() {
                       {icon}
                     </span>
                     <span className="font-medium">{label}</span>
-                    <span className="text-[#999] text-[12px] ml-auto hidden lg:block">{handle}</span>
+                    <span className="text-[#999] text-[12px] ml-auto hidden xl:block">{handle}</span>
                   </a>
                 </li>
               ))}
@@ -130,7 +130,7 @@ export function Footer() {
           </div>
 
           {/* Col 4: CTAs (span 3) */}
-          <div className="sm:col-span-2 lg:col-span-3 flex flex-col gap-5">
+          <div className="sm:col-span-2 xl:col-span-3 flex flex-col gap-5">
             {/* Contacter */}
             <a href="mailto:support@tekkil.sn" className="group block p-5 rounded-2xl bg-white/50 backdrop-blur-sm border border-black/[0.04] hover:border-[#14B09C]/30 hover:shadow-[0_4px_20px_rgba(20,176,156,0.12)] transition-all duration-300">
               <div className="flex items-center justify-between mb-2">
