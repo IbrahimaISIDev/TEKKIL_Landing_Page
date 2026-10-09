@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, Xmark, ArrowRight } from 'reicon-react'
 import Image from 'next/image'
+import Link from 'next/link'
 import { NAV_LINKS } from '@/lib/constants'
 import { LOGIN_URL } from '@/lib/urls'
 import { useRouter } from 'next/navigation'
@@ -236,7 +237,7 @@ export function Navbar() {
               {/* Left: Brand Logo (Smooth resize on scroll) */}
               <Link 
                 href="/" 
-                onClick={(e) => {
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => {
                   if (window.location.pathname === '/') {
                     e.preventDefault()
                     window.scrollTo({ top: 0, behavior: 'smooth' })
