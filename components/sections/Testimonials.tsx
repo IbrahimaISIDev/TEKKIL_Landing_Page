@@ -242,7 +242,7 @@ function TestimonialCard({
 
   return (
     <div
-      className={`group/card relative w-[340px] sm:w-[370px] md:w-[390px] flex-shrink-0 p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-slate-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_24px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 flex flex-col justify-between cursor-pointer select-none ${
+      className={`group/card relative w-[85vw] max-w-[340px] sm:w-[370px] sm:max-w-none md:w-[390px] flex-shrink-0 p-5 sm:p-6 rounded-2xl bg-white border border-slate-200/80 hover:border-slate-300 shadow-[0_1px_3px_rgba(0,0,0,0.02)] hover:shadow-[0_10px_24px_-4px_rgba(0,0,0,0.05)] transition-all duration-300 flex flex-col justify-between cursor-pointer select-none ${
         isMatch ? 'opacity-100' : 'opacity-25'
       }`}
     >

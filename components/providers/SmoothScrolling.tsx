@@ -21,13 +21,12 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
     }
 
     const lenis = new Lenis({
-      duration: 1.05,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // High-responsiveness exponential ease
+      lerp: 0.08, // Inertia damping factor for ultra-fluid scroll (lower = smoother)
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
-      syncTouch: false, // 100% native momentum on touch devices for optimal ergonomics
-      touchMultiplier: 1.0,
+      syncTouch: false,
+      touchMultiplier: 1.5,
       wheelMultiplier: 1.0,
     })
 

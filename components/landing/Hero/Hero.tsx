@@ -176,187 +176,130 @@ export function Hero() {
               {/* Left Side: Copy */}
               <div className="w-full flex-1 max-w-2xl xl:max-w-3xl">
                 
-                {/* High-Contrast Live Status Pill — Ultra-responsive layout */}
+                {/* Premium Glassmorphic Live Status Pill */}
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
-                  className="group inline-flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3 bg-white/95 hover:bg-white backdrop-blur-xl border border-slate-300 hover:border-slate-400 rounded-2xl sm:rounded-full px-3.5 sm:px-4 py-2 text-xs md:text-sm text-slate-900 font-semibold mb-6 sm:mb-8 w-fit max-w-full transition-all duration-300 shadow-[0_4px_16px_rgba(0,0,0,0.06)] cursor-default select-none"
+                  className="group inline-flex items-center gap-1.5 sm:gap-3 bg-white/50 hover:bg-white/70 backdrop-blur-md border border-white/60 hover:border-white/80 rounded-full px-2.5 sm:px-4 py-1.5 sm:py-2 mb-6 sm:mb-8 w-fit max-w-full transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.06)] cursor-default select-none overflow-hidden"
                 >
                   {/* Edition Tag with Live Pulse Dot */}
-                  <span className="inline-flex items-center gap-2 px-2.5 py-0.5 rounded-full bg-teal-50/90 border border-teal-200/80 text-[#0D9488] font-black tracking-wider uppercase text-[11px] shrink-0">
-                    <span className="relative flex h-2 w-2">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#14B09C] opacity-80" />
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-[#14B09C] shadow-[0_0_8px_#14B09C]" />
+                  <span className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-0.5 rounded-full bg-white/70 border border-white/80 text-[#1A2672] font-black tracking-wide uppercase text-[9px] sm:text-[10px] shrink-0">
+                    <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1A2672] opacity-80" />
+                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-[#1A2672]" />
                     </span>
                     <span>Concours 2026</span>
                   </span>
 
-                  <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-300 shrink-0" />
+                  <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-400 shrink-0" />
 
                   {/* Senegal Flag & Main Label */}
-                  <span className="flex items-center gap-2 text-slate-800 font-semibold text-[12px] sm:text-[13px] md:text-sm leading-tight">
-                    <SenegalIcon className="w-4 h-4 rounded-[2px] shrink-0 shadow-2xs" />
-                    <span>Plateforme N°1 de préparation au Sénégal</span>
+                  <span className="flex items-center gap-1.5 sm:gap-2 text-slate-900 font-semibold text-[10.5px] sm:text-[13px] md:text-sm leading-tight pr-1 sm:pr-0">
+                    <SenegalIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-[2px] shrink-0 shadow-sm" />
+                    <span className="truncate">Plateforme N°1 au Sénégal</span>
                   </span>
                 </motion.div>
 
-                {/* High-Contrast Editorial Headline (Strictly 2 lines across all viewports) */}
+                {/* High-Contrast Editorial Headline with Split-Text Animation */}
                 <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                  className="text-[clamp(1.75rem,5.2vw,4.25rem)] font-black text-[#050814] leading-[1.08] tracking-[-0.035em] mb-6 sm:mb-7 drop-shadow-xs"
+                  variants={{
+                    hidden: { opacity: 0 },
+                    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } }
+                  }}
+                  initial="hidden"
+                  animate="visible"
+                  className="text-[clamp(2.15rem,5.5vw,4.5rem)] xl:text-[5.25rem] font-black text-[#050814] leading-[1.05] tracking-[-0.04em] mb-6 sm:mb-8 drop-shadow-sm flex flex-col items-start"
                 >
-                  <span className="block whitespace-nowrap sm:whitespace-normal">
-                    Transforme ta préparation
+                  <span className="flex flex-wrap lg:flex-nowrap gap-x-2.5 sm:gap-x-3.5 xl:gap-x-4 whitespace-normal lg:whitespace-nowrap">
+                    {["Transforme", "ta", "préparation"].map((word, i) => (
+                      <motion.span 
+                        key={i} 
+                        variants={{
+                          hidden: { opacity: 0, y: 40, filter: 'blur(4px)' },
+                          visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                        }}
+                        className="inline-block"
+                      >
+                        {word}
+                      </motion.span>
+                    ))}
                   </span>
-                  <span className="block whitespace-nowrap sm:whitespace-normal mt-1 sm:mt-0">
-                    aux{' '}
-                    <span className="relative inline-block">
-                      <span className="bg-gradient-to-r from-[#1A2672] via-[#27316F] to-[#0D9488] bg-clip-text text-transparent font-black">
+                  <span className="flex flex-wrap gap-x-2.5 sm:gap-x-3.5 xl:gap-x-4 mt-1 sm:mt-1.5 lg:mt-0">
+                    <motion.span 
+                      variants={{
+                        hidden: { opacity: 0, y: 40, filter: 'blur(4px)' },
+                        visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                      }}
+                      className="inline-block"
+                    >
+                      aux
+                    </motion.span>
+                    <motion.span 
+                      variants={{
+                        hidden: { opacity: 0, y: 40, filter: 'blur(4px)' },
+                        visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                      }}
+                      className="relative inline-block"
+                    >
+                      <span className="bg-gradient-to-r from-[#1A2672] to-[#3B28CC] bg-clip-text text-transparent font-black">
                         concours
                       </span>
-                      {/* Radiant underglow blending Navy #27316F and Teal #14B09C */}
+                      {/* Radiant underglow */}
                       <span 
                         aria-hidden 
-                        className="absolute -inset-x-3 -inset-y-1 bg-gradient-to-r from-[#27316F]/25 via-[#2B52EE]/20 to-[#14B09C]/25 blur-xl -z-10 rounded-full pointer-events-none" 
+                        className="absolute -inset-x-3 -inset-y-1 bg-gradient-to-r from-[#1A2672]/20 to-[#3B28CC]/20 blur-xl -z-10 rounded-full pointer-events-none" 
                       />
-                    </span>
+                    </motion.span>
                   </span>
                 </motion.h1>
 
-                {/* Subtitle with High-Contrast Typographic Hierarchy */}
+                {/* Subtitle */}
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.3 }}
-                  className="text-slate-700 sm:text-slate-800 text-[15px] sm:text-base md:text-[17px] lg:text-lg leading-[1.65] max-w-xl mb-6 font-medium"
+                  className="text-slate-800 text-[15px] sm:text-lg md:text-[19px] leading-[1.6] max-w-xl mb-8 font-medium"
                 >
                   La plateforme intelligente qui s&apos;adapte à ton niveau.{' '}
-                  <strong className="text-slate-950 font-bold">QCM adaptatifs</strong>,{' '}
-                  <strong className="text-slate-950 font-bold">flashcards mémorielles</strong>,{' '}
-                  <span className="text-[#0D9488] font-extrabold">assistant IA 24/7</span> et suivi de progression pour maîtriser le programme et réussir du premier coup.
+                  <span className="text-black font-bold">QCM adaptatifs</span>,{' '}
+                  <span className="text-black font-bold">flashcards mémorielles</span>,{' '}
+                  <span className="inline-block bg-white/60 px-1.5 rounded-md text-[#1A2672] font-extrabold shadow-sm">assistant IA 24/7</span> et suivi de progression pour maîtriser le programme et réussir du premier coup.
                 </motion.p>
 
-                {/* Interactive Concours Covered Chips with Crisp Borders & Tooltips */}
-                <motion.div
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.35 }}
-                  className="flex flex-wrap items-center gap-1.5 sm:gap-2 mb-7 sm:mb-8"
-                >
-                  <span className="text-[11px] uppercase tracking-wider text-slate-600 font-black mr-1 shrink-0 flex items-center gap-1">
-                    <span>CONCOURS COUVERTS</span>
-                    <span className="text-slate-400">:</span>
-                  </span>
-                  {CONCOURS_LIST.map((concours) => (
-                    <span
-                      key={concours.name}
-                      title={concours.title}
-                      className="inline-flex items-center gap-1.5 text-xs px-2.5 py-1 rounded-full bg-white/95 hover:bg-white border border-slate-300 hover:border-slate-400 text-slate-800 hover:text-black font-semibold transition-all duration-200 cursor-pointer select-none group shadow-2xs hover:shadow-sm hover:scale-[1.03] active:scale-[0.97]"
-                    >
-                      <span
-                        className="w-1.5 h-1.5 rounded-full transition-transform duration-200 group-hover:scale-125"
-                        style={{ backgroundColor: concours.color }}
-                      />
-                      <span>{concours.name}</span>
-                    </span>
-                  ))}
-                </motion.div>
 
-                {/* High-Contrast Luxury 2026 CTA Buttons — Responsive Full-Width on Mobile */}
+
+                {/* Clean 2026 CTA Buttons */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.4 }}
-                  className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5 sm:gap-4 mb-9 w-full sm:w-auto"
+                  className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-9 w-full sm:w-auto"
                 >
-                  {/* Primary CTA (Tekkil Deep Navy to Teal with Bold Specular Chamfer) */}
+                  {/* Primary CTA (Dark Minimal Pill) */}
                   <a
                     href={LOGIN_URL}
-                    className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 rounded-full text-base font-bold text-white transition-all duration-300 overflow-hidden shadow-[0_12px_32px_rgba(30,39,94,0.4)] hover:shadow-[0_16px_40px_rgba(13,148,136,0.45)] hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto text-center"
-                    style={{
-                      background: 'linear-gradient(135deg, #1A2356 0%, #27316F 55%, #0D9488 100%)',
-                    }}
+                    className="group relative inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3.5 sm:py-4 rounded-full text-[15px] font-semibold text-white bg-[#111] transition-all duration-300 overflow-hidden shadow-[0_8px_20px_rgba(0,0,0,0.12)] hover:shadow-[0_12px_24px_rgba(20,176,156,0.3)] hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto text-center"
                   >
-                    {/* Specular Top Chamfer Edge */}
-                    <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/50 to-transparent pointer-events-none" />
-
-                    {/* Shimmer Light Sweep on Hover */}
-                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-
-                    <span className="relative z-10 font-bold tracking-wide">
+                    <span className="relative z-10 tracking-wide">
                       Se connecter
                     </span>
-                    <ArrowRight size={18} className="relative z-10 transition-transform duration-300 group-hover:translate-x-1.5 shrink-0" />
+                    <ArrowRight size={16} className="relative z-10 transition-transform duration-300 group-hover:translate-x-1.5 shrink-0" />
                   </a>
 
-                  {/* Secondary CTA (Solid White Pill with Crisp Dark Border) */}
+                  {/* Secondary CTA (Glass White Pill) */}
                   <a
                     href="#comment-ca-marche"
-                    className="group relative inline-flex items-center justify-center gap-3 px-7 py-4 rounded-full text-base font-bold text-slate-900 hover:text-black bg-white hover:bg-slate-50 border-2 border-slate-300 hover:border-slate-400 shadow-sm transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto text-center"
+                    className="group relative inline-flex items-center justify-center gap-3 px-6 sm:px-7 py-3.5 sm:py-4 rounded-full text-[15px] font-medium text-[#111] bg-white/90 hover:bg-white backdrop-blur-md border border-white/60 shadow-[0_4px_16px_rgba(0,0,0,0.04)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto text-center"
                   >
-                    <span className="w-7 h-7 rounded-full bg-slate-100 group-hover:bg-[#14B09C]/20 flex items-center justify-center transition-colors duration-300 shrink-0">
-                      <Play size={13} weight="Filled" className="text-slate-800 group-hover:text-[#0D9488] ml-0.5 transition-colors duration-300" />
+                    <span className="w-6 h-6 rounded-full bg-black/5 group-hover:bg-[#14B09C]/10 flex items-center justify-center transition-colors duration-300 shrink-0">
+                      <Play size={10} weight="Filled" className="text-[#111] group-hover:text-[#14B09C] ml-0.5 transition-colors duration-300" />
                     </span>
                     <span>Voir comment ça marche</span>
                   </a>
                 </motion.div>
 
-                {/* Trust Signals & Candidate Social Proof Dock — Multi-Tier Responsive Layout */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.5 }}
-                  className="pt-6 border-t border-slate-300/80 flex flex-col md:flex-row md:items-center gap-5 sm:gap-6"
-                >
-                  {/* Social Proof: Avatars in Logo Harmony */}
-                  <div className="flex items-center gap-3 shrink-0">
-                    <div className="flex -space-x-2 overflow-hidden">
-                      {[
-                        { initials: 'AD', bg: 'from-[#1E2968] to-[#141C48]' },
-                        { initials: 'MS', bg: 'from-[#0D9488] to-[#042F2E]' },
-                        { initials: 'FN', bg: 'from-[#D97706] to-[#92400E]' },
-                        { initials: 'IF', bg: 'from-[#27316F] to-[#1E2968]' },
-                      ].map((user, idx) => (
-                        <div
-                          key={idx}
-                          className={`inline-flex items-center justify-center h-8 w-8 rounded-full bg-gradient-to-br ${user.bg} ring-2 ring-white text-[10px] font-bold text-white shadow-2xs`}
-                        >
-                          {user.initials}
-                        </div>
-                      ))}
-                    </div>
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-1.5">
-                        <span className="text-[#D97706] text-xs leading-none">★★★★★</span>
-                        <span className="text-xs font-black text-slate-900 leading-none">4.9/5</span>
-                      </div>
-                      <span className="text-[11px] text-slate-600 leading-tight mt-0.5 font-semibold">
-                        +15 000 candidats inscrits
-                      </span>
-                    </div>
-                  </div>
 
-                  <div className="hidden md:block h-7 w-px bg-slate-300/80 shrink-0" />
-
-                  {/* Feature Proof Badges as Polished Frosted Pills */}
-                  <div className="flex flex-wrap items-center gap-2 sm:gap-2.5 text-xs text-slate-800 font-bold">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 hover:bg-white backdrop-blur-xs border border-slate-200/80 shadow-2xs transition-colors">
-                      <CheckCircle size={15} color="#0D9488" className="shrink-0" />
-                      <span>Mode hors-ligne</span>
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 hover:bg-white backdrop-blur-xs border border-slate-200/80 shadow-2xs transition-colors">
-                      <CheckCircle size={15} color="#0D9488" className="shrink-0" />
-                      <span>Assistant IA inclus</span>
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 hover:bg-white backdrop-blur-xs border border-slate-200/80 shadow-2xs transition-colors">
-                      <CheckCircle size={15} color="#0D9488" className="shrink-0" />
-                      <span>Annales officielles</span>
-                    </span>
-                  </div>
-                </motion.div>
               </div>
 
               {/* Right Side: 3 Photoreal iPhone 16 Pro Max Mockups with Floating Proof Pills */}

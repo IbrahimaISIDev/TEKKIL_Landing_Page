@@ -191,7 +191,7 @@ export function Leaderboard() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-40px' }}
             transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-            className="lg:col-span-7 order-2 lg:order-1"
+            className="lg:col-span-7 order-2 lg:order-1 w-full min-w-0"
           >
             {/* Minimalist Frosted Console matching TEKKIL Light UI */}
             <div className="relative rounded-3xl bg-white border border-slate-200/80 p-5 sm:p-7 md:p-8 flex flex-col gap-6 shadow-[0_12px_40px_-12px_rgba(15,23,42,0.08),0_2px_8px_rgba(15,23,42,0.03)] transition-all">
@@ -250,7 +250,7 @@ export function Leaderboard() {
               </div>
 
               {/* Minimalist Category Tabs */}
-              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
+              <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none w-full min-w-0">
                 {CATEGORIES.map((cat) => {
                   const isActive = activeTab === cat.id
                   return (
@@ -260,7 +260,7 @@ export function Leaderboard() {
                         setActiveTab(cat.id)
                         setSelectedRank(null)
                       }}
-                      className={`relative flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs transition-all duration-200 flex-shrink-0 cursor-pointer select-none ${
+                      className={`relative flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs transition-all duration-200 flex-shrink-0 whitespace-nowrap cursor-pointer select-none ${
                         isActive
                           ? 'text-white font-bold'
                           : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100/80 border border-transparent'
@@ -312,7 +312,7 @@ export function Leaderboard() {
                           }`}
                         >
                           {/* Left: Rank + Avatar + Name & Concours */}
-                          <div className="flex items-center gap-3 min-w-0">
+                          <div className="flex items-center gap-3 min-w-0 flex-1">
                             {/* Minimalist Rank Number */}
                             <div className="w-6 flex items-center justify-center flex-shrink-0 text-xs font-black tabular-nums">
                               {isTop1 ? (
@@ -434,7 +434,7 @@ export function Leaderboard() {
           </motion.div>
 
           {/* Right Column — Editorial & Concise Feature Pillars (5 cols) */}
-          <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col justify-center">
+          <div className="lg:col-span-5 order-1 lg:order-2 flex flex-col justify-center w-full min-w-0">
             
             {/* Minimalist Eyebrow Pill */}
             <motion.div
@@ -495,7 +495,7 @@ export function Leaderboard() {
                           <h4 className="text-slate-900 font-bold text-xs sm:text-sm group-hover:text-teal-700 transition-colors">
                             {feature.title}
                           </h4>
-                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200/60 text-slate-600">
+                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200/60 text-slate-600 shrink-0 whitespace-nowrap">
                             {feature.badge}
                           </span>
                         </div>

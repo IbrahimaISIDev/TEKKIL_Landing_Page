@@ -1,18 +1,16 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, Xmark, ArrowRight } from 'reicon-react'
 import Image from 'next/image'
 import { NAV_LINKS } from '@/lib/constants'
 import { LOGIN_URL } from '@/lib/urls'
 import { useRouter } from 'next/navigation'
-import { gsap } from 'gsap'
 
 export function Navbar() {
   const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isAnimDone, setIsAnimDone] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState<string>(NAV_LINKS[0].href)
 
@@ -66,21 +64,6 @@ export function Navbar() {
     return () => window.removeEventListener('scroll', onScrollSpy)
   }, [])
 
-  // Animation Refs
-  const navRootRef = useRef<HTMLElement>(null)
-  const capsuleRef = useRef<HTMLDivElement>(null)
-  const ambientGlowRef = useRef<HTMLDivElement>(null)
-  const quantumCoreRef = useRef<HTMLDivElement>(null)
-  const shockwaveRef = useRef<HTMLDivElement>(null)
-  const laserLeftRef = useRef<HTMLDivElement>(null)
-  const laserRightRef = useRef<HTMLDivElement>(null)
-  const horizonSheenRef = useRef<HTMLDivElement>(null)
-  const logoRef = useRef<HTMLAnchorElement>(null)
-  const navLinksRef = useRef<HTMLDivElement>(null)
-  const ctaBtnRef = useRef<HTMLAnchorElement>(null)
-  const ctaShimmerRef = useRef<HTMLSpanElement>(null)
-  const mobileBtnRef = useRef<HTMLButtonElement>(null)
-
   // Smooth scroll handler
   const handleLinkClick = (href?: string) => {
     setIsMenuOpen(false)
@@ -109,146 +92,75 @@ export function Navbar() {
     }
   }, [isMenuOpen])
 
-  // 120 FPS GPU-Composited Dynamic Island Entrance
+  const [animPhase, setAnimPhase] = useState<'initial' | 'pill' | 'expanding' | 'expanded'>('initial')
+
+  // Framer Motion Sequence
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) {
-      setIsAnimDone(true)
+      setAnimPhase('expanded')
       return
     }
 
-    const capsule = capsuleRef.current
-    if (!capsule) return
+    const t1 = setTimeout(() => setAnimPhase('pill'), 100)
+    const t2 = setTimeout(() => setAnimPhase('expanding'), 1600) // Hold pill for 1.5s
+    const t3 = setTimeout(() => setAnimPhase('expanded'), 2800)
 
-    const ctx = gsap.context(() => {
-      const tl = gsap.timeline({
-        defaults: { ease: 'power3.out' },
-        onComplete: () => {
-          setIsAnimDone(true)
-          if (capsule) {
-            gsap.set(capsule, { clearProps: 'clipPath,transform,willChange' })
-          }
-          if (logoRef.current) gsap.set(logoRef.current, { clearProps: 'transform,opacity' })
-          if (navLinksRef.current) gsap.set(navLinksRef.current, { clearProps: 'transform,opacity' })
-          if (ctaBtnRef.current) gsap.set(ctaBtnRef.current, { clearProps: 'transform,opacity' })
-          if (mobileBtnRef.current) gsap.set(mobileBtnRef.current, { clearProps: 'transform,opacity' })
-        }
-      })
-
-      // 0. Initial positions
-      gsap.set(capsule, {
-        y: -50,
-        scale: 0.96,
-        opacity: 0,
-        clipPath: 'inset(0% 46% 0% 46% round 9999px)',
-        transformOrigin: '50% 50%',
-        willChange: 'clip-path, transform, opacity'
-      })
-
-      if (ambientGlowRef.current) {
-        gsap.set(ambientGlowRef.current, { scaleX: 0.2, opacity: 0, willChange: 'transform, opacity' })
-      }
-      if (quantumCoreRef.current) gsap.set(quantumCoreRef.current, { scale: 0.8, opacity: 1 })
-      if (shockwaveRef.current) gsap.set(shockwaveRef.current, { scale: 0.4, opacity: 0 })
-      if (logoRef.current) gsap.set(logoRef.current, { x: -20, opacity: 0 })
-      if (navLinksRef.current) gsap.set(navLinksRef.current, { y: 14, opacity: 0 })
-      if (ctaBtnRef.current) gsap.set(ctaBtnRef.current, { x: 20, opacity: 0 })
-      if (mobileBtnRef.current) gsap.set(mobileBtnRef.current, { scale: 0.7, opacity: 0 })
-      if (laserLeftRef.current && laserRightRef.current) {
-        gsap.set([laserLeftRef.current, laserRightRef.current], { opacity: 0, scaleX: 0.2 })
-      }
-      if (horizonSheenRef.current) gsap.set(horizonSheenRef.current, { x: '-100%', opacity: 0 })
-
-      // 1. Kinetic Drop & Expansion
-      tl.to(capsule, {
-        y: 0,
-        scale: 1,
-        opacity: 1,
-        clipPath: 'inset(0% 0% 0% 0% round 9999px)',
-        duration: 0.78,
-        ease: 'expo.out'
-      })
-      .to(ambientGlowRef.current, {
-        scaleX: 1,
-        opacity: 0.4,
-        duration: 0.78,
-        ease: 'expo.out'
-      }, 0)
-
-      // 2. Shockwave Pulse
-      .fromTo(shockwaveRef.current,
-        { scale: 0.4, opacity: 0.9 },
-        { scale: 2.8, opacity: 0, duration: 0.45, ease: 'power2.out' },
-        0.12
-      )
-
-      // 3. Center Core Dissolve
-      .to(quantumCoreRef.current, {
-        scale: 2,
-        opacity: 0,
-        duration: 0.24,
-        ease: 'power2.in'
-      }, 0.14)
-
-      // 4. Laser Runners
-      .fromTo(laserLeftRef.current,
-        { x: '0%', scaleX: 0.2, opacity: 1 },
-        { x: '-100%', scaleX: 1.2, opacity: 0, duration: 0.65, ease: 'power3.out' },
-        0.16
-      )
-      .fromTo(laserRightRef.current,
-        { x: '0%', scaleX: 0.2, opacity: 1 },
-        { x: '100%', scaleX: 1.2, opacity: 0, duration: 0.65, ease: 'power3.out' },
-        0.16
-      )
-
-      // 5. Staggered Content Reveal
-      .to(logoRef.current, { x: 0, opacity: 1, duration: 0.42, ease: 'power2.out' }, 0.26)
-      .to(navLinksRef.current, { y: 0, opacity: 1, duration: 0.42, ease: 'power2.out' }, 0.32)
-      .to(ctaBtnRef.current, { x: 0, opacity: 1, duration: 0.42, ease: 'power2.out' }, 0.38)
-      .to(mobileBtnRef.current, { scale: 1, opacity: 1, duration: 0.42, ease: 'power2.out' }, 0.38)
-
-      // 6. Horizon Titanium Laser Sheen
-      .fromTo(horizonSheenRef.current,
-        { x: '-60%', opacity: 0 },
-        { x: '160%', opacity: 1, duration: 0.68, ease: 'power2.inOut' },
-        0.3
-      )
-      .fromTo(ctaShimmerRef.current,
-        { x: '-120%' },
-        { x: '220%', duration: 0.55, ease: 'power2.inOut' },
-        0.42
-      )
-    }, navRootRef)
-
-    return () => ctx.revert()
+    return () => {
+      clearTimeout(t1)
+      clearTimeout(t2)
+      clearTimeout(t3)
+    }
   }, [])
+
+
 
   return (
     <>
       <nav
-        ref={navRootRef}
-        className={`fixed left-0 right-0 z-50 px-8 md:px-[52px] lg:px-20 xl:px-24 transition-[top] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none ${
+        className={`fixed left-0 right-0 z-50 px-4 sm:px-8 md:px-[52px] lg:px-20 xl:px-24 transition-[top] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none ${
           isScrolled ? 'top-3 md:top-3.5' : 'top-5 md:top-6'
         }`}
         aria-label="Navigation principale"
       >
         <div className="w-full relative flex justify-center items-center pointer-events-auto">
           {/* Ambient Genesis Aura behind the capsule */}
-          <div
-            ref={ambientGlowRef}
+          <motion.div
+            initial="initial"
+            animate={animPhase}
+            variants={{
+              initial: { scaleX: 0.2, opacity: 0 },
+              pill: { scaleX: 0.4, opacity: 0.2 },
+              expanding: { scaleX: 1, opacity: isScrolled ? 0.25 : 0.35, transition: { duration: 1.2, ease: [0.25, 1, 0.5, 1] } },
+              expanded: { scaleX: 1, opacity: isScrolled ? 0.25 : 0.35 }
+            }}
             aria-hidden
             className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12 rounded-full bg-gradient-to-r from-[#60A5FA]/25 via-[#A855F7]/15 to-[#14B09C]/25 blur-2xl pointer-events-none -z-10 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              isScrolled ? 'w-[75%] max-w-[850px] opacity-25' : 'w-[85%] max-w-full opacity-35'
+              isScrolled ? 'w-[75%] max-w-[850px]' : 'w-[85%] max-w-full'
             }`}
           />
 
           {/* Dynamic Island Morphing Capsule — Compacts smoothly on scroll */}
-          <div
-            ref={capsuleRef}
+          <motion.div
+            initial="initial"
+            animate={animPhase}
+            variants={{
+              initial: { y: -30, opacity: 0, clipPath: 'inset(0% calc(50% - 34px) 0% calc(50% - 34px) round 9999px)' },
+              pill: { 
+                y: 0, opacity: 1, clipPath: 'inset(0% calc(50% - 34px) 0% calc(50% - 34px) round 9999px)',
+                transition: { duration: 0.8, ease: [0.34, 1.56, 0.64, 1] } 
+              },
+              expanding: { 
+                y: 0, opacity: 1, clipPath: 'inset(0% calc(0% - 0px) 0% calc(0% - 0px) round 9999px)',
+                transition: { duration: 1.2, ease: [0.25, 1, 0.5, 1] }
+              },
+              expanded: {
+                y: 0, opacity: 1, clipPath: 'inset(0% calc(0% - 0px) 0% calc(0% - 0px) round 9999px)',
+                transition: { duration: 0 }
+              }
+            }}
             style={{
-              overflow: isAnimDone ? 'visible' : 'hidden',
-              opacity: isAnimDone ? 1 : 0
+              overflow: animPhase === 'expanded' ? 'visible' : 'hidden',
             }}
             className={`relative rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group/nav ${
               isScrolled
@@ -256,45 +168,36 @@ export function Navbar() {
                 : 'w-full max-w-full bg-white/80 backdrop-blur-xl border border-white/90 shadow-[0_12px_32px_-6px_rgba(39,49,111,0.08),0_2px_8px_rgba(0,0,0,0.02)]'
             }`}
           >
-            {/* Center Quantum Core Beacon (during entrance) */}
-            {!isAnimDone && (
-              <div 
-                ref={quantumCoreRef}
-                className="absolute inset-0 flex items-center justify-center pointer-events-none z-30"
+            {/* Center Pictogram (during entrance) */}
+            {animPhase !== 'expanded' && (
+              <motion.div 
+                initial="initial"
+                animate={animPhase}
+                variants={{
+                  initial: { opacity: 0, scale: 0.8 },
+                  pill: { opacity: 1, scale: 1, transition: { duration: 0.5 } },
+                  expanding: { opacity: 0, scale: 0.8, transition: { duration: 0.4 } },
+                  expanded: { opacity: 0, display: 'none' }
+                }}
+                className="absolute inset-0 flex items-center justify-center pointer-events-none z-[100]"
               >
-                <div className="relative flex items-center justify-center w-8 h-8">
-                  <div className="absolute inset-0 rounded-full border border-dashed border-[#14B09C]/80 animate-[spin_3s_linear_infinite]" />
-                  <div className="absolute inset-1 rounded-full bg-[#27316F]/40 blur-[3px] animate-pulse" />
-                  <div className="w-2.5 h-2.5 rounded-full bg-[#14B09C] shadow-[0_0_12px_#14B09C,0_0_24px_#27316F]" />
+                <div className="relative flex items-center justify-center w-10 h-10">
+                  <Image 
+                    src="/logo-mark.png" 
+                    alt="Tekkil Icon" 
+                    width={40} 
+                    height={40} 
+                    className="w-8 h-8 object-contain drop-shadow-sm"
+                    priority
+                  />
                 </div>
-              </div>
+              </motion.div>
             )}
 
-            {/* Shockwave Touchdown Ring */}
-            {!isAnimDone && (
-              <div
-                ref={shockwaveRef}
-                className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 rounded-full border-2 border-[#14B09C]/90 pointer-events-none -z-5"
-              />
-            )}
 
-            {/* Dual Laser Runners */}
-            {!isAnimDone && (
-              <div className="absolute inset-x-0 top-0 h-[2px] overflow-hidden pointer-events-none z-30 rounded-full">
-                <div
-                  ref={laserLeftRef}
-                  className="absolute top-0 right-1/2 w-1/2 h-full bg-gradient-to-l from-transparent via-[#27316F] via-[#14B09C] to-white shadow-[0_0_14px_#14B09C] origin-right"
-                />
-                <div
-                  ref={laserRightRef}
-                  className="absolute top-0 left-1/2 w-1/2 h-full bg-gradient-to-r from-transparent via-[#27316F] via-[#FBBF24] to-white shadow-[0_0_14px_#FBBF24] origin-left"
-                />
-              </div>
-            )}
 
             {/* Titanium Chamfer Horizon Sheen */}
             <div
-              ref={horizonSheenRef}
               aria-hidden
               className="absolute inset-x-0 top-0 h-[1.5px] pointer-events-none z-30 overflow-hidden rounded-full"
             >
@@ -314,15 +217,24 @@ export function Navbar() {
             />
 
             {/* Main Capsule Inner Bar — Smoothly compacts vertical padding on scroll */}
-            <div className={`w-full flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-              isScrolled 
-                ? 'pl-3.5 sm:pl-5 pr-2.5 sm:pr-3 py-1.5 md:py-2' 
-                : 'pl-4 sm:pl-6 pr-3 py-2 md:py-2.5'
-            }`}>
+            <motion.div 
+              initial="initial"
+              animate={animPhase}
+              variants={{
+                initial: { opacity: 0 },
+                pill: { opacity: 0 },
+                expanding: { opacity: 1, transition: { delay: 0.4, duration: 0.6 } },
+                expanded: { opacity: 1 }
+              }}
+              className={`w-full flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                isScrolled 
+                  ? 'pl-3.5 sm:pl-5 pr-2.5 sm:pr-3 py-1.5 md:py-2' 
+                  : 'pl-4 sm:pl-6 pr-3 py-2 md:py-2.5'
+              }`}
+            >
               
               {/* Left: Brand Logo (Smooth resize on scroll) */}
               <a 
-                ref={logoRef}
                 href="/" 
                 onClick={(e) => {
                   if (window.location.pathname === '/') {
@@ -330,7 +242,6 @@ export function Navbar() {
                     window.scrollTo({ top: 0, behavior: 'smooth' })
                   }
                 }}
-                style={{ opacity: isAnimDone ? 1 : 0 }}
                 className="relative group flex items-center shrink-0 transition-transform duration-200 hover:scale-[1.03] active:scale-[0.98]"
                 aria-label="Accueil Tekkil"
               >
@@ -348,8 +259,6 @@ export function Navbar() {
 
               {/* Center: Desktop Nav Links (Adaptive Scrollspy Segmented Capsule) */}
               <div 
-                ref={navLinksRef}
-                style={{ opacity: isAnimDone ? 1 : 0 }}
                 className={`hidden lg:flex items-center bg-slate-100/80 backdrop-blur-md rounded-full p-1 border border-slate-200/80 shadow-xs transition-all duration-500 ${
                   isScrolled ? 'gap-0.5' : 'gap-1'
                 }`}
@@ -382,9 +291,7 @@ export function Navbar() {
                 
                 {/* Primary CTA « Se connecter » (Smooth compaction on scroll) */}
                 <a
-                  ref={ctaBtnRef}
                   href={LOGIN_URL}
-                  style={{ opacity: isAnimDone ? 1 : 0 }}
                   className={`hidden md:inline-flex items-center gap-2 text-white font-bold rounded-full bg-gradient-to-r from-[#1A2356] via-[#27316F] to-[#0D9488] hover:from-[#27316F] hover:to-[#14B09C] shadow-[0_6px_18px_rgba(39,49,111,0.32)] hover:shadow-[0_8px_24px_rgba(13,148,136,0.4)] transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] hover:scale-[1.03] active:scale-[0.97] group relative overflow-hidden ${
                     isScrolled ? 'px-4.5 py-2 text-xs' : 'px-5 py-2.5 text-xs md:text-sm'
                   }`}
@@ -399,7 +306,6 @@ export function Navbar() {
 
                   {/* Specular Shimmer Sweep */}
                   <span 
-                    ref={ctaShimmerRef}
                     aria-hidden
                     className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none transform -skew-x-12" 
                   />
@@ -407,9 +313,7 @@ export function Navbar() {
 
                 {/* Mobile Menu Button */}
                 <button
-                  ref={mobileBtnRef}
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  style={{ opacity: isAnimDone ? 1 : 0 }}
                   className="lg:hidden w-9.5 h-9.5 md:w-10 md:h-10 flex items-center justify-center bg-white hover:bg-slate-50 text-slate-900 font-bold rounded-full border border-slate-200/90 shadow-xs relative overflow-hidden transition-transform duration-200 hover:scale-105 active:scale-90"
                   aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
                 >
@@ -427,8 +331,8 @@ export function Navbar() {
                 </button>
 
               </div>
-            </div>
-          </div>
+            </motion.div>
+          </motion.div>
         </div>
       </nav>
 

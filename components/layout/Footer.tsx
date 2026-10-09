@@ -54,9 +54,9 @@ export function Footer() {
   }
 
   return (
-    <footer className="w-full px-4 md:px-8 pb-4 md:pb-8 pt-10 relative z-10">
+    <footer className="w-full px-2 md:px-3 lg:px-4 pb-2 md:pb-3 lg:pb-4 pt-10 relative z-10">
       {/* Pill Container */}
-      <div className="rounded-[40px] md:rounded-[60px] w-full max-w-[1600px] mx-auto pt-16 md:pt-24 flex flex-col relative text-black shadow-2xl overflow-hidden">
+      <div className="rounded-[40px] md:rounded-[60px] w-full pt-16 md:pt-24 flex flex-col relative text-black shadow-2xl overflow-hidden">
         
         {/* ─── Mesh Gradient Background ─── */}
         <div className="absolute inset-0 -z-10">
@@ -88,7 +88,7 @@ export function Footer() {
               alt="TEKKIL"
               width={400}
               height={100}
-              className="w-[180px] md:w-[220px] h-auto object-contain"
+              className="w-[240px] md:w-[320px] h-auto object-contain"
             />
             <p className="text-[14px] text-[#444] leading-relaxed max-w-[300px]">
               La plateforme de préparation aux concours nationaux sénégalais. Apprendre mieux, aller plus loin. 🇸🇳
@@ -156,23 +156,18 @@ export function Footer() {
 
         {/* Massive Cutoff Text at bottom */}
         {/* We use massive HTML text that bleeds off the bottom */}
-        <div className="mt-16 md:mt-24 w-full relative flex justify-center pointer-events-none select-none z-0 overflow-hidden h-[35vw] md:h-[22vw]">
+        <div className="mt-8 md:mt-12 w-full relative flex justify-center pointer-events-none select-none z-0 overflow-hidden h-[25vw] md:h-[16vw]">
           <h1 
-            className="absolute bottom-[-18%] text-[#111] font-black tracking-tighter w-full text-center"
-            style={{ fontSize: '28vw', lineHeight: '0.75' }}
+            className="absolute bottom-[-22%] text-[#111] font-black tracking-tighter w-full text-center uppercase"
+            style={{ fontSize: '20vw', lineHeight: '0.75' }}
           >
-            tekkil
+            TEKKIL
           </h1>
         </div>
 
         {/* Tiny Bottom Copyright Bar */}
-        <div className="relative z-10 border-t border-black/5 py-4 px-8 md:px-16 flex flex-col md:flex-row justify-between items-center text-[12px] text-[#666]">
-          <p>Tekkil ©{new Date().getFullYear()} — <a href="/privacy" className="hover:text-black">Privacy Policy</a></p>
-          <div className="flex gap-4 mt-2 md:mt-0">
-             <span>Senegal</span>
-             <span suppressHydrationWarning>{currentTime}</span>
-             <span>32°C</span>
-          </div>
+        <div className="relative z-10 border-t border-black/5 py-4 px-8 md:px-16 flex justify-center items-center text-[12px] text-[#666]">
+          <p>Tekkil © {new Date().getFullYear()} Tous droits réservés. — Powered with ❤️ & ☕</p>
         </div>
 
       </div>
