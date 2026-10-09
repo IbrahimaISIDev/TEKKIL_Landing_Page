@@ -209,9 +209,9 @@ export function Hero() {
                   }}
                   initial="hidden"
                   animate="visible"
-                  className="text-[clamp(2.15rem,5.5vw,4.5rem)] xl:text-[5.25rem] font-black text-[#050814] leading-[1.05] tracking-[-0.04em] mb-6 sm:mb-8 drop-shadow-sm flex flex-col items-start"
+                  className="text-[clamp(2.15rem,5.5vw,4.5rem)] xl:text-[4.5rem] 2xl:text-[5.25rem] font-black text-[#050814] leading-[1.05] tracking-[-0.04em] mb-6 sm:mb-8 drop-shadow-sm flex flex-col items-start"
                 >
-                  <span className="flex flex-wrap lg:flex-nowrap gap-x-2.5 sm:gap-x-3.5 xl:gap-x-4 whitespace-normal lg:whitespace-nowrap">
+                  <span className="flex flex-wrap gap-x-2.5 sm:gap-x-3.5 xl:gap-x-4">
                     {["Transforme", "ta", "préparation"].map((word, i) => (
                       <motion.span 
                         key={i} 
@@ -309,7 +309,7 @@ export function Hero() {
                 transition={{ duration: 0.6, delay: 0.15 }}
                 onMouseMove={handleMove}
                 onMouseLeave={handleLeave}
-                className="relative flex-shrink-0 w-full max-w-[500px] sm:max-w-[580px] md:max-w-[640px] lg:w-[600px] xl:w-[680px] h-[380px] xs:h-[420px] sm:h-[480px] md:h-[540px] lg:h-[600px] mx-auto lg:mx-0"
+                className="relative flex-shrink-0 w-full max-w-[500px] sm:max-w-[580px] md:max-w-[640px] lg:w-[480px] xl:w-[580px] h-[380px] xs:h-[420px] sm:h-[480px] md:h-[540px] lg:h-[480px] xl:h-[580px] mx-auto lg:mx-0"
               >
                 {/* High-Contrast Multi-Color Mesh Aura behind the phone stack */}
                 <div aria-hidden className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[80%] rounded-full bg-gradient-to-br from-[#8B5CF6]/35 via-[#14B09C]/35 to-[#3B82F6]/35 blur-[90px] pointer-events-none" />
