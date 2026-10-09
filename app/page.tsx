@@ -1,8 +1,10 @@
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
-import { Hero } from '@/components/sections/Hero'
+import { Hero } from '@/components/landing/Hero'
+import { ExploreTekkil } from '@/components/sections/ExploreTekkil'
 import { AboutUs } from '@/components/sections/AboutUs'
 import { Stats } from '@/components/sections/Stats'
+import { TextLoopBanner } from '@/components/sections/TextLoopBanner'
 import { Features } from '@/components/sections/Features'
 import { AppShowcase } from '@/components/sections/AppShowcase'
 import { AIAssistant } from '@/components/sections/AIAssistant'
@@ -12,16 +14,18 @@ import { Pricing } from '@/components/sections/Pricing'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 import { Download } from '@/components/sections/Download'
 import { FAQ } from '@/components/sections/FAQ'
-import { Privacy } from '@/components/sections/Privacy'
 import { Contact } from '@/components/sections/Contact'
+import { ScrollToTop } from '@/components/ui/ScrollToTop'
 
 export default function Home() {
   return (
     <main>
       <Navbar />
       <Hero />
+      <ExploreTekkil />
       <AboutUs />
       <Stats />
+      <TextLoopBanner />
       <Features />
       <AppShowcase />
       <AIAssistant />
@@ -31,9 +35,9 @@ export default function Home() {
       <HowItWorks />
       <Download />
       <FAQ />
-      <Privacy />
       <Contact />
       <Footer />
+      <ScrollToTop />
     </main>
   )
 }

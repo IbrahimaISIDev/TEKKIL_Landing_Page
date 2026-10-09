@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Open Book Base (Navy #27316F) -->
+  <!-- Left Page Base -->
+  <path d="M12 72C24 70 38 65 46 58V80C38 85 24 88 12 88V72Z" fill="#27316F" />
+  <!-- Right Page Base -->
+  <path d="M88 72C76 70 62 65 54 58V80C62 85 76 88 88 88V72Z" fill="#27316F" />
+  
+  <!-- Open Book Inner Pages (Teal #14B09C) -->
+  <path d="M17 56C28 54 40 49 46 43V65C40 70 28 73 17 73V56Z" fill="#14B09C" />
+  <path d="M83 56C72 54 60 49 54 43V65C60 70 72 73 83 73V56Z" fill="#14B09C" />
+  
+  <!-- Ascending Learner (Navy #27316F) -->
+  <!-- Body/Arm surging upward toward the star -->
+  <path d="M44 70C44 54 50 38 68 25C60 36 58 52 58 70C58 72 44 72 44 70Z" fill="#27316F" />
+  <circle cx="51" cy="27" r="6.5" fill="#27316F" />
+  
+  <!-- 5-Point Star of Achievement (Teal #14B09C) -->
+  <!-- Positioned at the apex of the reaching hand -->
+  <polygon points="76,12 78.4,18.8 85.6,18.8 79.8,23.2 82,30 76,25.8 70,30 72.2,23.2 66.4,18.8 73.6,18.8" fill="#14B09C" />
+</svg>

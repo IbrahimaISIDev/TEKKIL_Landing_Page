@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Symmetrical 2026 SaaS Emblem: Book + Upward Elevation + Star -->
+  <!-- Outer Book Wings (Navy #27316F) -->
+  <path d="M10 70C24 67.5 38 62 46 54V76C38 82 24 86 10 87V70Z" fill="#27316F" />
+  <path d="M90 70C76 67.5 62 62 54 54V76C62 82 76 86 90 87V70Z" fill="#27316F" />
+  
+  <!-- Inner Dynamic Pages (Teal #14B09C) -->
+  <path d="M16 54C28 51.5 40 46 47 38V59C40 65 28 69 16 70V54Z" fill="#14B09C" />
+  <path d="M84 54C72 51.5 60 46 53 38V59C60 65 72 69 84 70V54Z" fill="#14B09C" />
+  
+  <!-- Central Ascending Learner (Navy #27316F) -->
+  <!-- Vertical torso rising between book pages -->
+  <path d="M46 72C46 52 48 38 50 32C52 38 54 52 54 72H46Z" fill="#27316F" />
+  <!-- Head of learner -->
+  <circle cx="50" cy="24" r="5.5" fill="#27316F" />
+  
+  <!-- Crown Star of Excellence / Senegal (Teal #14B09C) -->
+  <polygon points="50,6 52.4,12.2 59,12.2 53.6,16.2 55.7,22.4 50,18.4 44.3,22.4 46.4,16.2 41,12.2 47.6,12.2" fill="#14B09C" />
+</svg>

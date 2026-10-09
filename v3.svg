@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Open Book Base - Left Wing (Navy #27316F) -->
+  <path d="M14 66C24 63.5 37 58 46 50V74C37 81 24 85 14 86C13.4 86 13 85.6 13 85V67C13 66.4 13.4 66 14 66Z" fill="#27316F"/>
+  <!-- Open Book Base - Right Wing (Navy #27316F) -->
+  <path d="M86 66C76 63.5 63 58 54 50V74C63 81 76 85 86 86C86.6 86 87 85.6 87 85V67C87 66.4 86.6 66 86 66Z" fill="#27316F"/>
+
+  <!-- Inner Dynamic Pages - Left (Teal #14B09C) -->
+  <path d="M19 50C29 47.5 40 42 46 34V56C40 62.5 29 67 19 68C18.4 68 18 67.6 18 67V51C18 50.4 18.4 50 19 50Z" fill="#14B09C"/>
+  <!-- Inner Dynamic Pages - Right (Teal #14B09C) -->
+  <path d="M81 50C71 47.5 60 42 54 34V56C60 62.5 71 67 81 68C81.6 68 82 67.6 82 67V51C82 50.4 81.6 50 81 50Z" fill="#14B09C"/>
+
+  <!-- Dynamic Ascending Learner (Navy #27316F) -->
+  <!-- Swooping trajectory from book spine to the star -->
+  <path d="M44 68C44 50 51 34 72 18C61 30 58 48 58 68H44Z" fill="#27316F"/>
+  <!-- Head of the Learner -->
+  <circle cx="51" cy="20" r="6" fill="#27316F"/>
+
+  <!-- National Star of Senegal / Achievement (Teal #14B09C) -->
+  <polygon points="79,6 81.4,13.2 89,13.2 82.8,17.6 85.2,24.8 79,20.4 72.8,24.8 75.2,17.6 69,13.2 76.6,13.2" fill="#14B09C"/>
+</svg>

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- Outer Book Cover (Navy #27316F) -->
+  <path d="M50 88 C 34 86, 20 80, 10 74 L 10 60 C 22 66, 36 71, 46 72 L 46 87.5 Z" fill="#27316F"/>
+  <path d="M50 88 C 66 86, 80 80, 90 74 L 90 60 C 78 66, 64 71, 54 72 L 54 87.5 Z" fill="#27316F"/>
+
+  <!-- Middle Pages Outline / Contrast Trim (Navy #27316F) -->
+  <path d="M12 56 L 12 44 C 24 50, 36 53, 46 54 L 46 68 C 36 67, 24 63, 12 56 Z" fill="#27316F" opacity="0.3"/>
+  <path d="M88 56 L 88 44 C 76 50, 64 53, 54 54 L 54 68 C 64 67, 76 63, 88 56 Z" fill="#27316F" opacity="0.3"/>
+
+  <!-- Inner Open Pages (Teal #14B09C) -->
+  <path d="M14 42 C 26 47, 36 50, 46 50 L 46 64 C 36 63.5, 24 60, 14 55 Z" fill="#14B09C"/>
+  <path d="M86 42 C 74 47, 64 50, 54 50 L 54 64 C 64 63.5, 76 60, 86 55 Z" fill="#14B09C"/>
+
+  <!-- Center Figure Rising (Navy #27316F) -->
+  <path d="M44 80 C 44 58, 51 40, 73 21 C 62 35, 58 54, 58 80 Z" fill="#27316F"/>
+  <circle cx="50" cy="26" r="6" fill="#27316F"/>
+
+  <!-- Star (Teal #14B09C) -->
+  <polygon points="80,9 82.4,16.4 90.2,16.4 83.9,20.9 86.3,28.3 80,23.8 73.7,28.3 76.1,20.9 69.8,16.4 77.6,16.4" fill="#14B09C"/>
+</svg>

@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { PrivacyHeader } from '@/components/landing/PrivacyHeader'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -11,24 +12,11 @@ export default function PrivacyPage() {
   return (
     <main>
       <Navbar />
-      <div className="min-h-screen bg-white pt-24 pb-20">
-        <div className="max-w-3xl mx-auto px-5 md:px-8">
-          {/* Header */}
-          <div className="mb-12">
-            <p className="text-sm font-semibold uppercase tracking-wider text-[#0B50DA] mb-3">
-              Confidentialité
-            </p>
-            <h1
-              className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-gray-900 mb-4"
-              style={{ fontFamily: 'var(--font-roboto-condensed)', letterSpacing: '-0.03em' }}
-            >
-              Politique de confidentialité
-            </h1>
-            <p className="text-gray-400 text-sm">
-              Dernière mise à jour : 5 mai 2026
-            </p>
-          </div>
+      <div className="min-h-screen bg-[#FAFAFA]">
+        <PrivacyHeader />
 
+        {/* ─── Content ─── */}
+        <div className="max-w-3xl mx-auto px-5 md:px-8 py-16">
           {/* Intro */}
           <div className="prose prose-gray max-w-none">
             <p className="text-gray-600 leading-relaxed mb-10">

@@ -67,6 +67,8 @@ export const viewport: Viewport = {
   themeColor: '#080E2E',
 }
 
+import { SmoothScrolling } from '@/components/providers/SmoothScrolling'
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -75,7 +77,9 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${robotoCondensed.variable} ${roboto.variable} bg-blue-900`}>
       <body className="font-sans antialiased">
-        {children}
+        <SmoothScrolling>
+          {children}
+        </SmoothScrolling>
       </body>
     </html>
   )
