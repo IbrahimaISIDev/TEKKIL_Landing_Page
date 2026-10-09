@@ -231,15 +231,18 @@ export function Pricing() {
   const [selectedPack, setSelectedPack] = useState<ConcoursPack | null>(null)
   const [activeFilter, setActiveFilter] = useState<'all' | 'education' | 'admin' | 'forces'>('all')
 
-  // Lock body scroll when modal is open
+  // Lock body scroll and stop Lenis when modal is open
   useEffect(() => {
     if (selectedPack) {
       document.body.style.overflow = 'hidden'
+      if (window.__lenis) window.__lenis.stop()
     } else {
       document.body.style.overflow = ''
+      if (window.__lenis) window.__lenis.start()
     }
     return () => {
       document.body.style.overflow = ''
+      if (window.__lenis) window.__lenis.start()
     }
   }, [selectedPack])
 
