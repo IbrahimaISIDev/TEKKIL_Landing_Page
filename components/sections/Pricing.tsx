@@ -258,7 +258,7 @@ export function Pricing() {
 
   return (
     <section 
-      id="tarifs" 
+      id="nos-packs" 
       className="relative py-20 md:py-28 lg:py-32 bg-gradient-to-b from-[#F8FAFC] via-white to-[#F8FAFC] overflow-hidden isolate"
       aria-label="Dossiers et packs de préparation aux concours nationaux"
     >

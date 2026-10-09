@@ -124,7 +124,7 @@ export function AppShowcase() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-5%' }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="mt-20 md:mt-28 relative rounded-[28px] md:rounded-[36px] p-6 md:p-10 overflow-hidden border border-slate-200/60 bg-white/80 backdrop-blur-xl shadow-[0_20px_60px_-15px_rgba(8,14,46,0.06)] isolate"
         >
           {/* Subtle ambient lighting */}

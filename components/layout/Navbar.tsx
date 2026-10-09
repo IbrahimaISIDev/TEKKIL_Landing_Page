@@ -8,7 +8,7 @@ import Link from 'next/link'
 import { NAV_LINKS } from '@/lib/constants'
 import { LOGIN_URL } from '@/lib/urls'
 import { useRouter } from 'next/navigation'
-
+import { JellyRadio } from '@/components/ui/JellyRadio'
 export function Navbar() {
   const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -21,7 +21,7 @@ export function Navbar() {
     const onScroll = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const scrolled = window.scrollY > 50
+          const scrolled = window.scrollY > 20
           setIsScrolled((prev) => (prev !== scrolled ? scrolled : prev))
           ticking = false
         })
@@ -39,17 +39,26 @@ export function Navbar() {
     const onScrollSpy = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
-          const scrollPos = window.scrollY + 180
+          // Remove unused scrollPos variable
           if (window.scrollY < 250) {
             setActiveSection(NAV_LINKS[0].href)
             ticking = false
             return
           }
+          const threshold = Math.max(300, window.innerHeight / 3)
+          
+          // Force last section if scrolled to very bottom
+          if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 50) {
+            setActiveSection(NAV_LINKS[NAV_LINKS.length - 1].href)
+            ticking = false
+            return
+          }
+
           for (let i = NAV_LINKS.length - 1; i >= 0; i--) {
             const link = NAV_LINKS[i]
             if (link.href.startsWith('#')) {
               const el = document.querySelector(link.href) as HTMLElement | null
-              if (el && el.offsetTop <= scrollPos) {
+              if (el && el.getBoundingClientRect().top <= threshold) {
                 setActiveSection(link.href)
                 break
               }
@@ -73,7 +82,7 @@ export function Navbar() {
       if (href.startsWith('#')) {
         const el = document.querySelector(href) as HTMLElement | null
         if (el && window.__lenis) {
-          window.__lenis.scrollTo(el, { offset: -90, duration: 1.15 })
+          window.__lenis.scrollTo(el, { offset: -90, duration: 0.7 })
           return
         }
       }
@@ -103,9 +112,9 @@ export function Navbar() {
       return
     }
 
-    const t1 = setTimeout(() => setAnimPhase('pill'), 100)
-    const t2 = setTimeout(() => setAnimPhase('expanding'), 1600) // Hold pill for 1.5s
-    const t3 = setTimeout(() => setAnimPhase('expanded'), 2800)
+    const t1 = setTimeout(() => setAnimPhase('pill'), 50)
+    const t2 = setTimeout(() => setAnimPhase('expanding'), 500)
+    const t3 = setTimeout(() => setAnimPhase('expanded'), 1100)
 
     return () => {
       clearTimeout(t1)
@@ -119,7 +128,7 @@ export function Navbar() {
   return (
     <>
       <nav
-        className={`fixed left-0 right-0 z-50 px-4 sm:px-8 md:px-[52px] lg:px-20 xl:px-24 transition-[top] duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] pointer-events-none ${
+        className={`fixed left-0 right-0 z-50 px-4 sm:px-8 md:px-[52px] lg:px-20 xl:px-24 transition-[top] duration-300 ease-out pointer-events-none ${
           isScrolled ? 'top-3 md:top-3.5' : 'top-5 md:top-6'
         }`}
         aria-label="Navigation principale"
@@ -136,7 +145,7 @@ export function Navbar() {
               expanded: { scaleX: 1, opacity: isScrolled ? 0.25 : 0.35 }
             }}
             aria-hidden
-            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12 rounded-full bg-gradient-to-r from-[#60A5FA]/25 via-[#A855F7]/15 to-[#14B09C]/25 blur-2xl pointer-events-none -z-10 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+            className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 h-12 rounded-full bg-gradient-to-r from-[#60A5FA]/25 via-[#A855F7]/15 to-[#14B09C]/25 blur-2xl pointer-events-none -z-10 transition-all duration-300 ease-out ${
               isScrolled ? 'w-[75%] max-w-[850px]' : 'w-[85%] max-w-full'
             }`}
           />
@@ -163,7 +172,7 @@ export function Navbar() {
             style={{
               overflow: animPhase === 'expanded' ? 'visible' : 'hidden',
             }}
-            className={`relative rounded-full transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group/nav ${
+            className={`relative rounded-full transition-all duration-300 ease-out group/nav ${
               isScrolled
                 ? 'w-full max-w-[1060px] bg-white/94 backdrop-blur-2xl border border-slate-200/90 shadow-[0_20px_45px_-10px_rgba(15,23,42,0.15),0_2px_10px_rgba(0,0,0,0.04)]'
                 : 'w-full max-w-full bg-white/80 backdrop-blur-xl border border-white/90 shadow-[0_12px_32px_-6px_rgba(39,49,111,0.08),0_2px_8px_rgba(0,0,0,0.02)]'
@@ -227,7 +236,7 @@ export function Navbar() {
                 expanding: { opacity: 1, transition: { delay: 0.4, duration: 0.6 } },
                 expanded: { opacity: 1 }
               }}
-              className={`w-full flex items-center justify-between transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+              className={`w-full flex items-center justify-between transition-all duration-300 ease-out ${
                 isScrolled 
                   ? 'pl-3.5 sm:pl-5 pr-2.5 sm:pr-3 py-1.5 md:py-2' 
                   : 'pl-4 sm:pl-6 pr-3 py-2 md:py-2.5'
@@ -251,40 +260,34 @@ export function Navbar() {
                   alt="Logo Tekkil"
                   width={150}
                   height={36}
-                  className={`w-auto object-contain transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] drop-shadow-xs ${
+                  className={`w-auto object-contain transition-all duration-300 ease-out drop-shadow-xs ${
                     isScrolled ? 'h-7 md:h-8' : 'h-8 md:h-9'
                   }`}
+                  style={{ width: 'auto' }}
                   priority
                 />
               </Link>
 
               {/* Center: Desktop Nav Links (Adaptive Scrollspy Segmented Capsule) */}
               <div 
-                className={`hidden lg:flex items-center bg-slate-100/80 backdrop-blur-md rounded-full p-1 border border-slate-200/80 shadow-xs transition-all duration-500 ${
-                  isScrolled ? 'gap-0.5' : 'gap-1'
-                }`}
+                className={`hidden lg:flex items-center bg-slate-100/80 backdrop-blur-md rounded-full p-1 border border-slate-200/80 shadow-xs transition-all duration-300`}
               >
-                {NAV_LINKS.map((link) => {
-                  const isActive = activeSection === link.href
-                  return (
-                    <button
-                      key={link.href}
-                      onClick={() => handleLinkClick(link.href)}
-                      className={`relative font-semibold rounded-full transition-all duration-300 cursor-pointer ${
-                        isScrolled ? 'px-3 py-1 text-xs' : 'px-3.5 py-1.5 text-xs'
-                      } ${isActive ? 'text-[#0A0E28] font-bold' : 'text-slate-600 hover:text-slate-900'}`}
-                    >
-                      {isActive && (
-                        <motion.div
-                          layoutId="nav-active-pill"
-                          className="absolute inset-0 bg-white rounded-full shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-slate-200/60"
-                          transition={{ type: 'spring', stiffness: 380, damping: 28 }}
-                        />
-                      )}
-                      <span className="relative z-10">{link.label}</span>
-                    </button>
-                  )
-                })}
+                <JellyRadio
+                  items={NAV_LINKS.map(link => ({ value: link.href, label: link.label }))}
+                  value={activeSection}
+                  onChange={(value) => handleLinkClick(value)}
+                  chipColor="transparent"
+                  activeColor="#ffffff"
+                  textColor="#475569"
+                  activeTextColor="#0A0E28"
+                  size={isScrolled ? 'sm' : 'md'}
+                  gap={2}
+                  radius={9999}
+                  swell={0.08}
+                  stiffness={550}
+                  bounce={0.15}
+                  shrink={0.02}
+                />
               </div>
 
               {/* Right: CTA Button & Mobile Menu Toggle */}

@@ -30,11 +30,12 @@ export default function Home() {
       <AppShowcase />
       <AIAssistant />
       <Leaderboard />
-      <Testimonials />
+
       <Pricing />
       <HowItWorks />
       <Download />
       <FAQ />
+      <Testimonials />
       <Contact />
       <Footer />
       <ScrollToTop />

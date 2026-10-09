@@ -12,7 +12,7 @@ export function Stats() {
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: '-10%' }}
-          transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
           className="relative rounded-[32px] md:rounded-[40px] p-8 md:p-12 lg:p-16 overflow-hidden border border-slate-200/60 bg-white/80 backdrop-blur-xl shadow-[0_20px_80px_-20px_rgba(8,14,46,0.08)] isolate"
         >
           {/* Subtle ambient lighting inside the container */}
