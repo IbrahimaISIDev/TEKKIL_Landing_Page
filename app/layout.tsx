@@ -76,7 +76,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" className={`${robotoCondensed.variable} ${roboto.variable} bg-blue-900`}>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased overflow-x-hidden">
         <SmoothScrolling>
           {children}
         </SmoothScrolling>
