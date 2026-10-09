@@ -341,21 +341,18 @@ export function Navbar() {
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20, transition: { duration: 0.2 } }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed inset-0 z-40 lg:hidden flex flex-col pt-28 px-7 pb-10 overflow-hidden bg-white/95 backdrop-blur-2xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.25 } }}
+            className="fixed inset-0 z-40 lg:hidden flex flex-col bg-white/98 backdrop-blur-xl pt-[110px] pb-10 px-6"
           >
-            {/* Ambient mesh accents */}
-            <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-50/90 to-white/95" />
-            <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-[#60A5FA]/20 blur-[80px] pointer-events-none" />
-            <div className="absolute bottom-10 -left-10 w-80 h-80 rounded-full bg-[#14B09C]/20 blur-[80px] pointer-events-none" />
+            {/* Very subtle ambient top gradient */}
+            <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-50/50 to-transparent pointer-events-none" />
             
             <div className="relative z-10 flex flex-col h-full justify-between">
               
               {/* Navigation Links */}
-              <div className="flex flex-col gap-5 pt-4">
+              <div className="flex flex-col gap-2 pt-2">
                 {NAV_LINKS.map((link, i) => {
                   const isActive = activeSection === link.href
                   return (
@@ -366,17 +363,22 @@ export function Navbar() {
                         e.preventDefault()
                         handleLinkClick(link.href)
                       }}
-                      initial={{ opacity: 0, x: -25 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0, x: -15 }}
-                      transition={{ duration: 0.35, delay: i * 0.06, ease: "easeOut" }}
-                      className={`text-2xl font-black transition-colors flex items-center justify-between py-1 ${
-                        isActive ? 'text-[#0D9488]' : 'text-slate-800 hover:text-[#27316F]'
+                      initial={{ opacity: 0, y: 15 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.4, delay: i * 0.05, ease: [0.22, 1, 0.36, 1] }}
+                      className={`text-2xl sm:text-3xl font-semibold transition-colors flex items-center py-3.5 border-b border-slate-100/60 ${
+                        isActive ? 'text-[#050814]' : 'text-slate-400 hover:text-slate-800'
                       }`}
                       style={{ letterSpacing: '-0.02em' }}
                     >
-                      <span>{link.label}</span>
-                      {isActive && <span className="w-2 h-2 rounded-full bg-[#0D9488]" />}
+                      <span className="flex items-center gap-4">
+                        {/* Active Dot Indicator */}
+                        <div className="w-2 flex justify-center">
+                          {isActive && <span className="w-1.5 h-1.5 rounded-full bg-[#14B09C]" />}
+                        </div>
+                        {link.label}
+                      </span>
                     </motion.a>
                   )
                 })}
@@ -386,21 +388,21 @@ export function Navbar() {
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 20 }}
-                transition={{ duration: 0.4, delay: NAV_LINKS.length * 0.06 }}
-                className="mt-8 flex flex-col gap-5"
+                exit={{ opacity: 0, y: 10 }}
+                transition={{ duration: 0.5, delay: NAV_LINKS.length * 0.05 + 0.1 }}
+                className="mt-auto flex flex-col gap-5 pt-8"
               >
-                <div className="w-full h-[1px] bg-slate-200" />
+                <div className="flex items-center justify-center gap-4 text-slate-300">
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em]">Espace Candidat</span>
+                </div>
                 <a
                   href={LOGIN_URL}
                   onClick={() => handleLinkClick()}
-                  className="text-white px-8 py-3.5 rounded-full text-center text-base font-bold w-full transition-transform active:scale-95 shadow-md flex items-center justify-center gap-2"
-                  style={{
-                    background: 'linear-gradient(135deg, #1A2356 0%, #27316F 55%, #0D9488 100%)',
-                  }}
+                  className="group relative flex items-center justify-center gap-2.5 w-full bg-[#050814] text-white px-8 py-4 rounded-full font-bold text-[15px] shadow-[0_8px_20px_rgba(5,8,20,0.12)] transition-all active:scale-[0.98] overflow-hidden"
                 >
-                  <span>Se connecter</span>
-                  <ArrowRight size={18} />
+                  <span className="relative z-10">Se connecter</span>
+                  <ArrowRight size={16} className="relative z-10 transition-transform group-hover:translate-x-1" />
+                  <div className="absolute inset-0 bg-gradient-to-r from-[#1A2356] to-[#0D9488] opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 </a>
               </motion.div>
 
