@@ -157,19 +157,19 @@ export const CONTACT_CHANNELS = [
 export const NAV_LINKS = [
   { label: 'Qui sommes-nous ?', href: '#qui-sommes-nous' },
   { label: 'Fonctionnalités', href: '#features' },
-  { label: 'Tarifs', href: '#tarifs' },
-  { label: 'Témoignages', href: '#temoignages' },
+  { label: 'Nos packs', href: '#nos-packs' },
   { label: 'FAQ', href: '#faq' },
+  { label: 'Témoignages', href: '#temoignages' },
   { label: 'Contact', href: '#contact' },
 ] as const
 
 export const FOOTER_LINKS = [
   { label: 'Qui sommes-nous ?', href: '#qui-sommes-nous' },
   { label: 'Fonctionnalités', href: '#features' },
-  { label: 'Tarifs', href: '#tarifs' },
-  { label: 'Témoignages', href: '#temoignages' },
+  { label: 'Nos packs', href: '#nos-packs' },
   { label: 'Télécharger', href: '#download' },
   { label: 'FAQ', href: '#faq' },
+  { label: 'Témoignages', href: '#temoignages' },
   { label: 'Confidentialité', href: '/privacy' },
   { label: 'Contact', href: '#contact' },
 ] as const

@@ -89,6 +89,7 @@ export function Footer() {
               width={400}
               height={100}
               className="w-[240px] md:w-[320px] h-auto object-contain"
+              style={{ height: 'auto' }}
             />
             <p className="text-[14px] text-[#444] leading-relaxed max-w-[300px]">
               La plateforme de préparation aux concours nationaux sénégalais. Apprendre mieux, aller plus loin. 🇸🇳

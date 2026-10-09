@@ -154,6 +154,7 @@ export function Download() {
                         width={130}
                         height={32}
                         className="h-7 sm:h-8 w-auto object-contain shrink-0"
+                        style={{ width: 'auto' }}
                       />
 
                       {/* Station Distance / Readiness info (like "25 Метров / 25 Meters") */}

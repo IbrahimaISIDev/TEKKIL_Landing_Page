@@ -21,7 +21,7 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
     }
 
     const lenis = new Lenis({
-      lerp: 0.08, // Inertia damping factor for ultra-fluid scroll (lower = smoother)
+      lerp: 0.12, // Faster response but still smooth
       orientation: 'vertical',
       gestureOrientation: 'vertical',
       smoothWheel: true,
@@ -42,7 +42,7 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
     gsap.ticker.add(updateTicker)
     gsap.ticker.lagSmoothing(0)
 
-    // Ergonomic Anchor Link Smooth Scrolling (e.g. #comment-ca-marche, #features, #tarifs)
+    // Ergonomic Anchor Link Smooth Scrolling (e.g. #comment-ca-marche, #features, #nos-packs)
     const handleAnchorClick = (e: MouseEvent) => {
       const target = (e.target as HTMLElement).closest('a')
       if (!target) return
@@ -52,7 +52,7 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
         const el = document.querySelector(href) as HTMLElement | null
         if (el) {
           e.preventDefault()
-          lenis.scrollTo(el, { offset: -90, duration: 1.15 })
+          lenis.scrollTo(el, { offset: -90, duration: 0.7 })
         }
       }
     }

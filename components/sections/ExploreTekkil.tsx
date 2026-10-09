@@ -34,7 +34,7 @@ export function ExploreTekkil() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
           className="flex flex-col items-center"
         >
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#2b326f]/5 border border-[#2b326f]/10 text-[#2b326f] text-sm font-bold mb-8">
@@ -64,7 +64,7 @@ export function ExploreTekkil() {
           initial={{ opacity: 0, scale: 0.95, y: 20 }}
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="relative z-10 flex justify-center mt-12 md:mt-16 mb-8 md:mb-12 h-[200px]"
         >
           {/* Subtle pedestal / shadow for the folder to rest on */}
@@ -93,9 +93,9 @@ export function ExploreTekkil() {
             tilt={10}
             flapAngle={38}
             restAngle={14}
-            openDuration={550}
-            stagger={50}
-            bounce={0.35}
+            openDuration={350}
+            stagger={25}
+            bounce={0.25}
           />
         </motion.div>
       </div>

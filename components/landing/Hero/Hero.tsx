@@ -17,7 +17,7 @@ const PHONES = [
     className: '-left-4 xs:-left-2 sm:left-0 md:left-2 lg:-left-2 bottom-[3%] md:bottom-[4%] h-[78%] sm:h-[82%] md:h-[86%] lg:h-[88%] z-10',
     depth: 14,
     float: 7,
-    delay: 0.5,
+    delay: 0.2,
     from: { x: -40, y: 30 },
   },
   {
@@ -28,7 +28,7 @@ const PHONES = [
     className: 'inset-x-0 mx-auto w-fit -top-2 sm:-top-3 md:-top-5 h-[94%] sm:h-[98%] md:h-[102%] z-20 scale-100 sm:scale-105 md:scale-110',
     depth: 26,
     float: 6,
-    delay: 0.6,
+    delay: 0.3,
     from: { x: 0, y: 50 },
   },
   {
@@ -39,7 +39,7 @@ const PHONES = [
     className: '-right-4 xs:-right-2 sm:right-0 md:right-2 lg:-right-2 bottom-[3%] md:bottom-[5%] h-[78%] sm:h-[82%] md:h-[86%] lg:h-[88%] z-10',
     depth: 14,
     float: 8,
-    delay: 0.7,
+    delay: 0.4,
     from: { x: 40, y: 30 },
   },
 ] as const
@@ -69,7 +69,7 @@ function ParallaxPhone({
     <motion.div
       initial={{ opacity: 0, ...phone.from }}
       animate={{ opacity: 1, x: 0, y: 0 }}
-      transition={{ duration: 0.9, delay: phone.delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, delay: phone.delay, ease: [0.22, 1, 0.36, 1] }}
       className={`absolute ${phone.className}`}
     >
       <motion.div style={{ x, y }} className="h-full">
@@ -117,13 +117,13 @@ export function Hero() {
       <div className="relative w-full">
         {/* ─── Main Rounded Container with High-Contrast Feature Cards Mesh Gradient ─── */}
         <div 
-          className="relative w-full min-h-[85vh] lg:min-h-[800px] rounded-[28px] sm:rounded-[36px] md:rounded-[44px] overflow-hidden flex flex-col isolate transition-colors duration-500 border border-slate-300/80 shadow-[0_24px_80px_-15px_rgba(15,23,42,0.12),_inset_0_1px_2px_rgba(255,255,255,0.95)]"
+          className="relative w-full min-h-[85vh] lg:min-h-[800px] rounded-[28px] sm:rounded-[36px] md:rounded-[44px] flex flex-col isolate transition-colors duration-500 border border-slate-300/80 shadow-[0_24px_80px_-15px_rgba(15,23,42,0.12),_inset_0_1px_2px_rgba(255,255,255,0.95)]"
           style={{
             backgroundColor: '#F1F5F9',
           }}
         >
           {/* Multi-Color Rich & Contrasted Mesh Gradient Orbs (Matching Feature Cards Vivid Palette) */}
-          <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden rounded-[inherit]">
             {/* Vivid Royal / Sky Blue Orb (Top-Left) */}
             <div 
               className="absolute -top-28 -left-20 w-[680px] h-[680px] rounded-full blur-[90px] opacity-[0.55] pointer-events-none"
@@ -180,7 +180,7 @@ export function Hero() {
                 <motion.div
                   initial={{ opacity: 0, y: 16 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
+                  transition={{ duration: 0.4, delay: 0.05 }}
                   className="group inline-flex items-center gap-1.5 sm:gap-3 bg-white/50 hover:bg-white/70 backdrop-blur-md border border-white/60 hover:border-white/80 rounded-full px-2.5 sm:px-4 py-1.5 sm:py-2 mb-6 sm:mb-8 w-fit max-w-full transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.06)] cursor-default select-none overflow-hidden"
                 >
                   {/* Edition Tag with Live Pulse Dot */}
@@ -205,7 +205,7 @@ export function Hero() {
                 <motion.h1
                   variants={{
                     hidden: { opacity: 0 },
-                    visible: { opacity: 1, transition: { staggerChildren: 0.1, delayChildren: 0.1 } }
+                    visible: { opacity: 1, transition: { staggerChildren: 0.06, delayChildren: 0.05 } }
                   }}
                   initial="hidden"
                   animate="visible"
@@ -217,7 +217,7 @@ export function Hero() {
                         key={i} 
                         variants={{
                           hidden: { opacity: 0, y: 40, filter: 'blur(4px)' },
-                          visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                          visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
                         }}
                         className="inline-block"
                       >
@@ -229,7 +229,7 @@ export function Hero() {
                     <motion.span 
                       variants={{
                         hidden: { opacity: 0, y: 40, filter: 'blur(4px)' },
-                        visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                        visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
                       }}
                       className="inline-block"
                     >
@@ -238,7 +238,7 @@ export function Hero() {
                     <motion.span 
                       variants={{
                         hidden: { opacity: 0, y: 40, filter: 'blur(4px)' },
-                        visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+                        visible: { opacity: 1, y: 0, filter: 'blur(0px)', transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] } }
                       }}
                       className="relative inline-block"
                     >
@@ -258,7 +258,7 @@ export function Hero() {
                 <motion.p
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.15 }}
                   className="text-slate-800 text-[15px] sm:text-lg md:text-[19px] leading-[1.6] max-w-xl mb-8 font-medium"
                 >
                   La plateforme intelligente qui s&apos;adapte à ton niveau.{' '}
@@ -273,7 +273,7 @@ export function Hero() {
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.4 }}
+                  transition={{ duration: 0.5, delay: 0.2 }}
                   className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-9 w-full sm:w-auto"
                 >
                   {/* Primary CTA (Dark Minimal Pill) */}
@@ -306,7 +306,7 @@ export function Hero() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
+                transition={{ duration: 0.6, delay: 0.15 }}
                 onMouseMove={handleMove}
                 onMouseLeave={handleLeave}
                 className="relative flex-shrink-0 w-full max-w-[500px] sm:max-w-[580px] md:max-w-[640px] lg:w-[600px] xl:w-[680px] h-[380px] xs:h-[420px] sm:h-[480px] md:h-[540px] lg:h-[600px] mx-auto lg:mx-0"
@@ -318,7 +318,7 @@ export function Hero() {
                 <motion.div
                   initial={{ opacity: 0, y: -10, scale: 0.8 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 0.9 }}
+                  transition={{ duration: 0.5, delay: 0.35 }}
                   className="hidden sm:inline-flex items-center gap-2 absolute top-4 -right-1 sm:right-2 md:right-4 z-30 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_8px_24px_rgba(0,0,0,0.12)] select-none pointer-events-none"
                 >
                   <span className="flex h-2 w-2 relative">
@@ -333,7 +333,7 @@ export function Hero() {
                 <motion.div
                   initial={{ opacity: 0, y: 10, scale: 0.8 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.6, delay: 1.0 }}
+                  transition={{ duration: 0.5, delay: 0.45 }}
                   className="hidden sm:inline-flex items-center gap-2 absolute bottom-6 -left-1 sm:left-2 md:left-4 z-30 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_8px_24px_rgba(0,0,0,0.12)] select-none pointer-events-none"
                 >
                   <Sparkle size={14} className="text-[#F59E0B]" />
@@ -355,7 +355,7 @@ export function Hero() {
         <motion.div
           initial={{ x: "-50%", y: "50%", opacity: 0, scale: 0.5, rotate: -45 }}
           animate={{ x: "-50%", y: "50%", opacity: 1, scale: 1, rotate: 0 }}
-          transition={{ duration: 0.8, delay: 0.7, type: "spring" }}
+          transition={{ duration: 0.6, delay: 0.3, type: "spring" }}
           className="absolute bottom-0 left-1/2 z-20 pointer-events-none select-none"
         >
           <div

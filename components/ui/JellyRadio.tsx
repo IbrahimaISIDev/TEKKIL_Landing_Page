@@ -1,30 +1,47 @@
 'use client';
 
-import React, {
-  forwardRef,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-  type CSSProperties,
-  type ReactNode
-} from 'react';
-import {
-  animate,
-  motion,
-  motionValue,
-  useReducedMotion,
-  useTransform,
-  type HTMLMotionProps,
-  type MotionValue
-} from 'framer-motion'; // Using framer-motion instead of motion/react because we have framer-motion installed
+import { forwardRef, useEffect, useLayoutEffect, useRef, useState, ReactNode, CSSProperties } from 'react';
+import { animate, motion, motionValue, useReducedMotion, useTransform } from 'framer-motion';
 
 import './JellyRadio.css';
 
-export type JellyRadioItem = string | { value: string; label: ReactNode; icon?: ReactNode; disabled?: boolean };
+const DEFAULT_ITEMS = ['Off', 'Low', 'Medium', 'High', 'Max'];
+const SIZES: Record<string, [number, number, number]> = { 
+  sm: [28, 12, 12], 
+  md: [36, 13, 16], 
+  lg: [44, 14, 20] 
+};
+
+const spring = (k: number, m: number, bounce: number) => ({
+  type: 'spring' as const,
+  stiffness: k,
+  damping: 2 * Math.sqrt(k * m) * (1 - bounce),
+  mass: m
+});
+
+interface ChipProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onAnimationStart' | 'onDragStart' | 'onDragEnd' | 'onDrag'> {
+  mv: any;
+  children: ReactNode;
+}
+
+const Chip = forwardRef<HTMLButtonElement, ChipProps>(function Chip({ mv, children, ...rest }, ref) {
+  const transform = useTransform(() => `translateX(${mv.x.get()}px) scale(${mv.sx.get()}, ${mv.sy.get()})`);
+  return (
+    <motion.button ref={ref} style={{ transform }} {...rest}>
+      {children}
+    </motion.button>
+  );
+});
+
+export type JellyRadioItem = {
+  value: string;
+  label: ReactNode;
+  icon?: ReactNode;
+  disabled?: boolean;
+};
 
 export interface JellyRadioProps {
-  items?: JellyRadioItem[];
+  items?: (string | JellyRadioItem)[];
   value?: string;
   defaultValue?: string;
   onChange?: (value: string, index: number) => void;
@@ -47,53 +64,12 @@ export interface JellyRadioProps {
   className?: string;
 }
 
-interface ChipValues {
-  x: MotionValue<number>;
-  sx: MotionValue<number>;
-  sy: MotionValue<number>;
-}
-
-interface ChipProps extends HTMLMotionProps<'button'> {
-  mv: ChipValues;
-}
-
-interface Config {
-  swell: number;
-  barge: number;
-  shrink: number;
-  jelly: number;
-  bounce: number;
-  stagger: number;
-  stiffness: number;
-  reduce: boolean | null;
-  count: number;
-}
-
-const DEFAULT_ITEMS: JellyRadioItem[] = ['Off', 'Low', 'Medium', 'High', 'Max'];
-const SIZES: Record<string, [number, number, number]> = { sm: [28, 12, 12], md: [36, 13, 16], lg: [44, 14, 20] };
-
-const spring = (k: number, m: number, bounce: number) => ({
-  type: 'spring' as const,
-  stiffness: k,
-  damping: 2 * Math.sqrt(k * m) * (1 - bounce),
-  mass: m
-});
-
-const Chip = forwardRef<HTMLButtonElement, ChipProps>(function Chip({ mv, children, ...rest }, ref) {
-  const transform = useTransform(() => `translateX(${mv.x.get()}px) scale(${mv.sx.get()}, ${mv.sy.get()})`);
-  return (
-    <motion.button ref={ref} style={{ transform }} {...rest}>
-      {children}
-    </motion.button>
-  );
-});
-
-const JellyRadio: React.FC<JellyRadioProps> = ({
+export function JellyRadio({
   items = DEFAULT_ITEMS,
   value,
   defaultValue,
   onChange,
-  chipColor = '#27272a',
+  chipColor = 'transparent',
   activeColor = '#f5f5f5',
   textColor = '#f5f5f5',
   activeTextColor = '#18181b',
@@ -110,42 +86,35 @@ const JellyRadio: React.FC<JellyRadioProps> = ({
   disabled = false,
   ariaLabel = 'Options',
   className = ''
-}) => {
-  const list = items.map(it => (typeof it === 'string' ? { value: it, label: it } : it));
+}: JellyRadioProps) {
+  const list = items.map((it) => (typeof it === 'string' ? { value: it, label: it } : it));
   const [inner, setInner] = useState(() => defaultValue ?? list[0]?.value);
   const current = value ?? inner;
   const at = Math.max(
     0,
-    list.findIndex(it => it.value === current)
+    list.findIndex((it) => it.value === current)
   );
   const reduce = useReducedMotion();
   const groupRef = useRef<HTMLDivElement>(null);
   const chipRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const widths = useRef<number[]>([]);
   const applied = useRef(at);
-  const cfg = useRef<Config>({} as Config);
+  const cfg = useRef<any>({});
+  
   useLayoutEffect(() => {
     cfg.current = { swell, barge, shrink, jelly, bounce, stagger, stiffness, reduce, count: list.length };
   });
-  const [h, font, px] = SIZES[size] ?? SIZES.md;
-  const itemsKey = list.map(it => it.value).join('|');
 
-  const [mvs, setMvs] = useState<ChipValues[]>(() => 
+  const [h, font, px] = SIZES[size] ?? SIZES.md;
+  const itemsKey = list.map((it) => it.value).join('|');
+
+  const [mvs] = useState(() => 
     list.map(() => ({ x: motionValue(0), sx: motionValue(1), sy: motionValue(1) }))
   );
-  
-  useLayoutEffect(() => {
-    if (list.length > mvs.length) {
-      setTimeout(() => setMvs(prev => [
-        ...prev,
-        ...Array.from({ length: list.length - prev.length }).map(() => ({ x: motionValue(0), sx: motionValue(1), sy: motionValue(1) }))
-      ]), 0);
-    }
-  }, [list.length, mvs.length]);
 
-  const mvFor = (i: number) => mvs[i] || mvs[0];
+  const mvFor = (i: number) => mvs[i];
 
-  const apply = (sel: number, instant: boolean) => {
+  const apply = (sel: number, instant?: boolean) => {
     const C = cfg.current;
     const group = groupRef.current;
     const rtl = group ? getComputedStyle(group).direction === 'rtl' : false;
@@ -179,12 +148,13 @@ const JellyRadio: React.FC<JellyRadioProps> = ({
   const measure = () => {
     const group = groupRef.current;
     if (!group) return;
-    widths.current = chipRefs.current.map(el => el?.offsetWidth ?? 0);
+    widths.current = chipRefs.current.map((el) => el?.offsetWidth ?? 0);
     const chipH = chipRefs.current[0]?.offsetHeight ?? 0;
     const maxW = Math.max(0, ...widths.current);
     group.style.setProperty('--jr-pad-x', `${Math.ceil((maxW * swell * 1.3) / 2 + barge) + 2}px`);
     group.style.setProperty('--jr-pad-y', `${Math.ceil((chipH * swell) / 2) + 2}px`);
   };
+
   useLayoutEffect(() => {
     const settle = () => {
       measure();
@@ -197,15 +167,17 @@ const JellyRadio: React.FC<JellyRadioProps> = ({
     return () => observer.disconnect();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [itemsKey, size, gap, swell, barge, shrink]);
+
   useEffect(() => {
     if (applied.current === at) return;
     applied.current = at;
     apply(at, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [at]);
+
   useEffect(
     () => () =>
-      mvs.forEach(mv => {
+      mvs.forEach((mv) => {
         mv.x.destroy();
         mv.sx.destroy();
         mv.sy.destroy();
@@ -220,6 +192,7 @@ const JellyRadio: React.FC<JellyRadioProps> = ({
     if (value === undefined) setInner(list[i].value);
     onChange?.(list[i].value, i);
   };
+
   const stepFrom = (i: number, dir: number) => {
     const n = list.length;
     let j = i;
@@ -229,6 +202,7 @@ const JellyRadio: React.FC<JellyRadioProps> = ({
     }
     return i;
   };
+
   const onKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, i: number) => {
     let next: number | null = null;
     if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next = stepFrom(i, 1);
@@ -249,25 +223,23 @@ const JellyRadio: React.FC<JellyRadioProps> = ({
       aria-label={ariaLabel}
       data-disabled={disabled ? '' : undefined}
       className={`jelly-radio${className ? ` ${className}` : ''}`}
-      style={
-        {
-          '--jr-chip': chipColor,
-          '--jr-active': activeColor,
-          '--jr-text': textColor,
-          '--jr-active-text': activeTextColor,
-          '--jr-gap': `${gap}px`,
-          '--jr-radius': `${radius}px`,
-          '--jr-h': `${h}px`,
-          '--jr-font': `${font}px`,
-          '--jr-px': `${px}px`
-        } as CSSProperties
-      }
+      style={{
+        '--jr-chip': chipColor,
+        '--jr-active': activeColor,
+        '--jr-text': textColor,
+        '--jr-active-text': activeTextColor,
+        '--jr-gap': `${gap}px`,
+        '--jr-radius': `${radius}px`,
+        '--jr-h': `${h}px`,
+        '--jr-font': `${font}px`,
+        '--jr-px': `${px}px`
+      } as CSSProperties}
     >
       {list.map((it, i) => (
         <Chip
           key={it.value}
           mv={mvFor(i)}
-          ref={el => {
+          ref={(el) => {
             chipRefs.current[i] = el;
           }}
           type="button"
@@ -277,8 +249,8 @@ const JellyRadio: React.FC<JellyRadioProps> = ({
           disabled={disabled || !!it.disabled}
           className="jelly-radio__chip"
           data-on={i === at ? 'true' : 'false'}
-          onClick={e => commit(i, e.detail === 0)}
-          onKeyDown={e => onKeyDown(e, i)}
+          onClick={(e) => commit(i, e.detail === 0)}
+          onKeyDown={(e) => onKeyDown(e, i)}
         >
           <span className="jelly-radio__skin">
             {it.icon ? <span className="jelly-radio__icon">{it.icon}</span> : null}
@@ -288,6 +260,4 @@ const JellyRadio: React.FC<JellyRadioProps> = ({
       ))}
     </div>
   );
-};
-
-export default JellyRadio;
+}

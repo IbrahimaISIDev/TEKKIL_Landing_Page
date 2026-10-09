@@ -5,14 +5,14 @@ export const fadeUpVariant: Variants = {
   visible: (delay: number = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, delay, ease: [0.22, 1, 0.36, 1] },
   }),
 }
 
 export const staggerContainer: Variants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+    transition: { staggerChildren: 0.05, delayChildren: 0.05 },
   },
 }
 
@@ -21,7 +21,7 @@ export const slideFromLeft: Variants = {
   visible: { 
     opacity: 1, 
     x: 0, 
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } 
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } 
   },
 }
 
@@ -30,7 +30,7 @@ export const slideFromRight: Variants = {
   visible: { 
     opacity: 1, 
     x: 0, 
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } 
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] } 
   },
 }
 
@@ -39,7 +39,7 @@ export const scaleIn: Variants = {
   visible: { 
     opacity: 1, 
     scale: 1, 
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } 
+    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] } 
   },
 }
 
@@ -48,7 +48,7 @@ export const staggerItem: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.3, ease: [0.22, 1, 0.36, 1] },
   },
 }
 
@@ -61,7 +61,7 @@ export const springTransition = {
 
 // Cubic bezier for smooth card hover
 export const cardSpring = {
-  transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
+  transition: { duration: 0.2, ease: [0.34, 1.56, 0.64, 1] },
 }
 
 // Parallax effect for scroll-linked animations
@@ -69,7 +69,7 @@ export const parallaxY = (offset: number = 50) => ({
   initial: { y: offset },
   whileInView: { y: 0 },
   viewport: { once: false, amount: 0.3 },
-  transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
+  transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
 })
 
 // Blur reveal animation
@@ -79,7 +79,7 @@ export const blurReveal: Variants = {
     opacity: 1,
     filter: 'blur(0px)',
     y: 0,
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
   },
 }
 
@@ -90,7 +90,7 @@ export const rotateIn: Variants = {
     opacity: 1,
     rotate: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: [0.34, 1.56, 0.64, 1] },
+    transition: { duration: 0.3, ease: [0.34, 1.56, 0.64, 1] },
   },
 }
 
@@ -103,7 +103,7 @@ export const magneticHover = {
 
 // Smooth number counter config
 export const counterConfig = {
-  duration: 2,
+  duration: 1.2,
   ease: [0.22, 1, 0.36, 1] as const,
 }
 
@@ -111,7 +111,7 @@ export const counterConfig = {
 export const gridStagger: Variants = {
   hidden: {},
   visible: {
-    transition: { staggerChildren: 0.06, delayChildren: 0.15 },
+    transition: { staggerChildren: 0.04, delayChildren: 0.05 },
   },
 }
 
@@ -121,6 +121,6 @@ export const mobileFade: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: 'easeOut' },
+    transition: { duration: 0.2, ease: 'easeOut' },
   },
 }
