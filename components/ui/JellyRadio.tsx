@@ -13,13 +13,13 @@ const SIZES: Record<string, [number, number, number]> = {
 };
 
 const spring = (k: number, m: number, bounce: number) => ({
-  type: 'spring',
+  type: 'spring' as const,
   stiffness: k,
   damping: 2 * Math.sqrt(k * m) * (1 - bounce),
   mass: m
 });
 
-interface ChipProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface ChipProps extends Omit<React.ButtonHTMLAttributes<HTMLButtonElement>, 'onAnimationStart' | 'onDragStart' | 'onDragEnd' | 'onDrag'> {
   mv: any;
   children: ReactNode;
 }

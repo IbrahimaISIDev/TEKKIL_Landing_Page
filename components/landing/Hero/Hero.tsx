@@ -117,13 +117,13 @@ export function Hero() {
       <div className="relative w-full">
         {/* ─── Main Rounded Container with High-Contrast Feature Cards Mesh Gradient ─── */}
         <div 
-          className="relative w-full min-h-[85vh] lg:min-h-[800px] rounded-[28px] sm:rounded-[36px] md:rounded-[44px] overflow-hidden flex flex-col isolate transition-colors duration-500 border border-slate-300/80 shadow-[0_24px_80px_-15px_rgba(15,23,42,0.12),_inset_0_1px_2px_rgba(255,255,255,0.95)]"
+          className="relative w-full min-h-[85vh] lg:min-h-[800px] rounded-[28px] sm:rounded-[36px] md:rounded-[44px] flex flex-col isolate transition-colors duration-500 border border-slate-300/80 shadow-[0_24px_80px_-15px_rgba(15,23,42,0.12),_inset_0_1px_2px_rgba(255,255,255,0.95)]"
           style={{
             backgroundColor: '#F1F5F9',
           }}
         >
           {/* Multi-Color Rich & Contrasted Mesh Gradient Orbs (Matching Feature Cards Vivid Palette) */}
-          <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden">
+          <div className="absolute inset-0 pointer-events-none -z-10 overflow-hidden rounded-[inherit]">
             {/* Vivid Royal / Sky Blue Orb (Top-Left) */}
             <div 
               className="absolute -top-28 -left-20 w-[680px] h-[680px] rounded-full blur-[90px] opacity-[0.55] pointer-events-none"

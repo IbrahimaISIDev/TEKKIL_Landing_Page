@@ -28,6 +28,7 @@ export interface TextLoopProps {
   className?: string;
   style?: CSSProperties;
   viewBoxHeight?: number;
+  preserveAspectRatio?: string;
 }
 
 interface Metrics {
@@ -112,7 +113,8 @@ const TextLoop = ({
   pauseOnHover = true,
   className = '',
   style = {},
-  viewBoxHeight
+  viewBoxHeight,
+  preserveAspectRatio = 'xMidYMid meet'
 }: TextLoopProps) => {
   const rootRef = useRef<HTMLDivElement | null>(null);
   const pathRef = useRef<SVGPathElement | null>(null);
@@ -225,9 +227,9 @@ const TextLoop = ({
   return (
     <div ref={rootRef} className={`text-loop ${className}`.trim()} style={style}>
       <svg
-        className="text-loop-svg"
+        className="text-loop-svg w-full h-full"
         viewBox={`0 0 ${VIEW_W} ${computedH}`}
-        preserveAspectRatio="xMidYMid meet"
+        preserveAspectRatio={preserveAspectRatio}
         role="img"
         aria-label={text}
       >

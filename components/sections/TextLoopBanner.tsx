@@ -4,8 +4,8 @@ import TextLoop from '@/components/ui/TextLoop'
 
 export function TextLoopBanner() {
   return (
-    <section className="bg-white py-8 md:py-12 w-full overflow-hidden select-none">
-      <div className="w-full">
+    <section className="bg-white py-0 w-full overflow-hidden select-none">
+      <div className="w-full h-[120px] sm:h-[140px] md:h-[180px]">
         <TextLoop
           text="Concours ✦ Réussite ✦ Sénégal ✦ Excellence"
           shape="wave"
@@ -21,6 +21,7 @@ export function TextLoopBanner() {
           ribbon
           ribbonColor="#25b09d"
           ribbonWidth={50}
+          preserveAspectRatio="xMidYMid slice"
         />
       </div>
     </section>
