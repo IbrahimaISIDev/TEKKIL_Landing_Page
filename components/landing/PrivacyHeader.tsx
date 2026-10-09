@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import { SplitText } from '@/components/ui/SplitText'
 
 export function PrivacyHeader() {
@@ -15,7 +16,7 @@ export function PrivacyHeader() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="flex items-center gap-2 text-[13px] text-white/30 mb-12"
         >
-          <a href="/" className="hover:text-white/60 transition-colors">Accueil</a>
+          <Link href="/" className="hover:text-white/60 transition-colors">Accueil</Link>
           <span className="text-white/15">·</span>
           <span className="text-white/50">Confidentialité</span>
         </motion.nav>

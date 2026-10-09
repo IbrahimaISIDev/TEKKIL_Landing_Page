@@ -98,7 +98,7 @@ export function Navbar() {
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
     if (prefersReducedMotion) {
-      setAnimPhase('expanded')
+      setTimeout(() => setAnimPhase('expanded'), 0)
       return
     }
 
@@ -234,7 +234,7 @@ export function Navbar() {
             >
               
               {/* Left: Brand Logo (Smooth resize on scroll) */}
-              <a 
+              <Link 
                 href="/" 
                 onClick={(e) => {
                   if (window.location.pathname === '/') {
@@ -255,7 +255,7 @@ export function Navbar() {
                   }`}
                   priority
                 />
-              </a>
+              </Link>
 
               {/* Center: Desktop Nav Links (Adaptive Scrollspy Segmented Capsule) */}
               <div 

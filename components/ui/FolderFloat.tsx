@@ -164,13 +164,16 @@ const FolderFloat: React.FC<FolderFloatProps> = ({
     live: false
   });
   const latest = useRef<Latest>({} as Latest);
-  latest.current = { onSelect, onOpenChange, drift, reduce: false };
+  useEffect(() => {
+    Object.assign(latest.current, { onSelect, onOpenChange, drift, reduce: latest.current.reduce || false });
+  });
   const popTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const liveTimer = useRef<ReturnType<typeof setTimeout> | undefined>(undefined);
   const list: Entry[] = items.map(item => (typeof item === 'string' ? { label: item, value: item } : item));
   const n = list.length;
   const sub = sublabel || `${n} ${n === 1 ? 'note' : 'notes'}`;
   const pos = layout(list, spread, lift, tilt, sizes);
+  const posKey = pos.map(p => `${p.x},${p.y}`).join('|');
 
   const labelsKey = list.map(item => item.label).join('|');
   useLayoutEffect(() => {
@@ -184,7 +187,6 @@ const FolderFloat: React.FC<FolderFloatProps> = ({
     };
     measure();
     document.fonts?.ready.then(measure);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [n, labelsKey]);
 
   const stopPhysics = useCallback(() => {
@@ -256,6 +258,7 @@ const FolderFloat: React.FC<FolderFloatProps> = ({
     Composite.add(engine.world, [...w.bodies, ...walls]);
     w.live = true;
     w.last = 0;
+    // eslint-disable-next-line
     w.t0 = performance.now();
     setLive(true);
     const tick = (now: number) => {
@@ -284,7 +287,7 @@ const FolderFloat: React.FC<FolderFloatProps> = ({
     };
     w.raf = requestAnimationFrame(tick);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [n, spread, lift, pos.map(p => `${p.x},${p.y}`).join('|')]);
+  }, [n, spread, lift, posKey]);
 
   const set = useCallback(
     (next: boolean) => {
@@ -301,8 +304,8 @@ const FolderFloat: React.FC<FolderFloatProps> = ({
   useEffect(() => {
     clearTimeout(liveTimer.current);
     if (!open || !physics || latest.current.reduce) {
-      if (!open) stopPhysics();
-      else if (!physics) stopPhysics();
+      if (!open) setTimeout(stopPhysics, 0);
+      else if (!physics) setTimeout(stopPhysics, 0);
       return undefined;
     }
     liveTimer.current = setTimeout(startPhysics, openDuration + (n - 1) * stagger + 80);
