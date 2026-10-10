@@ -8,9 +8,16 @@ __v0_jsx-dev-runtime.ts
 next.user-config.*
 
 # Environment variables
+.env
 .env*.local
+!.env.example
 
 # Common ignores
 node_modules
 .next/
 .DS_Store
+
+# Build artefacts / lockfiles d'autres gestionnaires (le projet utilise pnpm)
+*.tsbuildinfo
+package-lock.json
+yarn.lock
