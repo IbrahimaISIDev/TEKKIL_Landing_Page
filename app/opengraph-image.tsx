@@ -1,12 +1,18 @@
+import { readFile } from 'node:fs/promises'
+import { join } from 'node:path'
 import { ImageResponse } from 'next/og'
 import { SITE_URL } from '@/lib/urls'
 
-export const runtime = 'edge'
 export const alt = 'TEKKIL — Prépare ton concours national sénégalais'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-export default function OGImage() {
+export default async function OGImage() {
+  // Logo livre TEKKIL (624×415), le même que le favicon. Image générée au
+  // build (pas de paramètre dynamique), donc lue depuis public/ à ce moment-là.
+  const logo = await readFile(join(process.cwd(), 'public/logo-mark.png'))
+  const logoSrc = `data:image/png;base64,${logo.toString('base64')}`
+
   return new ImageResponse(
     (
       <div
@@ -59,40 +65,8 @@ export default function OGImage() {
             marginBottom: 40,
           }}
         >
-          {/* Stylized T icon */}
-          <div
-            style={{
-              width: 44,
-              height: 44,
-              borderRadius: 10,
-              background: '#080E2E',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              marginRight: 12,
-            }}
-          >
-            <div
-              style={{
-                width: 28,
-                height: 4,
-                background: '#F9C623',
-                borderRadius: 2,
-                position: 'absolute',
-                top: 0,
-              }}
-            />
-            <div
-              style={{
-                fontSize: 24,
-                fontWeight: 900,
-                color: '#2B52EE',
-                lineHeight: 1,
-              }}
-            >
-              T
-            </div>
-          </div>
+          {/* Logo livre TEKKIL */}
+          <img src={logoSrc} width={66} height={44} alt="" style={{ marginRight: 12 }} />
           <span
             style={{
               fontSize: 32,
