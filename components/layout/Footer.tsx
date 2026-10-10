@@ -155,15 +155,15 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Massive Cutoff Text at bottom */}
-        {/* We use massive HTML text that bleeds off the bottom */}
-        <div className="mt-8 md:mt-12 w-full relative flex justify-center pointer-events-none select-none z-0 overflow-hidden h-[25vw] md:h-[16vw]">
-          <h1 
-            className="absolute bottom-[-22%] text-[#111] font-black tracking-tighter w-full text-center uppercase"
-            style={{ fontSize: '20vw', lineHeight: '0.75' }}
+        {/* Massive brand wordmark at bottom, fully visible */}
+        {/* aria-hidden + div (pas h1) : purement décoratif, la page a déjà son h1 */}
+        <div aria-hidden="true" className="mt-8 md:mt-12 w-full flex justify-center pointer-events-none select-none z-0 pb-[2vw]">
+          <div
+            className="text-[#111] font-black tracking-[-0.02em] w-full text-center uppercase whitespace-nowrap"
+            style={{ fontSize: '18vw', lineHeight: '0.85' }}
           >
             TEKKIL
-          </h1>
+          </div>
         </div>
 
         {/* Tiny Bottom Copyright Bar */}
