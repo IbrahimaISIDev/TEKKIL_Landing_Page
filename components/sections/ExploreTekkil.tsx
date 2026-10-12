@@ -7,13 +7,14 @@ import ScrollReveal from '@/components/ui/ScrollReveal';
 
 export function ExploreTekkil() {
   const tekkilFeatures = [
-    'Concours paramédicaux',
-    'Concours militaires',
-    'Grandes écoles',
-    'Sujets corrigés',
-    'Quiz interactifs',
-    'Classement national',
-    'Assistant IA'
+    'Fiches de leçon',
+    'Audios',
+    'QCM',
+    'Flashcards',
+    'Entraînement',
+    'Examens blancs',
+    'Annales corrigées',
+    'Exercices'
   ];
 
   return (
@@ -73,7 +74,7 @@ export function ExploreTekkil() {
           
           <FolderFloat
             items={tekkilFeatures}
-            label="Ressources Tekkil"
+            label="Ressources TEKKIL"
             sublabel={`${tekkilFeatures.length} outils disponibles`}
             trigger="hover"
             closeOnSelect={true}
