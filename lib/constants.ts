@@ -1,4 +1,18 @@
-export const FEATURES = [
+export type Feature = {
+  icon: string
+  title: string
+  description: string
+  color: string
+  badge?: string
+}
+
+export const FEATURES: readonly Feature[] = [
+  {
+    icon: 'FileText',
+    title: 'Fiches de lecture',
+    description: 'Chaque leçon dispose d\'une fiche de cours claire et structurée, en complément des QCM et flashcards.',
+    color: '#0EA5E9',
+  },
   {
     icon: 'Brain',
     title: 'QCM Adaptatifs',
@@ -12,23 +26,22 @@ export const FEATURES = [
     color: '#8B5CF6',
   },
   {
-    icon: 'BarChart3',
-    title: 'Suivi de progression',
-    description: 'Visualise ta progression globale en pourcentage. Identifie tes forces et tes lacunes chapitre par chapitre.',
+    icon: 'Headphones',
+    title: 'Audios',
+    description: 'Écoute tes leçons en audio, idéal pour réviser en déplacement.',
+    color: '#F97316',
+  },
+  {
+    icon: 'Mindmap',
+    title: 'Mindmap',
+    description: 'Visualise chaque leçon d\'un coup d\'œil grâce à des cartes mentales qui relient les notions clés.',
     color: '#10B981',
   },
   {
-    icon: 'BookOpen',
-    title: 'Contenus multimédias',
-    description: 'Cours, résumés, audio, vidéo et QCM — 5 formats pour apprendre selon ton style. Préparation complète à ton concours.',
-    color: '#F5C842',
-  },
-  {
-    icon: 'Sparkles',
-    title: 'Assistant IA Tekkil',
-    description: 'Pose tes questions sur le cours en temps réel. L\'IA contextuelle t\'explique avec des exemples concrets.',
+    icon: 'Training',
+    title: 'Entraînement',
+    description: 'Des séries d\'exercices progressives, rubrique par rubrique, avec correction détaillée pour ancrer chaque notion.',
     color: '#F59E0B',
-    badge: 'Bientôt disponible',
   },
   {
     icon: 'Trophy',
@@ -37,30 +50,12 @@ export const FEATURES = [
     color: '#EF4444',
   },
   {
-    icon: 'WifiOff',
-    title: 'Mode hors-ligne',
-    description: 'Télécharge tes modules et révise sans connexion. Parfait pour les zones à faible connectivité au Sénégal.',
-    color: '#06B6D4',
-  },
-  {
     icon: 'FileCheck',
     title: 'Annales corrigées',
     description: 'Consulte les sujets des sessions précédentes avec leurs corrigés détaillés pour t\'entraîner en conditions réelles.',
     color: '#EC4899',
   },
-  {
-    icon: 'FileText',
-    title: 'Fiches de lecture',
-    description: 'Chaque rubrique dispose d\'une fiche de cours claire et structurée, en complément des QCM et flashcards.',
-    color: '#0EA5E9',
-  },
-  {
-    icon: 'Headphones',
-    title: 'Audios des packs',
-    description: 'Écoute les résumés audio de chaque module, idéal pour réviser en déplacement.',
-    color: '#F97316',
-  },
-] as const
+]
 
 export const STEPS = [
   {

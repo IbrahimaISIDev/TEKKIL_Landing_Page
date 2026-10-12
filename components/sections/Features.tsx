@@ -57,7 +57,7 @@ export function Features() {
               description={feature.description}
               color={feature.color}
               index={index}
-              badge={'badge' in feature ? feature.badge : undefined}
+              badge={feature.badge}
             />
           ))}
         </div>

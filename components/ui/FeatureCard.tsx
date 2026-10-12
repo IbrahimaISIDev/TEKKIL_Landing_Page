@@ -3,15 +3,13 @@
 import { motion } from 'framer-motion'
 import {
   Cpu,
-  ChartSquare,
   Layers,
-  BookOpen,
-  Sparkles,
-  WifiOff,
   CupStar,
   FileCheck,
   FileText,
   Headphones,
+  Hierarchy,
+  Dumbbell,
   ArrowRight,
   type IconComponent,
 } from 'reicon-react'
@@ -27,15 +25,13 @@ interface FeatureCardProps {
 
 const iconMap: Record<string, IconComponent> = {
   Brain: Cpu,
-  BarChart3: ChartSquare,
   Layers,
-  BookOpen,
-  Sparkles,
-  WifiOff,
   Trophy: CupStar,
   FileCheck,
   FileText,
   Headphones,
+  Mindmap: Hierarchy,
+  Training: Dumbbell,
 }
 
 export function FeatureCard({ icon, title, description, color, index, badge }: FeatureCardProps) {
