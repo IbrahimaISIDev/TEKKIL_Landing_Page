@@ -110,7 +110,7 @@ export default async function OGImage() {
             lineHeight: 1.5,
           }}
         >
-          QCM adaptatifs · Flashcards · Assistant IA · Classement en direct
+          QCM adaptatifs · Flashcards · Examens blancs · Classement en direct
         </div>
 
         {/* Feature pills */}

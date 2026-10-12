@@ -67,7 +67,7 @@ export const STEPS = [
   {
     number: '02',
     title: 'Entraîne-toi intelligemment',
-    description: 'Lance des sessions de QCM chronométrés ou révise avec les flashcards. Pose tes questions à l\'assistant IA Tekkil.',
+    description: 'Lance des sessions de QCM chronométrés ou révise avec les flashcards.',
     icon: 'Zap',
   },
   {
@@ -87,15 +87,15 @@ export const STATS = [
 export const FAQ_ITEMS = [
   {
     question: 'TEKKIL est-il gratuit ?',
-    answer: 'TEKKIL te donne un aperçu gratuit de 3 contenus par pack pour démarrer ta préparation. L\'achat d\'un pack débloque ensuite automatiquement l\'intégralité de son contenu — cours, QCM, flashcards, annales corrigées et assistant IA.',
+    answer: 'TEKKIL te donne un aperçu gratuit de 3 contenus par pack pour démarrer ta préparation. L\'achat d\'un pack débloque ensuite automatiquement l\'intégralité de son contenu — cours, QCM, flashcards et annales corrigées.',
   },
   {
     question: 'Quels concours sont couverts par TEKKIL ?',
     answer: 'TEKKIL couvre les épreuves psychotechniques des concours de niveau national au Sénégal — CREM, ENA, fonctions publiques, grandes écoles, et bien d\'autres. Les concours ouverts changent selon les sessions (le CREM est actuellement ouvert). Les épreuves sont organisées en deux filières : Verbal (synonymes, analogies, intrus…) et Numérique (calcul, séries logiques…).',
   },
   {
-    question: 'Comment fonctionne l\'assistant IA Tekkil ?',
-    answer: 'L\'assistant IA Tekkil est contextuel : il connaît le cours que tu étudies et répond à tes questions en temps réel avec des explications claires, des exemples concrets et des jurisprudences pertinentes.',
+    question: 'L\'assistant IA Tekkil est-il disponible ?',
+    answer: 'Bientôt ! L\'assistant IA Tekkil est en cours de préparation. Il connaîtra le cours que tu étudies et répondra à tes questions avec des explications claires et des exemples concrets.',
   },
   {
     question: 'Est-ce que TEKKIL fonctionne sans connexion internet ?',

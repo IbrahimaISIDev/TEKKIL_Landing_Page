@@ -74,7 +74,7 @@ const CONCOURS_PACKS: ConcoursPack[] = [
       { title: 'Examens Blancs Chronométrés', description: 'Simulations conformes au temps réel de l’épreuve avec calcul immédiat du score.' },
     ],
     highlights: [
-      'Assistant IA disponible 24h/24 pour expliquer chaque correction',
+      'Assistant IA pour expliquer chaque correction (bientôt disponible)',
       'Mode révision hors-ligne pour réviser sans connexion',
       'Classement national en direct pour mesurer son niveau',
     ],
@@ -101,7 +101,7 @@ const CONCOURS_PACKS: ConcoursPack[] = [
       { title: 'Culture Générale & Enjeux Contemporains', description: 'Méthodologie de dissertation, grands débats politiques et géopolitiques.' },
       { title: 'Note de Synthèse & Cas Pratiques', description: 'Techniques de rédaction administrative et traitement de dossiers complexes.' },
       { title: 'Annales Officielles Corrigées', description: 'Décorticage minutieux des épreuves écrites et orales de l’ENA.' },
-      { title: 'Tuteur IA en Droit Administratif', description: 'Explications juridiques instantanées avec références aux textes de loi.' },
+      { title: 'Tuteur IA en Droit Administratif (bientôt disponible)', description: 'Explications juridiques instantanées avec références aux textes de loi.' },
     ],
     highlights: [
       'Base juridique sénégalaise intégrée avec jurisprudences récentes',
@@ -222,7 +222,7 @@ const CONCOURS_PACKS: ConcoursPack[] = [
     highlights: [
       'Tests de jugement situationnel et psychologie pratique',
       'Banque de questions de culture générale mise à jour chaque session',
-      'Assistance IA pour maîtriser les bases du droit pénal usuel',
+      'Assistance IA pour maîtriser les bases du droit pénal usuel (bientôt disponible)',
     ],
   },
 ]
@@ -325,7 +325,7 @@ export function Pricing() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="text-slate-600 text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl mx-auto"
           >
-            Chaque dossier réunit le programme officiel, les QCM adaptatifs, les annales corrigées et un tuteur IA dédié. Clique sur un pack pour en consulter le détail complet.
+            Chaque dossier réunit le programme officiel, les QCM adaptatifs, les annales corrigées et, bientôt, un tuteur IA dédié. Clique sur un pack pour en consulter le détail complet.
           </motion.p>
 
           {/* Interactive Filter Pills */}
@@ -626,7 +626,7 @@ export function Pricing() {
                         <Check className="w-2.5 h-2.5 text-[#0D9488] stroke-[3]" />
                       </div>
                       <span className="font-medium leading-snug">
-                        Tuteur IA disponible 24h/24 & examens blancs chronométrés
+                        Examens blancs chronométrés & tuteur IA (bientôt disponible)
                       </span>
                     </div>
                     <div className="flex items-start gap-2.5 text-xs text-slate-700">

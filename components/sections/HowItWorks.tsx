@@ -27,7 +27,7 @@ const TIMELINE_STEPS: StepItem[] = [
     number: '02',
     badge: 'Étape 02',
     title: 'Entraîne-toi intelligemment',
-    description: 'Enchaîne les QCM officiels chronométrés et pose tes questions au tuteur IA.',
+    description: 'Enchaîne les QCM officiels chronométrés. Bientôt : un tuteur IA pour répondre à tes questions.',
     icon: Zap,
     color: '#F59E0B',
     accentBg: '#FEFBF6',

@@ -6,7 +6,7 @@ import type { MouseEvent } from 'react'
 import { Sparkles, MessageSquare, Lightbulb, BookOpen, FileCheck, HelpCircle } from 'lucide-react'
 
 const FLOATING_CARDS = [
-  { icon: MessageSquare, text: 'Explications de cours 24h/24' },
+  { icon: MessageSquare, text: 'Explications de cours' },
   { icon: BookOpen, text: 'Textes de loi & jurisprudence' },
   { icon: Lightbulb, text: 'Méthodologie & cas pratiques' },
   { icon: FileCheck, text: 'Corrections détaillées de QCM' },
@@ -83,7 +83,7 @@ export function AIAssistant() {
             className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200/90 shadow-2xs text-[#0D9488] text-xs font-bold uppercase tracking-wider mb-4"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#0D9488]" />
-            <span>Assistant Intelligent 24/7</span>
+            <span>Bientôt disponible</span>
           </motion.div>
 
           <motion.h2
@@ -106,7 +106,7 @@ export function AIAssistant() {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="text-slate-600 text-sm sm:text-base leading-relaxed max-w-xl mx-auto"
           >
-            Pose tes questions en temps réel. Tekkil AI comprend les programmes officiels de tes concours, t&apos;explique les concepts et résout tes blocages avec des exemples concrets.
+            Bientôt, tu pourras poser tes questions en temps réel. Tekkil AI comprendra les programmes officiels de tes concours, t&apos;expliquera les concepts et t&apos;aidera à résoudre tes blocages avec des exemples concrets.
           </motion.p>
         </div>
 
