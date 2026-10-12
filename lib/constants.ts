@@ -120,13 +120,6 @@ export const CONTACT_CHANNELS = [
     description: 'Réponse sous 24h',
   },
   {
-    icon: 'MessageCircle',
-    title: 'WhatsApp',
-    value: '+221 XX XXX XX XX',
-    href: 'https://wa.me/221XXXXXXXXX',
-    description: 'Assistance directe',
-  },
-  {
     icon: 'Instagram',
     title: 'Instagram',
     value: '@tekkil',
@@ -141,11 +134,11 @@ export const CONTACT_CHANNELS = [
     description: 'Communauté & entraide',
   },
   {
-    icon: 'Youtube',
-    title: 'YouTube',
+    icon: 'TikTok',
+    title: 'TikTok',
     value: '@tekkil',
-    href: 'https://youtube.com/@tekkil',
-    description: 'Tutoriels & démonstrations',
+    href: 'https://tiktok.com/@tekkil',
+    description: 'Astuces & vidéos courtes',
   },
 ] as const
 

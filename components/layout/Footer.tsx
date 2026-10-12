@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { Instagram, CheckCircle, ArrowRight } from 'reicon-react'
-import { Facebook, Youtube, XTwitter, Linkedin, TikTok } from '@/components/ui/BrandIcons'
+import { Facebook, TikTok } from '@/components/ui/BrandIcons'
 import Image from 'next/image'
 import { FOOTER_LINKS } from '@/lib/constants'
 import { WAITLIST_API_URL } from '@/lib/urls'
@@ -16,10 +16,8 @@ type SocialLink = {
 }
 
 const socialLinks: SocialLink[] = [
-  { label: 'X', handle: '@tekkil', href: 'https://twitter.com/tekkil_app', icon: <XTwitter size={14} /> },
   { label: 'Instagram', handle: '@tekkil', href: 'https://instagram.com/tekkil', icon: <Instagram size={14} /> },
   { label: 'Facebook', handle: '@tekkil', href: 'https://facebook.com/tekkil', icon: <Facebook size={14} /> },
-  { label: 'YouTube', handle: '@tekkil', href: 'https://youtube.com/@tekkil', icon: <Youtube size={14} /> },
   { label: 'TikTok', handle: '@tekkil', href: 'https://tiktok.com/@tekkil', icon: <TikTok size={14} /> },
 ]
 
@@ -155,15 +153,17 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Massive brand wordmark at bottom, fully visible */}
-        {/* aria-hidden + div (pas h1) : purement décoratif, la page a déjà son h1 */}
-        <div aria-hidden="true" className="mt-8 md:mt-12 w-full flex justify-center pointer-events-none select-none z-0 pb-[2vw]">
-          <div
-            className="text-[#111] font-black tracking-[-0.02em] w-full text-center uppercase whitespace-nowrap"
-            style={{ fontSize: '18vw', lineHeight: '0.85' }}
-          >
-            TEKKIL
-          </div>
+        {/* Logo officiel en grand en bas de page (icône + mot-symbole, couleurs de marque) */}
+        {/* aria-hidden : purement décoratif, la page a déjà son h1 et le logo en tête du footer */}
+        <div aria-hidden="true" className="mt-8 md:mt-12 w-full flex justify-center pointer-events-none select-none z-0 pb-[2vw] px-6 sm:px-8 xl:px-16">
+          {/* eslint-disable-next-line @next/next/no-img-element -- SVG vectoriel, aucune optimisation next/image utile */}
+          <img
+            src="/brand/tekkil-logo-horizontal.svg"
+            alt=""
+            width={621}
+            height={160}
+            className="w-full max-w-[1400px] h-auto"
+          />
         </div>
 
         {/* Tiny Bottom Copyright Bar */}

@@ -1,17 +1,16 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Envelope, MessageCircle, Instagram } from 'reicon-react'
-import { Facebook, Youtube, type AnyIcon } from '@/components/ui/BrandIcons'
+import { Envelope, Instagram } from 'reicon-react'
+import { Facebook, TikTok, type AnyIcon } from '@/components/ui/BrandIcons'
 import { Sparkles, HeartHandshake } from 'lucide-react'
 import { CONTACT_CHANNELS } from '@/lib/constants'
 
 const iconMap: Record<string, AnyIcon> = {
   Mail: Envelope,
-  MessageCircle,
   Instagram,
   Facebook,
-  Youtube,
+  TikTok,
 }
 
 export function Contact() {
@@ -98,7 +97,7 @@ export function Contact() {
         </div>
 
         {/* ─── Contact Cards Grid ─── */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-5">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {CONTACT_CHANNELS.map((channel, index) => {
             const Icon = iconMap[channel.icon] || Envelope
 
