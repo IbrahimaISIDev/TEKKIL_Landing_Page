@@ -153,15 +153,15 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Logo officiel en grand en bas de page (icône + mot-symbole, couleurs de marque) */}
+        {/* Mot-symbole officiel en grand en bas de page (sans l'icône livre, couleurs de marque) */}
         {/* aria-hidden : purement décoratif, la page a déjà son h1 et le logo en tête du footer */}
         <div aria-hidden="true" className="mt-8 md:mt-12 w-full flex justify-center pointer-events-none select-none z-0 pb-[2vw] px-6 sm:px-8 xl:px-16">
           {/* eslint-disable-next-line @next/next/no-img-element -- SVG vectoriel, aucune optimisation next/image utile */}
           <img
-            src="/brand/tekkil-logo-horizontal.svg"
+            src="/brand/tekkil-wordmark.svg"
             alt=""
-            width={621}
-            height={160}
+            width={645}
+            height={108}
             className="w-full max-w-[1400px] h-auto"
           />
         </div>
