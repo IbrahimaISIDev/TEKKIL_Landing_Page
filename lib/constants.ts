@@ -84,7 +84,7 @@ export const STEPS = [
 ] as const
 
 export const STATS = [
-  { value: 40000, suffix: '+', label: 'Questions disponibles' },
+  { value: 50000, suffix: '+', label: 'Questions disponibles' },
   { value: 100, suffix: '+', label: 'Rubriques' },
   { value: 100, suffix: '%', label: 'Mobile-first' },
 ] as const

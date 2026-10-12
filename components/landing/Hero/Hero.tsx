@@ -264,7 +264,7 @@ export function Hero() {
                   La plateforme intelligente qui s&apos;adapte à ton niveau.{' '}
                   <span className="text-black font-bold">QCM adaptatifs</span>,{' '}
                   <span className="text-black font-bold">flashcards mémorielles</span>,{' '}
-                  <span className="inline-block bg-white/60 px-1.5 rounded-md text-[#1A2672] font-extrabold shadow-sm">assistant IA 24/7</span> et suivi de progression pour maîtriser le programme et réussir du premier coup.
+                  <span className="inline-block bg-white/60 px-1.5 rounded-md text-[#1A2672] font-extrabold shadow-sm">assistant IA (bientôt disponible)</span> et suivi de progression pour maîtriser le programme et réussir du premier coup.
                 </motion.p>
 
 
@@ -314,21 +314,6 @@ export function Hero() {
                 {/* High-Contrast Multi-Color Mesh Aura behind the phone stack */}
                 <div aria-hidden className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] h-[80%] rounded-full bg-gradient-to-br from-[#8B5CF6]/35 via-[#14B09C]/35 to-[#3B82F6]/35 blur-[90px] pointer-events-none" />
 
-                {/* Floating Micro Badge (Top-Right): Success Rate */}
-                <motion.div
-                  initial={{ opacity: 0, y: -10, scale: 0.8 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{ duration: 0.5, delay: 0.35 }}
-                  className="hidden sm:inline-flex items-center gap-2 absolute top-4 -right-1 sm:right-2 md:right-4 z-30 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_8px_24px_rgba(0,0,0,0.12)] select-none pointer-events-none"
-                >
-                  <span className="flex h-2 w-2 relative">
-                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
-                    <span className="relative inline-flex rounded-full h-2 w-2 bg-[#10B981]" />
-                  </span>
-                  <span className="text-xs font-black text-slate-900">94%</span>
-                  <span className="text-[11px] font-semibold text-slate-600">taux de réussite</span>
-                </motion.div>
-
                 {/* Floating Micro Badge (Bottom-Left): Curated Content */}
                 <motion.div
                   initial={{ opacity: 0, y: 10, scale: 0.8 }}
@@ -337,8 +322,8 @@ export function Hero() {
                   className="hidden sm:inline-flex items-center gap-2 absolute bottom-6 -left-1 sm:left-2 md:left-4 z-30 px-3.5 py-1.5 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 shadow-[0_8px_24px_rgba(0,0,0,0.12)] select-none pointer-events-none"
                 >
                   <Sparkle size={14} className="text-[#F59E0B]" />
-                  <span className="text-xs font-black text-slate-900">+12 000</span>
-                  <span className="text-[11px] font-semibold text-slate-600">QCM certifiés</span>
+                  <span className="text-xs font-black text-slate-900">50 000+</span>
+                  <span className="text-[11px] font-semibold text-slate-600">questions disponibles</span>
                 </motion.div>
 
                 {PHONES.map((phone) => (
