@@ -1,11 +1,25 @@
 'use client';
 
-import React from 'react';
+import React, { useSyncExternalStore } from 'react';
 import { motion } from 'framer-motion';
 import FolderFloat from '@/components/ui/FolderFloat';
 import ScrollReveal from '@/components/ui/ScrollReveal';
 
+// Sous 640 px, les 8 outils tiennent dans l'écran sur 3 rangées au lieu de 2.
+const NARROW_QUERY = '(max-width: 639px)';
+const subscribeNarrow = (onChange: () => void) => {
+  const mq = window.matchMedia(NARROW_QUERY);
+  mq.addEventListener('change', onChange);
+  return () => mq.removeEventListener('change', onChange);
+};
+
 export function ExploreTekkil() {
+  const isNarrow = useSyncExternalStore(
+    subscribeNarrow,
+    () => window.matchMedia(NARROW_QUERY).matches,
+    () => false
+  );
+
   const tekkilFeatures = [
     'Fiches de leçon',
     'Audios',
@@ -66,7 +80,7 @@ export function ExploreTekkil() {
           whileInView={{ opacity: 1, scale: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="relative z-10 flex justify-center mt-12 md:mt-16 mb-8 md:mb-12 h-[200px]"
+          className="relative z-10 flex justify-center mt-24 sm:mt-12 md:mt-16 mb-8 md:mb-12 h-[200px]"
         >
           {/* Subtle pedestal / shadow for the folder to rest on */}
           <div className="absolute bottom-[-10px] w-[260px] h-[15px] bg-[#2b326f]/10 rounded-[100%] blur-[8px]" />
@@ -89,7 +103,7 @@ export function ExploreTekkil() {
             width={240}
             height={168}
             radius={16}
-            spread={240}
+            spread={isNarrow ? 160 : 240}
             lift={30}
             tilt={10}
             flapAngle={38}
