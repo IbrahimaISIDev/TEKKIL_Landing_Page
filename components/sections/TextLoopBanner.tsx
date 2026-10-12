@@ -7,7 +7,7 @@ export function TextLoopBanner() {
     <section className="bg-white pb-8 md:pb-12 lg:pb-16 w-full overflow-hidden select-none">
       <div className="w-full h-[120px] sm:h-[140px] md:h-[180px]">
         <TextLoop
-          text="Concours ✦ Réussite ✦ Sénégal ✦ Excellence"
+          text="TEKKIL ne vous promet pas la réussite au concours. TEKKIL vous donne les moyens d’y parvenir : des contenus pédagogiques de qualité, une méthode efficace et un entraînement intensif."
           shape="wave"
           speed={75}
           direction="forward"
@@ -16,7 +16,7 @@ export function TextLoopBanner() {
           fontSize={20}
           fontWeight={750}
           letterSpacing={2}
-          uppercase
+          uppercase={false}
           color="#ffffffff"
           ribbon
           ribbonColor="#25b09d"

@@ -163,7 +163,10 @@ const TextLoop = ({
       if (!length) return;
 
       const reps = unitWidth > 0 ? Math.max(1, Math.round(length / unitWidth)) : 1;
-      setMetrics(prev => (prev.length === length && prev.reps === reps ? prev : { length, reps }));
+      // Texte plus long que la vague : on boucle sur sa largeur naturelle au
+      // lieu de le comprimer (textLength) jusqu'au chevauchement des lettres.
+      const period = Math.max(length, unitWidth);
+      setMetrics(prev => (prev.length === period && prev.reps === reps ? prev : { length: period, reps }));
     };
 
     measure();
