@@ -11,6 +11,8 @@ import { AIAssistant } from '@/components/sections/AIAssistant'
 import { Leaderboard } from '@/components/sections/Leaderboard'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { Pricing } from '@/components/sections/Pricing'
+import { ConcoursLinks } from '@/components/sections/ConcoursLinks'
+import { MiniQuiz } from '@/components/sections/MiniQuiz'
 import { HowItWorks } from '@/components/sections/HowItWorks'
 import { Download } from '@/components/sections/Download'
 import { FAQ } from '@/components/sections/FAQ'
@@ -38,10 +40,12 @@ export default function Home() {
       <HowItWorks />
       <Features />
       <AppShowcase />
+      <MiniQuiz />
       <Leaderboard />
       <AIAssistant />
       <Testimonials />
       <Pricing />
+      <ConcoursLinks />
       <FAQ />
       <Download />
       <Contact />
