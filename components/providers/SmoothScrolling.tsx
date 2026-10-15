@@ -1,6 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
+import { MotionConfig } from 'framer-motion'
 import Lenis from 'lenis'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
@@ -52,7 +53,7 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
         const el = document.querySelector(href) as HTMLElement | null
         if (el) {
           e.preventDefault()
-          lenis.scrollTo(el, { offset: -90, duration: 0.7 })
+          lenis.scrollTo(el, { duration: 0.7 })
         }
       }
     }
@@ -67,5 +68,7 @@ export function SmoothScrolling({ children }: { children: React.ReactNode }) {
     }
   }, [])
 
-  return <>{children}</>
+  // reducedMotion="user" : framer-motion coupe les animations de transformation
+  // (glissements, zooms) quand l'appareil demande moins d'animations.
+  return <MotionConfig reducedMotion="user">{children}</MotionConfig>
 }

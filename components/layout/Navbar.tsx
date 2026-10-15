@@ -82,7 +82,7 @@ export function Navbar() {
       if (href.startsWith('#')) {
         const el = document.querySelector(href) as HTMLElement | null
         if (el && window.__lenis) {
-          window.__lenis.scrollTo(el, { offset: -90, duration: 0.7 })
+          window.__lenis.scrollTo(el, { duration: 0.7 })
           return
         }
       }

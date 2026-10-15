@@ -134,6 +134,10 @@
 
   html {
     scroll-behavior: smooth;
+    /* Hauteur de la Navbar fixe : une ancre ne cache pas le titre de sa
+       section. Lenis lit aussi cette valeur dans scrollTo(el) ; c'est donc
+       le seul réglage, avec ou sans Lenis (prefers-reduced-motion). */
+    scroll-padding-top: 90px;
   }
 
   body {
@@ -313,6 +317,9 @@
 
 /* Mobile optimizations */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
