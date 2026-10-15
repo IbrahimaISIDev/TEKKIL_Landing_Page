@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: 'TEKKIL — Prépare ton concours national sénégalais',
   description:
-    'La plateforme intelligente de préparation aux concours nationaux au Sénégal. QCM adaptatifs, révision espacée, leaderboard 3D.',
+    'La plateforme intelligente de préparation aux concours nationaux au Sénégal. QCM adaptatifs, flashcards, examens blancs et classement par concours.',
   keywords: [
     'concours sénégal',
     'préparation concours',

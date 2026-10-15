@@ -115,7 +115,7 @@ export default async function OGImage() {
 
         {/* Feature pills */}
         <div style={{ display: 'flex', gap: 12 }}>
-          {['10 000+ Questions', '13 Sous-tests', 'Paiement Mobile Money', '100% Web'].map((item) => (
+          {['50 000+ Questions', '100+ Rubriques', 'Paiement Mobile Money', 'Web · Android · iOS'].map((item) => (
             <div
               key={item}
               style={{
