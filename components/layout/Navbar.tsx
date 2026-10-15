@@ -7,13 +7,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { NAV_LINKS } from '@/lib/constants'
 import { LOGIN_URL } from '@/lib/urls'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { JellyRadio } from '@/components/ui/JellyRadio'
 export function Navbar() {
   const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [activeSection, setActiveSection] = useState<string>(NAV_LINKS[0].href)
+  // Sections de l'accueil : aucun onglet actif sur les sous-pages (/privacy, /concours/…).
+  const pathname = usePathname()
+  const currentSection = pathname === '/' ? activeSection : ''
 
   // High-performance scroll listener for threshold
   useEffect(() => {
@@ -83,6 +86,11 @@ export function Navbar() {
         const el = document.querySelector(href) as HTMLElement | null
         if (el && window.__lenis) {
           window.__lenis.scrollTo(el, { duration: 0.7 })
+          return
+        }
+        // Sous-page (/privacy, /concours/…) : la section est sur l'accueil.
+        if (!el) {
+          router.push(`/${href}`)
           return
         }
       }
@@ -274,7 +282,7 @@ export function Navbar() {
               >
                 <JellyRadio
                   items={NAV_LINKS.map(link => ({ value: link.href, label: link.label }))}
-                  value={activeSection}
+                  value={currentSection}
                   onChange={(value) => handleLinkClick(value)}
                   chipColor="transparent"
                   activeColor="#ffffff"
@@ -357,7 +365,7 @@ export function Navbar() {
               {/* Navigation Links */}
               <div className="flex flex-col gap-2 pt-2">
                 {NAV_LINKS.map((link, i) => {
-                  const isActive = activeSection === link.href
+                  const isActive = currentSection === link.href
                   return (
                     <motion.a
                       key={link.href}

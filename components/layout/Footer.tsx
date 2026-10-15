@@ -5,6 +5,7 @@ import { motion } from 'framer-motion'
 import { Instagram, CheckCircle, ArrowRight } from 'reicon-react'
 import { Facebook, TikTok } from '@/components/ui/BrandIcons'
 import Image from 'next/image'
+import { usePathname } from 'next/navigation'
 import { FOOTER_LINKS } from '@/lib/constants'
 import { WAITLIST_API_URL } from '@/lib/urls'
 
@@ -22,6 +23,9 @@ const socialLinks: SocialLink[] = [
 ]
 
 export function Footer() {
+  // Ancres de l'accueil : depuis une sous-page (/privacy, /concours/…), y retourner.
+  const pathname = usePathname()
+  const toSection = (href: string) => (href.startsWith('#') && pathname !== '/' ? `/${href}` : href)
   const [email, setEmail] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
   const [currentTime, setCurrentTime] = useState('--:--')
@@ -100,7 +104,7 @@ export function Footer() {
             <ul className="space-y-3">
               {FOOTER_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a href={link.href} className="group inline-flex items-center text-[14px] text-[#333] hover:text-[#14B09C] font-medium transition-colors duration-200">
+                  <a href={toSection(link.href)} className="group inline-flex items-center text-[14px] text-[#333] hover:text-[#14B09C] font-medium transition-colors duration-200">
                     <span className="w-0 group-hover:w-4 h-[1.5px] bg-[#14B09C] mr-0 group-hover:mr-2 transition-all duration-300" />
                     {link.label}
                   </a>
@@ -141,7 +145,7 @@ export function Footer() {
             </a>
 
             {/* S'inscrire */}
-            <a href="#download" className="group block p-5 rounded-2xl bg-white/50 backdrop-blur-sm border border-black/[0.04] hover:border-[#27316F]/30 hover:shadow-[0_4px_20px_rgba(39,49,111,0.12)] transition-all duration-300">
+            <a href={toSection('#download')} className="group block p-5 rounded-2xl bg-white/50 backdrop-blur-sm border border-black/[0.04] hover:border-[#27316F]/30 hover:shadow-[0_4px_20px_rgba(39,49,111,0.12)] transition-all duration-300">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[18px] md:text-[20px] font-semibold text-[#27316F] tracking-tight">S&apos;inscrire</span>
                 <span className="w-8 h-8 rounded-full bg-[#27316F] text-white flex items-center justify-center group-hover:scale-110 group-hover:rotate-[-45deg] transition-all duration-300">

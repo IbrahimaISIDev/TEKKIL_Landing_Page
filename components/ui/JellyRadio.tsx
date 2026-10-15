@@ -90,10 +90,10 @@ export function JellyRadio({
   const list = items.map((it) => (typeof it === 'string' ? { value: it, label: it } : it));
   const [inner, setInner] = useState(() => defaultValue ?? list[0]?.value);
   const current = value ?? inner;
-  const at = Math.max(
-    0,
-    list.findIndex((it) => it.value === current)
-  );
+  const found = list.findIndex((it) => it.value === current);
+  // Valeur contrôlée absente de la liste (ex. Navbar sur une sous-page) :
+  // aucun onglet actif (-1) au lieu de retomber sur le premier.
+  const at = value !== undefined && found === -1 ? -1 : Math.max(0, found);
   const reduce = useReducedMotion();
   const groupRef = useRef<HTMLDivElement>(null);
   const chipRefs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -116,6 +116,15 @@ export function JellyRadio({
 
   const apply = (sel: number, instant?: boolean) => {
     const C = cfg.current;
+    if (sel < 0) {
+      for (let i = 0; i < C.count; i++) {
+        const mv = mvFor(i);
+        mv.x.jump(0);
+        mv.sx.jump(1);
+        mv.sy.jump(1);
+      }
+      return;
+    }
     const group = groupRef.current;
     const rtl = group ? getComputedStyle(group).direction === 'rtl' : false;
     const push = ((widths.current[sel] ?? 0) * C.swell) / 2 + C.barge;
@@ -245,7 +254,7 @@ export function JellyRadio({
           type="button"
           role="radio"
           aria-checked={i === at}
-          tabIndex={i === at ? 0 : -1}
+          tabIndex={i === Math.max(at, 0) ? 0 : -1}
           disabled={disabled || !!it.disabled}
           className="jelly-radio__chip"
           data-on={i === at ? 'true' : 'false'}
