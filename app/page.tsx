@@ -26,16 +26,18 @@ export default function Home() {
       <AboutUs />
       <Stats />
       <TextLoopBanner />
+      {/* Ordre du parcours : comprendre → voir → preuve → offre → rassurer.
+          NAV_LINKS (lib/constants.ts) suit cet ordre : le scrollspy de la
+          Navbar en dépend. */}
+      <HowItWorks />
       <Features />
       <AppShowcase />
-      <AIAssistant />
       <Leaderboard />
-
-      <Pricing />
-      <HowItWorks />
-      <Download />
-      <FAQ />
+      <AIAssistant />
       <Testimonials />
+      <Pricing />
+      <FAQ />
+      <Download />
       <Contact />
       <Footer />
       <ScrollToTop />

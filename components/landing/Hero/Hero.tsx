@@ -289,7 +289,7 @@ export function Hero() {
 
                   {/* Secondary CTA (Glass White Pill) */}
                   <a
-                    href="#comment-ca-marche"
+                    href="#how-it-works"
                     className="group relative inline-flex items-center justify-center gap-3 px-6 sm:px-7 py-3.5 sm:py-4 rounded-full text-[15px] font-medium text-[#111] bg-white/90 hover:bg-white backdrop-blur-md border border-white/60 shadow-[0_4px_16px_rgba(0,0,0,0.04)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] w-full sm:w-auto text-center"
                   >
                     <span className="w-6 h-6 rounded-full bg-black/5 group-hover:bg-[#14B09C]/10 flex items-center justify-center transition-colors duration-300 shrink-0">
