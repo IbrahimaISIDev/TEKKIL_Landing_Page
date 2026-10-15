@@ -99,7 +99,7 @@ export const FAQ_ITEMS = [
   },
   {
     question: 'Est-ce que TEKKIL fonctionne sans connexion internet ?',
-    answer: 'Oui ! Tu peux télécharger tes modules de révision en Wi-Fi et les utiliser ensuite sans connexion. C\'est pensé pour les réalités de connectivité au Sénégal.',
+    answer: 'Pas encore : une connexion internet est nécessaire. TEKKIL est volontairement léger pour rester fluide même avec une connexion modeste (3G/4G), et ta progression est enregistrée au fil de l\'eau.',
   },
   {
     question: 'Sur quels appareils puis-je utiliser TEKKIL ?',

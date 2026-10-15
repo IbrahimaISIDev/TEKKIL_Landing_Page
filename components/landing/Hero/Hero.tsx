@@ -264,7 +264,7 @@ export function Hero() {
                   La plateforme intelligente qui s&apos;adapte à ton niveau.{' '}
                   <span className="text-black font-bold">QCM adaptatifs</span>,{' '}
                   <span className="text-black font-bold">flashcards mémorielles</span>,{' '}
-                  <span className="inline-block bg-white/60 px-1.5 rounded-md text-[#1A2672] font-extrabold shadow-sm">assistant IA (bientôt disponible)</span> et suivi de progression pour maîtriser le programme et réussir du premier coup.
+                  <span className="inline-block bg-white/60 px-1.5 rounded-md text-[#1A2672] font-extrabold shadow-sm">assistant IA (bientôt disponible)</span> et suivi de progression pour maîtriser le programme et mettre toutes les chances de ton côté.
                 </motion.p>
 
 

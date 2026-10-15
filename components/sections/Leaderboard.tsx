@@ -32,11 +32,11 @@ interface LeaderboardItem {
   highlight?: string
 }
 
-const CATEGORIES: { id: CategoryKey; label: string; count: string }[] = [
-  { id: 'all', label: 'National (Tous)', count: '1 240' },
-  { id: 'crem', label: 'CREM 2026', count: '480' },
-  { id: 'ena', label: 'ENA & Magistrature', count: '310' },
-  { id: 'forces', label: 'Police & Douanes', count: '450' },
+const CATEGORIES: { id: CategoryKey; label: string }[] = [
+  { id: 'all', label: 'National (Tous)' },
+  { id: 'crem', label: 'CREM 2026' },
+  { id: 'ena', label: 'ENA & Magistrature' },
+  { id: 'forces', label: 'Police & Douanes' },
 ]
 
 const LEADERBOARD_DATA: Record<TimeframeKey, Record<CategoryKey, LeaderboardItem[]>> = {
@@ -59,7 +59,7 @@ const LEADERBOARD_DATA: Record<TimeframeKey, Record<CategoryKey, LeaderboardItem
       { rank: 1, name: 'Fatou Ndiaye', city: 'Dakar', concours: 'Diplomatie (Cycle A)', score: 95, xp: '16 200 pts', streak: 18, trend: '+1', highlight: 'Major ENA' },
       { rank: 2, name: 'Amadou Kane', city: 'Saint-Louis', concours: 'Administration Générale', score: 93, xp: '14 900 pts', streak: 11, trend: '=' },
       { rank: 3, name: 'Khady Seck', city: 'Dakar', concours: 'Trésor & Finances', score: 88, xp: '12 550 pts', streak: 9, trend: '+3' },
-      { rank: 4, name: 'Abdoulaye Wade', city: 'Fatick', concours: 'ENA Cycle B', score: 86, xp: '11 200 pts', streak: 7, trend: '-1' },
+      { rank: 4, name: 'Abdou Sarr', city: 'Fatick', concours: 'ENA Cycle B', score: 86, xp: '11 200 pts', streak: 7, trend: '-1' },
       { rank: 5, name: 'Salimata Fall', city: 'Thiès', concours: 'Douanes Catégorie A', score: 84, xp: '10 600 pts', streak: 5, trend: '+2' },
     ],
     forces: [
@@ -89,7 +89,7 @@ const LEADERBOARD_DATA: Record<TimeframeKey, Record<CategoryKey, LeaderboardItem
       { rank: 1, name: 'Fatou Ndiaye', city: 'Dakar', concours: 'Diplomatie (Cycle A)', score: 97, xp: '48 200 pts', streak: 30, trend: '=', highlight: 'Major Mensuel' },
       { rank: 2, name: 'Amadou Kane', city: 'Saint-Louis', concours: 'Administration Générale', score: 94, xp: '44 300 pts', streak: 25, trend: '+1' },
       { rank: 3, name: 'Khady Seck', city: 'Dakar', concours: 'Trésor & Finances', score: 90, xp: '39 100 pts', streak: 21, trend: '-1' },
-      { rank: 4, name: 'Abdoulaye Wade', city: 'Fatick', concours: 'ENA Cycle B', score: 87, xp: '34 800 pts', streak: 17, trend: '+2' },
+      { rank: 4, name: 'Abdou Sarr', city: 'Fatick', concours: 'ENA Cycle B', score: 87, xp: '34 800 pts', streak: 17, trend: '+2' },
       { rank: 5, name: 'Salimata Fall', city: 'Thiès', concours: 'Douanes Catégorie A', score: 85, xp: '32 400 pts', streak: 14, trend: '=' },
     ],
     forces: [
@@ -117,9 +117,9 @@ const FEATURE_POINTS = [
   },
   {
     icon: Layers,
-    title: 'Filtres par concours & région',
-    description: 'Classement national, par filière (CREM, ENA, Police) et par académie.',
-    badge: '14 Régions',
+    title: 'Classement par concours',
+    description: 'Compare-toi aux candidats qui préparent le même concours que toi.',
+    badge: 'Par concours',
   },
 ]
 
@@ -206,8 +206,10 @@ export function Leaderboard() {
                     <h3 className="text-slate-900 font-bold text-base leading-tight">
                       Classement des Candidats
                     </h3>
+                    {/* Données de démonstration : le dire clairement plutôt que de
+                        laisser croire à de vrais candidats. */}
                     <p className="text-slate-500 text-xs mt-0.5">
-                      Mis à jour après chaque session
+                      Exemple illustratif · noms fictifs
                     </p>
                   </div>
                 </div>
@@ -238,13 +240,9 @@ export function Leaderboard() {
                     </button>
                   </div>
 
-                  {/* Clean Live Beacon */}
-                  <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-200/60 text-[11px] font-semibold text-emerald-700">
-                    <span className="relative flex h-1.5 w-1.5">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-500 opacity-75" />
-                      <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-600" />
-                    </span>
-                    <span>En direct</span>
+                  {/* Badge « Aperçu » (et non « En direct ») : classement de démonstration */}
+                  <div className="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200/70 text-[11px] font-semibold text-slate-600">
+                    <span>Aperçu</span>
                   </div>
                 </div>
               </div>
@@ -274,11 +272,6 @@ export function Leaderboard() {
                         />
                       )}
                       <span className="relative z-10">{cat.label}</span>
-                      <span className={`relative z-10 text-[10px] px-1.5 py-0.2 rounded-md ${
-                        isActive ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500 border border-slate-200/60'
-                      }`}>
-                        {cat.count}
-                      </span>
                     </button>
                   )
                 })}
@@ -419,7 +412,7 @@ export function Leaderboard() {
               <div className="flex items-center justify-between text-xs text-slate-500 pt-2 border-t border-slate-100">
                 <span className="flex items-center gap-1.5">
                   <Users className="w-3.5 h-3.5 text-slate-400" />
-                  <span>1 240 candidats actifs au Sénégal</span>
+                  <span>Ton vrai rang t&apos;attend dans ton espace</span>
                 </span>
                 <a
                   href={LOGIN_URL}
@@ -509,7 +502,7 @@ export function Leaderboard() {
               })}
             </div>
 
-            {/* Concise Verified Proof Banner */}
+            {/* Bandeau d'invitation (pas de statistique non vérifiée) */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -519,7 +512,7 @@ export function Leaderboard() {
             >
               <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>
-                <strong className="text-emerald-950 font-bold">92% des candidats</strong> du Top 100 ont été admis à leur concours en 2025.
+                Le classement réel de ton concours est visible dans ton espace <strong className="text-emerald-950 font-bold">dès ta première série de QCM</strong>.
               </span>
             </motion.div>
 

@@ -75,7 +75,7 @@ const CONCOURS_PACKS: ConcoursPack[] = [
     ],
     highlights: [
       'Assistant IA pour expliquer chaque correction (bientôt disponible)',
-      'Mode révision hors-ligne pour réviser sans connexion',
+      'Révisions espacées pour retenir durablement',
       'Classement national en direct pour mesurer son niveau',
     ],
   },
@@ -105,7 +105,7 @@ const CONCOURS_PACKS: ConcoursPack[] = [
     ],
     highlights: [
       'Base juridique sénégalaise intégrée avec jurisprudences récentes',
-      'Fiches de synthèse prêtes à imprimer ou à consulter hors-ligne',
+      'Fiches de synthèse claires pour réviser l\'essentiel',
       'Feedback instantané sur les exercices de méthodologie',
     ],
   },
@@ -164,7 +164,7 @@ const CONCOURS_PACKS: ConcoursPack[] = [
     highlights: [
       'Modules adaptés aux filières Scientifiques et Littéraires',
       'Flashcards mémo pour retenir les définitions pédagogiques clés',
-      'Téléchargement complet disponible en mode hors-ligne',
+      'Suivi de progression leçon par leçon',
     ],
   },
   {
@@ -634,7 +634,7 @@ export function Pricing() {
                         <Check className="w-2.5 h-2.5 text-[#0D9488] stroke-[3]" />
                       </div>
                       <span className="font-medium leading-snug">
-                        Mode hors-ligne complet pour réviser sans connexion
+                        Léger et fluide, même avec une connexion modeste
                       </span>
                     </div>
                   </div>

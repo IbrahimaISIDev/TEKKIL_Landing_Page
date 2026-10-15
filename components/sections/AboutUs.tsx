@@ -40,7 +40,7 @@ const PILLARS: Pillar[] = [
     icon: MapPoint,
     title: 'Pensé pour le Sénégal',
     description:
-      'Mode hors-ligne pour les zones à faible connectivité, paiement Mobile Money, et contenus alignés sur les concours réellement ouverts.',
+      'Application légère pensée pour les connexions modestes, paiement Mobile Money, et contenus alignés sur les concours réellement ouverts.',
     tag: '100% Adapté local',
     color: '#25b09d',
     bgGlow: 'rgba(37, 176, 157, 0.1)',
