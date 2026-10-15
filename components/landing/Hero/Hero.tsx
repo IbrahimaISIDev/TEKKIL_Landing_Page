@@ -84,7 +84,7 @@ function ParallaxPhone({
             alt={phone.alt}
             width={phone.width}
             height={phone.height}
-            quality={100}
+            quality={85}
             priority
             sizes="(min-width: 1024px) 300px, 200px"
             draggable={false}

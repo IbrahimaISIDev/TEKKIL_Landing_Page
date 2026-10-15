@@ -38,7 +38,7 @@ export function ExploreTekkil() {
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-100" 
-          style={{ backgroundImage: "url('/ecosystem-bg.png')" }} 
+          style={{ backgroundImage: "url('/ecosystem-bg.webp')" }} 
         />
       </div>
 

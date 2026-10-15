@@ -188,21 +188,21 @@ export function AIAssistant() {
                   alt="Tekkil AI — Assistant contextuel sur iPhone 16 Pro Max"
                   width={1116}
                   height={1980}
-                  quality={100}
-                  priority
+                  quality={85}
                   sizes="(min-width: 768px) 340px, 260px"
                   className="w-full h-auto select-none [filter:drop-shadow(0_10px_20px_rgba(15,23,42,0.08))]"
                   draggable={false}
                 />
 
-                {/* Glass glare clipped to the phone silhouette */}
+                {/* Glass glare clipped to the phone silhouette — masque WebP
+                    allégé (silhouette seule, 15 Ko) au lieu du PNG de 1,1 Mo. */}
                 <motion.div
                   aria-hidden
                   className="absolute inset-0 pointer-events-none mix-blend-soft-light"
                   style={{
                     backgroundImage: glare,
-                    WebkitMaskImage: 'url(/mockup-iphone-ai.png)',
-                    maskImage: 'url(/mockup-iphone-ai.png)',
+                    WebkitMaskImage: 'url(/mockup-iphone-ai-mask.webp)',
+                    maskImage: 'url(/mockup-iphone-ai-mask.webp)',
                     WebkitMaskSize: '100% 100%',
                     maskSize: '100% 100%',
                   }}

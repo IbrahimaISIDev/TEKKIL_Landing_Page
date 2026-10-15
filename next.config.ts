@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
   // Image optimization
   images: {
     formats: ['image/avif', 'image/webp'],
-    qualities: [75, 100],
+    qualities: [75, 85, 100],
   },
   // Security headers
   async headers() {
