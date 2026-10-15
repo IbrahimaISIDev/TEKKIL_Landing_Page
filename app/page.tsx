@@ -16,10 +16,16 @@ import { Download } from '@/components/sections/Download'
 import { FAQ } from '@/components/sections/FAQ'
 import { Contact } from '@/components/sections/Contact'
 import { ScrollToTop } from '@/components/ui/ScrollToTop'
+import { homeStructuredData } from '@/lib/structured-data'
 
 export default function Home() {
   return (
     <main>
+      <script
+        type="application/ld+json"
+        // Contenu statique issu de nos constantes ; « < » échappé par sécurité.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(homeStructuredData).replace(/</g, '\\u003c') }}
+      />
       <Navbar />
       <Hero />
       <ExploreTekkil />
