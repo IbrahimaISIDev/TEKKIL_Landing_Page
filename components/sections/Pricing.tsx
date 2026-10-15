@@ -22,7 +22,7 @@ import {
   Check,
   ArrowLeftRight
 } from 'lucide-react'
-import { REGISTER_URL, LOGIN_URL } from '@/lib/urls'
+import { REGISTER_URL, WAITLIST_API_URL } from '@/lib/urls'
 
 interface PackModule {
   title: string
@@ -47,6 +47,9 @@ interface ConcoursPack {
   tags: string[]
   modules: PackModule[]
   highlights: string[]
+  /** Concours pas encore dans l'app : carte « Bientôt disponible », pas de
+   * chiffres (modules, QCM), inscription à la liste d'attente au lieu du compte. */
+  comingSoon?: boolean
 }
 
 const CONCOURS_PACKS: ConcoursPack[] = [
@@ -140,6 +143,7 @@ const CONCOURS_PACKS: ConcoursPack[] = [
   },
   {
     id: 'fastef',
+    comingSoon: true,
     code: 'FASTEF-26',
     name: 'Pack FASTEF',
     fullName: 'Faculté des Sciences & Technologies de l’Éducation',
@@ -169,6 +173,7 @@ const CONCOURS_PACKS: ConcoursPack[] = [
   },
   {
     id: 'douanes',
+    comingSoon: true,
     code: 'DOUANE-26',
     name: 'Pack Douanes & Trésor',
     fullName: 'Concours Direct des Douanes Sénégalaises',
@@ -198,6 +203,7 @@ const CONCOURS_PACKS: ConcoursPack[] = [
   },
   {
     id: 'police',
+    comingSoon: true,
     code: 'FORCES-26',
     name: 'Pack Police & Gendarmerie',
     fullName: 'Forces de Police & Gendarmerie Nationale',
@@ -439,24 +445,32 @@ export function Pricing() {
 
                       {/* Bottom Meta Row (Image 1 style: "05 Modules" | "+1 800 QCM →") */}
                       <div className="pt-2.5 border-t border-white/[0.08] flex items-end justify-between">
-                        {/* Left: Bold Number + Label */}
-                        <div className="flex items-baseline gap-1.5">
-                          <span 
-                            className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-none"
-                            style={{ fontFamily: 'var(--font-roboto-condensed)' }}
-                          >
-                            {String(pack.modulesCount).padStart(2, '0')}
+                        {pack.comingSoon ? (
+                          <span className="inline-flex items-center gap-1.5 rounded-full border border-[#F9C623]/40 bg-[#F9C623]/10 px-2.5 py-1 text-[11px] sm:text-xs font-semibold text-[#F9C623]">
+                            Bientôt disponible
                           </span>
-                          <span className="text-xs sm:text-sm font-semibold text-white/60">
-                            Modules
-                          </span>
-                        </div>
+                        ) : (
+                          /* Left: Bold Number + Label */
+                          <div className="flex items-baseline gap-1.5">
+                            <span 
+                              className="text-2xl sm:text-3xl font-black text-white tracking-tight leading-none"
+                              style={{ fontFamily: 'var(--font-roboto-condensed)' }}
+                            >
+                              {String(pack.modulesCount).padStart(2, '0')}
+                            </span>
+                            <span className="text-xs sm:text-sm font-semibold text-white/60">
+                              Modules
+                            </span>
+                          </div>
+                        )}
 
                         {/* Right: Quantity / QCM Count */}
                         <div className="flex items-center gap-2">
-                          <span className="text-xs sm:text-sm font-semibold text-white/80 tracking-tight">
-                            {pack.qcmCount}
-                          </span>
+                          {!pack.comingSoon && (
+                            <span className="text-xs sm:text-sm font-semibold text-white/80 tracking-tight">
+                              {pack.qcmCount}
+                            </span>
+                          )}
                           <div className="w-6 h-6 rounded-full bg-white/10 group-hover:bg-white text-white/70 group-hover:text-[#18191B] flex items-center justify-center transition-all duration-200 shadow-2xs">
                             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                           </div>
@@ -495,7 +509,7 @@ export function Pricing() {
             </div>
           </div>
           <a
-            href={LOGIN_URL}
+            href={REGISTER_URL}
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#050814] hover:bg-[#1A2356] text-white text-xs font-bold transition-all shrink-0 shadow-xs"
           >
             <span>Créer un compte candidat</span>
@@ -585,10 +599,10 @@ export function Pricing() {
                     className="text-xl sm:text-2xl font-black text-[#050814] tracking-[-0.03em] leading-tight"
                     style={{ fontFamily: 'var(--font-roboto-condensed)' }}
                   >
-                    Rejoindre le {selectedPack.name}
+                    {selectedPack.comingSoon ? `Le ${selectedPack.name} arrive bientôt` : `Rejoindre le ${selectedPack.name}`}
                   </h3>
                   <p className="text-xs sm:text-[13px] text-slate-500 font-normal leading-relaxed mt-1 max-w-sm mx-auto">
-                    {selectedPack.fullName} • Session 2026
+                    {selectedPack.comingSoon ? `${selectedPack.fullName} • En préparation` : `${selectedPack.fullName} • Session 2026`}
                   </p>
 
                   {/* Matières Clés & Épreuves du Pack (Transférées des cards) */}
@@ -610,7 +624,7 @@ export function Pricing() {
                     className="text-xs font-bold text-[#050814] tracking-tight"
                     style={{ fontFamily: 'var(--font-roboto-condensed)' }}
                   >
-                    Ce dossier comprend :
+                    {selectedPack.comingSoon ? 'Ce qui est prévu :' : 'Ce dossier comprend :'}
                   </p>
                   <div className="space-y-2">
                     {selectedPack.modules.slice(0, 4).map((mod, i) => (
@@ -640,44 +654,54 @@ export function Pricing() {
                   </div>
                 </div>
 
-                {/* Key Metrics / Pill Bar with TEKKIL Navy & Teal */}
-                <div className="px-3.5 py-2.5 rounded-xl bg-slate-50/90 border border-slate-200/80 flex items-center justify-between text-xs text-slate-600">
-                  <div className="flex items-center gap-2 truncate">
-                    <span 
-                      className="w-2 h-2 rounded-full shrink-0 shadow-2xs" 
-                      style={{ backgroundColor: selectedPack.color }} 
-                    />
-                    <span className="font-semibold text-slate-800 truncate">
-                      {selectedPack.qcmCount} • {selectedPack.modulesCount} modules • {selectedPack.annalesYears}
-                    </span>
-                  </div>
-                  <span 
-                    className="text-[10px] font-bold text-[#1A2356] bg-white border border-slate-200/90 px-2 py-0.5 rounded-md shrink-0 shadow-2xs"
-                    style={{ fontFamily: 'var(--font-roboto-condensed)', letterSpacing: '0.04em' }}
-                  >
-                    {selectedPack.code}
-                  </span>
-                </div>
+                {!selectedPack.comingSoon && (
+                  <>
+                    {/* Key Metrics / Pill Bar with TEKKIL Navy & Teal */}
+                    <div className="px-3.5 py-2.5 rounded-xl bg-slate-50/90 border border-slate-200/80 flex items-center justify-between text-xs text-slate-600">
+                      <div className="flex items-center gap-2 truncate">
+                        <span 
+                          className="w-2 h-2 rounded-full shrink-0 shadow-2xs" 
+                          style={{ backgroundColor: selectedPack.color }} 
+                        />
+                        <span className="font-semibold text-slate-800 truncate">
+                          {selectedPack.qcmCount} • {selectedPack.modulesCount} modules • {selectedPack.annalesYears}
+                        </span>
+                      </div>
+                      <span 
+                        className="text-[10px] font-bold text-[#1A2356] bg-white border border-slate-200/90 px-2 py-0.5 rounded-md shrink-0 shadow-2xs"
+                        style={{ fontFamily: 'var(--font-roboto-condensed)', letterSpacing: '0.04em' }}
+                      >
+                        {selectedPack.code}
+                      </span>
+                    </div>
+                  </>
+                )}
 
-                {/* Footer Action: Single Full-Width Primary CTA (Closing handled by top-right X and backdrop) */}
-                <div className="pt-1">
-                  <a
-                    href={REGISTER_URL}
-                    className="group relative w-full inline-flex items-center justify-center gap-2.5 py-3 rounded-full text-white text-sm font-bold transition-all duration-300 shadow-[0_8px_24px_rgba(26,35,86,0.32)] hover:shadow-[0_10px_28px_rgba(13,148,136,0.4)] hover:scale-[1.01] active:scale-[0.99] overflow-hidden cursor-pointer"
-                    style={{
-                      background: 'linear-gradient(135deg, #1A2356 0%, #27316F 55%, #0D9488 100%)',
-                      fontFamily: 'var(--font-roboto-condensed)',
-                      letterSpacing: '0.02em',
-                    }}
-                  >
-                    {/* Top specular chamfer */}
-                    <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
-                    {/* Shimmer sweep on hover */}
-                    <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
-                    <span className="relative z-10">Rejoindre ce pack</span>
-                    <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
-                  </a>
-                </div>
+                {selectedPack.comingSoon ? (
+                  <WaitlistForm packId={selectedPack.id} packName={selectedPack.name} />
+                ) : (
+                  <>
+                    {/* Footer Action: Single Full-Width Primary CTA (Closing handled by top-right X and backdrop) */}
+                    <div className="pt-1">
+                      <a
+                        href={REGISTER_URL}
+                        className="group relative w-full inline-flex items-center justify-center gap-2.5 py-3 rounded-full text-white text-sm font-bold transition-all duration-300 shadow-[0_8px_24px_rgba(26,35,86,0.32)] hover:shadow-[0_10px_28px_rgba(13,148,136,0.4)] hover:scale-[1.01] active:scale-[0.99] overflow-hidden cursor-pointer"
+                        style={{
+                          background: 'linear-gradient(135deg, #1A2356 0%, #27316F 55%, #0D9488 100%)',
+                          fontFamily: 'var(--font-roboto-condensed)',
+                          letterSpacing: '0.02em',
+                        }}
+                      >
+                        {/* Top specular chamfer */}
+                        <span className="absolute inset-x-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-white/40 to-transparent pointer-events-none" />
+                        {/* Shimmer sweep on hover */}
+                        <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-out bg-gradient-to-r from-transparent via-white/25 to-transparent pointer-events-none" />
+                        <span className="relative z-10">Rejoindre ce pack</span>
+                        <ArrowRight className="w-4 h-4 relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
+                      </a>
+                    </div>
+                  </>
+                )}
 
               </motion.div>
             </div>
@@ -686,5 +710,73 @@ export function Pricing() {
       </AnimatePresence>
 
     </section>
+  )
+}
+
+// Liste d'attente d'un pack pas encore disponible : POST /waitlist (même route
+// que l'ancien formulaire du pied de page), source = « landing-pack-<id> »
+// pour mesurer la demande par concours dans l'admin.
+function WaitlistForm({ packId, packName }: { packId: string; packName: string }) {
+  const [email, setEmail] = useState('')
+  const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (status === 'loading') return
+    setStatus('loading')
+    try {
+      const res = await fetch(WAITLIST_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, source: `landing-pack-${packId}`.slice(0, 50) }),
+      })
+      if (!res.ok) throw new Error('Request failed')
+      setStatus('success')
+      setEmail('')
+    } catch {
+      setStatus('error')
+    }
+  }
+
+  if (status === 'success') {
+    return (
+      <div role="status" className="rounded-xl border border-emerald-200 bg-emerald-50 px-4 py-3 text-center text-xs font-semibold text-emerald-800">
+        C&apos;est noté ! Tu seras prévenu(e) dès l&apos;ouverture du {packName}.
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={submit} className="space-y-2 pt-1">
+      <p className="text-center text-xs text-slate-500">
+        Laisse ton e-mail pour être prévenu(e) dès son lancement.
+      </p>
+      <div className="flex flex-col gap-2 sm:flex-row">
+        <label htmlFor={`waitlist-${packId}`} className="sr-only">Adresse e-mail</label>
+        <input
+          id={`waitlist-${packId}`}
+          type="email"
+          required
+          autoComplete="email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="ton.email@exemple.com"
+          className="min-w-0 flex-1 rounded-full border border-slate-200 bg-white px-4 py-2.5 text-sm text-slate-900 outline-none transition-colors focus:border-[#0D9488]"
+        />
+        <button
+          type="submit"
+          disabled={status === 'loading'}
+          className="inline-flex items-center justify-center rounded-full px-5 py-2.5 text-sm font-bold text-white transition-opacity disabled:opacity-60"
+          style={{ background: 'linear-gradient(135deg, #1A2356 0%, #27316F 55%, #0D9488 100%)' }}
+        >
+          {status === 'loading' ? 'Envoi…' : 'Me prévenir'}
+        </button>
+      </div>
+      {status === 'error' && (
+        <p role="alert" className="text-center text-xs text-red-600">
+          L&apos;inscription n&apos;a pas abouti. Réessaie dans un instant.
+        </p>
+      )}
+    </form>
   )
 }
