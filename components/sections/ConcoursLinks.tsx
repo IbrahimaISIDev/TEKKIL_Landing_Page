@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { concoursLabel, listConcours } from '@/lib/concours'
+import { concoursLabel, isComingSoon, listConcours } from '@/lib/concours'
 
 // Liens vers les pages /concours/[slug], construits depuis l'API (mêmes
 // concours que le catalogue de l'app). Rien n'est affiché si l'API ne répond pas.
@@ -16,6 +16,7 @@ export async function ConcoursLinks() {
         <ul className="flex flex-wrap justify-center gap-3">
           {concours.map((c) => {
             const q = c.contentStats?.qcmQuestions
+            const soon = isComingSoon(c)
             return (
               <li key={c.slug}>
                 <Link
@@ -23,7 +24,11 @@ export async function ConcoursLinks() {
                   className="group inline-flex items-center gap-2.5 rounded-full border border-black/[0.08] bg-white px-5 py-2.5 text-[14px] font-semibold text-[#1A2672] transition-colors hover:border-[#14B09C]/50 hover:text-[#14B09C]"
                 >
                   Concours {concoursLabel(c)}
-                  {q ? <span className="text-[12px] font-medium text-slate-500">{q.toLocaleString('fr-FR')} QCM</span> : null}
+                  {soon ? (
+                    <span className="rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700">Bientôt disponible</span>
+                  ) : q ? (
+                    <span className="text-[12px] font-medium text-slate-500">{q.toLocaleString('fr-FR')} QCM</span>
+                  ) : null}
                   <span aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">→</span>
                 </Link>
               </li>

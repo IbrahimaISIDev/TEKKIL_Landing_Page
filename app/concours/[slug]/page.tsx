@@ -6,17 +6,20 @@ import { Footer } from '@/components/layout/Footer'
 import {
   concoursLabel,
   getConcours,
+  isComingSoon,
   listConcours,
   type ConcoursContentStats,
   type PublicConcours,
 } from '@/lib/concours'
 import { REGISTER_URL, SITE_URL } from '@/lib/urls'
+import { WaitlistForm } from '@/components/ui/WaitlistForm'
 
-// Pages pré-générées au build pour chaque concours publié, puis régénérées au
-// plus toutes les heures ; un concours ajouté après le build est rendu à la
-// première visite (dynamicParams par défaut). Littéral exigé par Next
+// Pages pré-générées au build pour chaque concours publié, régénérées dès que
+// l'API signale une modification (tag « concours ») et au plus toutes les
+// 5 minutes ; un concours ajouté après le build est rendu à la première
+// visite (dynamicParams par défaut). Littéral exigé par Next
 // (= CONCOURS_REVALIDATE_SECONDS).
-export const revalidate = 3600
+export const revalidate = 300
 
 export async function generateStaticParams() {
   const concours = await listConcours()
@@ -38,6 +41,7 @@ const formatNumber = (n: number) => n.toLocaleString('fr-FR')
 
 function summary(c: PublicConcours) {
   if (c.description?.trim()) return c.description.trim()
+  if (isComingSoon(c)) return `La préparation au concours ${concoursLabel(c)} arrive bientôt sur TEKKIL.`
   // Seulement les formats réellement présents dans ce concours (contentStats).
   const s = c.contentStats ?? {}
   const formats = [
@@ -71,6 +75,7 @@ export default async function ConcoursPage({ params }: Props) {
   if (!c) notFound()
 
   const label = concoursLabel(c)
+  const soon = isComingSoon(c)
   const stats = STAT_LABELS.map(([key, text]) => ({ text, value: c.contentStats?.[key] ?? 0 })).filter((s) => s.value > 0)
   const matieres = c.matieres ?? []
 
@@ -105,7 +110,14 @@ export default async function ConcoursPage({ params }: Props) {
               <span className="text-white/20">·</span>
               <span className="text-white/60">Concours {label}</span>
             </nav>
-            <p className="mb-3 text-[13px] font-semibold uppercase tracking-[0.14em] text-[#14B09C]">Concours {label}</p>
+            <div className="mb-3 flex flex-wrap items-center gap-2.5">
+              <p className="text-[13px] font-semibold uppercase tracking-[0.14em] text-[#14B09C]">Concours {label}</p>
+              {soon && (
+                <span className="rounded-full border border-[#F9C623]/40 bg-[#F9C623]/10 px-2.5 py-0.5 text-[12px] font-semibold text-[#F9C623]">
+                  Bientôt disponible
+                </span>
+              )}
+            </div>
             <h1
               className="mb-5 text-4xl font-extrabold leading-[1.1] text-white md:text-5xl"
               style={{ fontFamily: 'var(--font-roboto-condensed)', letterSpacing: '-0.03em' }}
@@ -115,10 +127,10 @@ export default async function ConcoursPage({ params }: Props) {
             <p className="max-w-2xl text-[15px] leading-relaxed text-white/60 md:text-base">{summary(c)}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <a
-                href={REGISTER_URL}
+                href={soon ? '#offre' : REGISTER_URL}
                 className="inline-flex items-center justify-center rounded-full bg-[#14B09C] px-7 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#0f9a88]"
               >
-                Commencer ma préparation
+                {soon ? 'Être prévenu(e) de l’ouverture' : 'Commencer ma préparation'}
               </a>
               <Link
                 href="/#nos-packs"
@@ -168,6 +180,17 @@ export default async function ConcoursPage({ params }: Props) {
           )}
 
           {/* ─── Offre ─── */}
+          {soon ? (
+            <section aria-labelledby="offre" className="scroll-mt-28 rounded-3xl bg-[#0A0A0A] p-7 text-white md:p-10">
+              <h2 id="offre" className="mb-3 text-2xl font-bold md:text-3xl">Le {label} arrive bientôt</h2>
+              <p className="mb-6 max-w-2xl text-[15px] leading-relaxed text-white/65">
+                Nos enseignants préparent les matières de ce concours. Laisse ton e-mail : tu seras prévenu(e) dès la publication des premiers contenus.
+              </p>
+              <div className="max-w-md">
+                <WaitlistForm packId={c.slug} packName={`concours ${label}`} tone="dark" />
+              </div>
+            </section>
+          ) : (
           <section aria-labelledby="offre" className="rounded-3xl bg-[#0A0A0A] p-7 text-white md:p-10">
             <h2 id="offre" className="mb-3 text-2xl font-bold md:text-3xl">Commencer gratuitement</h2>
             <p className="max-w-2xl text-[15px] leading-relaxed text-white/65">
@@ -186,6 +209,7 @@ export default async function ConcoursPage({ params }: Props) {
               Créer mon compte
             </a>
           </section>
+          )}
         </div>
       </div>
       <Footer />
