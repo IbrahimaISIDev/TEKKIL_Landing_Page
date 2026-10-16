@@ -184,7 +184,7 @@ export function Hero() {
                   className="group inline-flex items-center gap-1.5 sm:gap-3 bg-white/50 hover:bg-white/70 backdrop-blur-md border border-white/60 hover:border-white/80 rounded-full px-2.5 sm:px-4 py-1.5 sm:py-2 mb-6 sm:mb-8 w-fit max-w-full transition-all duration-300 shadow-[0_4px_24px_rgba(0,0,0,0.06)] cursor-default select-none overflow-hidden"
                 >
                   {/* Edition Tag with Live Pulse Dot */}
-                  <span className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-0.5 rounded-full bg-white/70 border border-white/80 text-[#1A2672] font-black tracking-wide uppercase text-[9px] sm:text-[10px] shrink-0">
+                  <span className="inline-flex items-center gap-1.5 sm:gap-2 px-2 sm:px-2.5 py-0.5 rounded-full bg-white/70 border border-white/80 text-[#1A2672] font-black tracking-wide uppercase text-[10.5px] sm:text-[10px] shrink-0">
                     <span className="relative flex h-1.5 w-1.5 sm:h-2 sm:w-2">
                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#1A2672] opacity-80" />
                       <span className="relative inline-flex rounded-full h-1.5 w-1.5 sm:h-2 sm:w-2 bg-[#1A2672]" />
@@ -195,7 +195,7 @@ export function Hero() {
                   <span className="hidden sm:inline-block w-1 h-1 rounded-full bg-slate-400 shrink-0" />
 
                   {/* Senegal Flag & Main Label */}
-                  <span className="flex items-center gap-1.5 sm:gap-2 text-slate-900 font-semibold text-[10.5px] sm:text-[13px] md:text-sm leading-tight pr-1 sm:pr-0">
+                  <span className="flex items-center gap-1.5 sm:gap-2 text-slate-900 font-semibold text-[12px] sm:text-[13px] md:text-sm leading-tight pr-1 sm:pr-0">
                     <SenegalIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 rounded-[2px] shrink-0 shadow-sm" />
                     <span className="truncate">Plateforme N°1 au Sénégal</span>
                   </span>

@@ -162,10 +162,14 @@ const TextLoop = ({
       }
       if (!length) return;
 
-      const reps = unitWidth > 0 ? Math.max(1, Math.round(length / unitWidth)) : 1;
-      // Texte plus long que la vague : on boucle sur sa largeur naturelle au
-      // lieu de le comprimer (textLength) jusqu'au chevauchement des lettres.
-      const period = Math.max(length, unitWidth);
+      if (!unitWidth) return;
+      // Assez de copies pour couvrir toute la vague, et une période de boucle
+      // égale à leur largeur NATURELLE : jamais de textLength qui étire ou
+      // comprime l'espacement (c'est ce qui faisait se chevaucher les lettres
+      // sur mobile, où la police mesurée diffère). Deux blocs (tête + queue)
+      // couvrent [offset, offset + 2 × période] ⊇ la vague à tout instant.
+      const reps = Math.min(20, Math.max(1, Math.ceil(length / unitWidth)));
+      const period = reps * unitWidth;
       setMetrics(prev => (prev.length === period && prev.reps === reps ? prev : { length: period, reps }));
     };
 
@@ -185,8 +189,10 @@ const TextLoop = ({
     const tail = tailRef.current;
     if (!head || !tail || !length) return undefined;
 
+    // reverse (droite → gauche) : offset ∈ ]-période, 0], le second bloc suit
+    // juste derrière ; forward : offset ∈ [0, période[, le second précède.
     const apply = (offset: number) => {
-      const partner = offset >= 0 ? offset - length : offset + length;
+      const partner = offset > 0 || (offset === 0 && direction === 'forward') ? offset - length : offset + length;
       head.setAttribute('startOffset', String(offset));
       tail.setAttribute('startOffset', String(partner));
     };
@@ -207,7 +213,11 @@ const TextLoop = ({
     });
 
     const root = rootRef.current;
-    const pause = () => tween.pause();
+    // Souris uniquement : au doigt, pointerleave n'arrive pas toujours et le
+    // bandeau resterait figé après un simple toucher.
+    const pause = (e: PointerEvent) => {
+      if (e.pointerType === 'mouse') tween.pause();
+    };
     const resume = () => tween.resume();
 
     if (pauseOnHover && root) {
@@ -225,7 +235,6 @@ const TextLoop = ({
   }, [metrics, speed, direction, pauseOnHover]);
 
   const loopText = unit.repeat(metrics.reps);
-  const fitLength = metrics.length || undefined;
 
   return (
     <div ref={rootRef} className={`text-loop ${className}`.trim()} style={style}>
@@ -257,8 +266,6 @@ const TextLoop = ({
           fill={color}
           dominantBaseline="central"
           aria-hidden="true"
-          textLength={fitLength}
-          lengthAdjust="spacing"
         >
           <textPath ref={headRef} href={`#${pathId}`} startOffset={0}>
             {loopText}
@@ -271,8 +278,6 @@ const TextLoop = ({
           fill={color}
           dominantBaseline="central"
           aria-hidden="true"
-          textLength={fitLength}
-          lengthAdjust="spacing"
         >
           <textPath ref={tailRef} href={`#${pathId}`} startOffset={0}>
             {loopText}

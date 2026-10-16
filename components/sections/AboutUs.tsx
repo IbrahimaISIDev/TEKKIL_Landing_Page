@@ -160,7 +160,7 @@ export function AboutUs() {
                         </h3>
                         {pillar.tag && (
                           <span
-                            className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider whitespace-nowrap"
+                            className="px-2 py-0.5 rounded-full text-[11px] sm:text-[10px] font-bold uppercase tracking-wider whitespace-nowrap"
                             style={{ backgroundColor: `${pillar.color}15`, color: pillar.color }}
                           >
                             {pillar.tag}

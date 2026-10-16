@@ -5,12 +5,14 @@ import TextLoop from '@/components/ui/TextLoop'
 export function TextLoopBanner() {
   return (
     <section className="bg-white pb-8 md:pb-12 lg:pb-16 w-full overflow-hidden select-none">
-      <div className="w-full h-[120px] sm:h-[140px] md:h-[180px]">
+      {/* Mobile : bandeau plus haut = texte plus grand (le SVG se met à
+          l'échelle de la hauteur, preserveAspectRatio « slice »). */}
+      <div className="w-full h-[150px] sm:h-[150px] md:h-[180px]">
         <TextLoop
           text="TEKKIL ne vous promet pas la réussite au concours. TEKKIL vous donne les moyens d’y parvenir : des contenus pédagogiques de qualité, une méthode efficace et un entraînement intensif."
           shape="wave"
           speed={75}
-          direction="forward"
+          direction="reverse"
           separator="✦"
           curviness={22}
           fontSize={20}

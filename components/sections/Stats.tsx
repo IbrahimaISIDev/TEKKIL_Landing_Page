@@ -2,7 +2,9 @@
 
 import { motion } from 'framer-motion'
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
+import { Smartphone, ArrowRight } from 'lucide-react'
 import { STATS } from '@/lib/constants'
+import { REGISTER_URL } from '@/lib/urls'
 
 export function Stats() {
   return (
@@ -57,6 +59,29 @@ export function Stats() {
                 </div>
               )
             })}
+          </div>
+
+          {/* Sous « 100 % Mobile-first » : inviter à installer l'app (PWA,
+              sans store — l'app propose l'ajout à l'écran d'accueil). */}
+          <div className="mt-10 md:mt-12 pt-8 border-t border-slate-200/80 flex flex-col md:flex-row items-center gap-5 md:gap-6 text-center md:text-left">
+            <div className="w-12 h-12 rounded-2xl bg-[#25b09d]/10 border border-[#25b09d]/20 flex items-center justify-center text-[#0D9488] shrink-0">
+              <Smartphone className="w-6 h-6" aria-hidden="true" />
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="text-[15px] md:text-base font-semibold text-slate-900 leading-snug text-balance">
+                Téléchargez TEKKIL directement sur votre téléphone et préparez vos concours où que vous soyez.
+              </p>
+              <p className="mt-1 text-[13px] text-slate-500">
+                Sans passer par un store : après l&apos;inscription, TEKKIL s&apos;ajoute à votre écran d&apos;accueil en un geste.
+              </p>
+            </div>
+            <a
+              href={REGISTER_URL}
+              className="inline-flex w-full md:w-auto items-center justify-center gap-2 min-h-12 px-6 rounded-full bg-[#25b09d] hover:bg-[#1e9786] text-white text-sm font-bold shadow-[0_8px_24px_-8px_rgba(37,176,157,0.6)] transition-colors shrink-0"
+            >
+              Installer TEKKIL
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </a>
           </div>
         </motion.div>
       </div>

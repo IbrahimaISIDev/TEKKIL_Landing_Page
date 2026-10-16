@@ -389,7 +389,7 @@ export function Leaderboard() {
                       <p className="text-slate-900 text-xs sm:text-sm font-bold">
                         Position simulée : <span className="text-teal-700 font-extrabold">#7 National</span>
                       </p>
-                      <span className="text-[10px] font-bold px-1.5 py-0.2 rounded bg-teal-100 text-teal-800 border border-teal-200/70">
+                      <span className="text-[11px] sm:text-[10px] font-bold px-1.5 py-0.5 rounded bg-teal-100 text-teal-800 border border-teal-200/70">
                         Top 5%
                       </span>
                     </div>
@@ -488,7 +488,7 @@ export function Leaderboard() {
                           <h4 className="text-slate-900 font-bold text-xs sm:text-sm group-hover:text-teal-700 transition-colors">
                             {feature.title}
                           </h4>
-                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200/60 text-slate-600 shrink-0 whitespace-nowrap">
+                          <span className="text-[11px] sm:text-[10px] font-semibold px-2 py-0.5 rounded-full bg-slate-100 border border-slate-200/60 text-slate-600 shrink-0 whitespace-nowrap">
                             {feature.badge}
                           </span>
                         </div>

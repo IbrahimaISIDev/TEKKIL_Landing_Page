@@ -287,7 +287,7 @@ function StepCard({ step }: { step: StepItem }) {
       {/* Card Header: Step Badge & Faded Step Number */}
       <div className="flex items-center justify-between mb-2.5 relative z-20">
         <span 
-          className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider shadow-2xs"
+          className="px-2.5 py-0.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider shadow-2xs"
           style={{ 
             backgroundColor: `${step.color}15`, 
             color: step.color,
