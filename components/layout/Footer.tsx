@@ -6,7 +6,7 @@ import { Instagram, CheckCircle, ArrowRight } from 'reicon-react'
 import { Facebook, TikTok } from '@/components/ui/BrandIcons'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
-import { FOOTER_LINKS } from '@/lib/constants'
+import { FOOTER_LINKS, SUPPORT_EMAIL } from '@/lib/constants'
 import { WAITLIST_API_URL } from '@/lib/urls'
 
 type SocialLink = {
@@ -134,14 +134,14 @@ export function Footer() {
           {/* Col 4: CTAs (span 3) */}
           <div className="sm:col-span-2 xl:col-span-3 flex flex-col gap-5">
             {/* Contacter */}
-            <a href="mailto:support@tekkil.sn" className="group block p-5 rounded-2xl bg-white/50 backdrop-blur-sm border border-black/[0.04] hover:border-[#14B09C]/30 hover:shadow-[0_4px_20px_rgba(20,176,156,0.12)] transition-all duration-300">
+            <a href={`mailto:${SUPPORT_EMAIL}`} className="group block p-5 rounded-2xl bg-white/50 backdrop-blur-sm border border-black/[0.04] hover:border-[#14B09C]/30 hover:shadow-[0_4px_20px_rgba(20,176,156,0.12)] transition-all duration-300">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-[18px] md:text-[20px] font-semibold text-[#14B09C] tracking-tight">Contacter Tekkil</span>
                 <span className="w-8 h-8 rounded-full bg-[#14B09C] text-white flex items-center justify-center group-hover:scale-110 group-hover:rotate-[-45deg] transition-all duration-300">
                   <ArrowRight size={14} />
                 </span>
               </div>
-              <p className="text-[13px] text-[#666]">support@tekkil.sn</p>
+              <p className="text-[13px] text-[#666]">{SUPPORT_EMAIL}</p>
             </a>
 
             {/* S'inscrire */}
