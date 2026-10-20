@@ -111,16 +111,18 @@ export const FAQ_ITEMS = [
   },
 ] as const
 
-/** Adresse e-mail officielle TEKKIL (décision du 18/10/2026), la même que sur
- * le site (Tekkil-Front, lib/constants/contact.ts). */
-export const SUPPORT_EMAIL = 'tekkilapp@gmail.com'
+/** Adresse de contact générale de TEKKIL (visiteurs, parents, partenaires —
+ * décision du 20/10/2026, remplace tekkilapp@gmail.com). Les élèves inscrits
+ * ont support@tekkilapp.com (site, emails) ; les deux arrivent dans la même
+ * boîte Hostinger. */
+export const CONTACT_EMAIL = 'contact@tekkilapp.com'
 
 export const CONTACT_CHANNELS = [
   {
     icon: 'Mail',
     title: 'Email',
-    value: SUPPORT_EMAIL,
-    href: `mailto:${SUPPORT_EMAIL}`,
+    value: CONTACT_EMAIL,
+    href: `mailto:${CONTACT_EMAIL}`,
     description: 'Réponse sous 24h',
   },
   {
