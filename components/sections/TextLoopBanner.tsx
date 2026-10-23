@@ -26,6 +26,26 @@ export function TextLoopBanner() {
           preserveAspectRatio="xMidYMid slice"
         />
       </div>
+
+      {/* Carte rouge sous le bandeau : positionnement de TEKKIL (texte validé). */}
+      <div className="mx-auto mt-6 max-w-5xl px-5 md:mt-8 md:px-8">
+        <div className="relative overflow-hidden rounded-[28px] bg-[#DC2626] px-6 py-8 text-center text-white shadow-[0_20px_50px_-20px_rgba(220,38,38,0.55)] md:rounded-[36px] md:px-14 md:py-12">
+          <div aria-hidden="true" className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-white/10 blur-2xl" />
+          <div aria-hidden="true" className="pointer-events-none absolute -bottom-20 -left-16 h-56 w-56 rounded-full bg-black/10 blur-2xl" />
+          <p
+            className="relative text-2xl font-black leading-tight tracking-[-0.02em] md:text-4xl"
+            style={{ fontFamily: 'var(--font-roboto-condensed)' }}
+          >
+            TEKKIL n’est pas une bibliothèque de PDF.
+          </p>
+          <p className="relative mx-auto mt-4 max-w-3xl text-[15px] leading-relaxed text-white md:text-lg">
+            C’est une véritable plateforme de préparation active et interactive aux examens et concours, conçue par des professionnels.
+          </p>
+          <p className="relative mt-5 text-base font-bold md:text-xl">
+            Avec TEKKIL, moins de lecture passive, plus d’apprentissage actif !
+          </p>
+        </div>
+      </div>
     </section>
   )
 }
