@@ -154,6 +154,7 @@ export default function PrivacyPage() {
                       ['Données de compte actif', 'Pendant toute la durée du compte'],
                       ['Historique de progression', '3 ans après la dernière activité'],
                       ['Journaux de sécurité', '12 mois'],
+                      ['Journaux techniques du serveur (adresse IP, page demandée, date)', '30 jours'],
                       ['Données de paiement', '5 ans (obligation légale comptable)'],
                       ['Compte supprimé', '30 jours, puis suppression définitive'],
                     ].map(([donnee, duree]) => (
