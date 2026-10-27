@@ -7,6 +7,8 @@ const nextConfig: NextConfig = {
   // capacité du 18/10 : 108 % de CPU à 1 000 visiteurs). Ne pas réactiver
   // sans retirer `encode` du Caddyfile.
   compress: false,
+  // Ne pas annoncer la technologie du site (audit du 27/10/2026).
+  poweredByHeader: false,
   // Image optimization
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -21,6 +23,8 @@ const nextConfig: NextConfig = {
           { key: 'X-Content-Type-Options', value: 'nosniff' },
           { key: 'X-Frame-Options', value: 'DENY' },
           { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Strict-Transport-Security', value: 'max-age=31536000; includeSubDomains' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
         ],
       },
     ]
