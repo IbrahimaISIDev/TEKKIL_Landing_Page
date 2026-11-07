@@ -278,7 +278,7 @@ export function Navbar() {
 
               {/* Center: Desktop Nav Links (Adaptive Scrollspy Segmented Capsule) */}
               <div 
-                className={`hidden lg:flex items-center bg-slate-100/80 backdrop-blur-md rounded-full p-1 border border-slate-200/80 shadow-xs transition-all duration-300`}
+                className={`hidden xl:flex items-center bg-slate-100/80 backdrop-blur-md rounded-full p-1 border border-slate-200/80 shadow-xs transition-all duration-300`}
               >
                 <JellyRadio
                   items={NAV_LINKS.map(link => ({ value: link.href, label: link.label }))}
@@ -326,7 +326,7 @@ export function Navbar() {
                 {/* Mobile Menu Button */}
                 <button
                   onClick={() => setIsMenuOpen(!isMenuOpen)}
-                  className="lg:hidden w-9.5 h-9.5 md:w-10 md:h-10 flex items-center justify-center bg-white hover:bg-slate-50 text-slate-900 font-bold rounded-full border border-slate-200/90 shadow-xs relative overflow-hidden transition-transform duration-200 hover:scale-105 active:scale-90"
+                  className="xl:hidden w-9.5 h-9.5 md:w-10 md:h-10 flex items-center justify-center bg-white hover:bg-slate-50 text-slate-900 font-bold rounded-full border border-slate-200/90 shadow-xs relative overflow-hidden transition-transform duration-200 hover:scale-105 active:scale-90"
                   aria-label={isMenuOpen ? "Fermer le menu" : "Ouvrir le menu"}
                 >
                   <AnimatePresence mode="wait">
@@ -355,7 +355,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0, transition: { duration: 0.25 } }}
-            className="fixed inset-0 z-40 lg:hidden flex flex-col bg-white/98 backdrop-blur-xl pt-[110px] pb-10 px-6"
+            className="fixed inset-0 z-40 xl:hidden flex flex-col bg-white/98 backdrop-blur-xl pt-[110px] pb-10 px-6"
           >
             {/* Very subtle ambient top gradient */}
             <div className="absolute inset-0 z-0 bg-gradient-to-b from-slate-50/50 to-transparent pointer-events-none" />
