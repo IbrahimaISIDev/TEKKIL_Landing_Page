@@ -331,7 +331,7 @@ export function Leaderboard() {
                                   {entry.name}
                                 </span>
                                 {entry.highlight && (
-                                  <span className="hidden sm:inline-block text-[9px] font-bold uppercase tracking-wide px-1.5 py-0.2 rounded bg-amber-50 border border-amber-200/80 text-amber-800">
+                                  <span className="hidden sm:inline-block text-[10px] font-bold uppercase tracking-wide px-1.5 py-0.2 rounded bg-amber-50 border border-amber-200/80 text-amber-800">
                                     {entry.highlight}
                                   </span>
                                 )}
