@@ -19,6 +19,7 @@ export type ConcoursContentStats = {
 }
 
 export type PublicConcours = {
+  id?: string
   slug: string
   name: string
   abbreviation: string | null
