@@ -27,6 +27,10 @@ export type PublicConcours = {
   description: string | null
   imageUrl: string | null
   bundlePrice: number | null
+  /** Offre réellement proposée (API, 11/11/2026) : prix fixé ET au moins deux
+   * matières payantes. Absent avant redéploiement de l'API = suivre
+   * bundlePrice. */
+  bundleOffered?: boolean
   isActive: boolean
   type?: 'direct' | 'indirect' | 'libre' | string
   /** Réglage manuel de l'admin — lire isComingSoon() pour l'affichage. */

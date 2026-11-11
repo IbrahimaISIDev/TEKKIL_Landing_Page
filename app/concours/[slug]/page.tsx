@@ -196,7 +196,7 @@ export default async function ConcoursPage({ params }: Props) {
             <p className="max-w-2xl text-[15px] leading-relaxed text-white/65">
               Crée ton compte pour découvrir gratuitement un aperçu de chaque matière, puis débloque tout le contenu quand tu es prêt.
             </p>
-            {c.bundlePrice != null && c.bundlePrice > 0 && (
+            {c.bundlePrice != null && c.bundlePrice > 0 && c.bundleOffered !== false && (
               <p className="mt-5 text-[15px] text-white/80">
                 Offre <strong className="text-white">Concours {label} complet</strong> : toutes les matières en un seul achat,{' '}
                 <strong className="text-[#F9C623]">{formatNumber(c.bundlePrice)} FCFA</strong>.
