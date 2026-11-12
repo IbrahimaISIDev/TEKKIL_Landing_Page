@@ -15,6 +15,7 @@ cas d'erreur) et `references/` (règles longues, lues à la demande).
 | `tekkil-moteur-adaptatif` | tekkil-api | Règles du moteur de QCM, non-régression | automatique |
 | `tekkil-catalogue-vente` | tekkil-api | Règles de vente (offre complète, vente seule, rayon, recettes), vérification SQL sur base jetable | automatique |
 | `tekkil-landing-page` | TEKKIL_Landing_Page | Pages et sections publiques de tekkilapp.com : API publique, cache, métadonnées, sitemap, rendu | automatique |
+| `tekkil-acces-contenu` | tekkil-api | Accès au contenu gratuit / payant côté API (règle unique, aperçu gratuit, tentatives, fichiers), contrôle statique des régressions | automatique |
 | `tekkil-import-qcm` | Tekkil-Front | Vérifier un Excel de QCM avant import dans l'admin | automatique |
 | `tekkil-pwa` | Tekkil-Front | Manifeste, service worker, installabilité | automatique |
 | `tekkil-journal` | tekkil-docs | Documenter incident, bug, décision, session | automatique |
