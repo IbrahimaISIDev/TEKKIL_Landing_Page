@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { InstallCta } from '@/components/ui/InstallCta'
 import {
   accessDurationLabel,
   getMatiere,
@@ -241,6 +242,7 @@ export default async function MatierePage({ params }: Props) {
         </div>
       </div>
       <Footer />
+      <InstallCta />
     </main>
   )
 }

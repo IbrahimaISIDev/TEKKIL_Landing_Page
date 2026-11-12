@@ -1,5 +1,6 @@
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
+import { InstallCta } from '@/components/ui/InstallCta'
 import { Hero } from '@/components/landing/Hero'
 import { ExploreTekkil } from '@/components/sections/ExploreTekkil'
 import { AboutUs } from '@/components/sections/AboutUs'
@@ -51,6 +52,7 @@ export default function Home() {
       <Contact />
       <Footer />
       <ScrollToTop />
+      <InstallCta besideScrollTop />
     </main>
   )
 }

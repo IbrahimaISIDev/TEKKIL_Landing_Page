@@ -3,10 +3,11 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, Xmark, ArrowRight } from 'reicon-react'
+import { Smartphone } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { NAV_LINKS } from '@/lib/constants'
-import { LOGIN_URL } from '@/lib/urls'
+import { INSTALL_URL, LOGIN_URL } from '@/lib/urls'
 import { usePathname, useRouter } from 'next/navigation'
 import { JellyRadio } from '@/components/ui/JellyRadio'
 export function Navbar() {
@@ -301,6 +302,20 @@ export function Navbar() {
               {/* Right: CTA Button & Mobile Menu Toggle */}
               <div className="flex items-center gap-2.5 shrink-0">
                 
+                {/* Installation (ajustements du 12/11/2026) : sur ordinateur et
+                    tablette, toujours visible dans la barre fixe ; sur
+                    téléphone, pastille flottante en bas (InstallCta). */}
+                <a
+                  href={INSTALL_URL}
+                  aria-label="Installer TEKKIL sur mon appareil"
+                  className={`hidden md:inline-flex items-center gap-1.5 rounded-full border border-[#27316F]/20 bg-white/90 font-bold text-[#27316F] shadow-xs transition-all duration-300 hover:border-[#0D9488]/50 hover:text-[#0D9488] ${
+                    isScrolled ? 'px-3.5 py-2 text-xs' : 'px-4 py-2.5 text-xs md:text-sm'
+                  }`}
+                >
+                  <Smartphone size={15} strokeWidth={2.5} aria-hidden />
+                  Installer TEKKIL
+                </a>
+
                 {/* Primary CTA « Se connecter » (Smooth compaction on scroll) */}
                 <a
                   href={LOGIN_URL}

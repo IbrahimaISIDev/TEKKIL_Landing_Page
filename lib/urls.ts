@@ -9,4 +9,7 @@ export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://tekkilapp.c
 
 export const LOGIN_URL = `${APP_URL}/login`
 export const REGISTER_URL = `${APP_URL}/register`
+// Installation de l'application web : seulement depuis son propre domaine
+// (app.tekkilapp.com), page qui adapte le parcours à Android, iOS et PC.
+export const INSTALL_URL = `${APP_URL}/installer`
 export const WAITLIST_API_URL = `${API_URL}/waitlist`
