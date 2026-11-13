@@ -8,6 +8,10 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { NAV_LINKS } from '@/lib/constants'
 import { INSTALL_URL, LOGIN_URL } from '@/lib/urls'
+
+/** Bouton « Installer TEKKIL » dans la barre (désactivé le 13/11/2026 :
+ * le bouton flottant InstallCta le remplace sur tous les écrans). */
+const SHOW_INSTALL_IN_NAVBAR = false
 import { usePathname, useRouter } from 'next/navigation'
 import { JellyRadio } from '@/components/ui/JellyRadio'
 export function Navbar() {
@@ -302,10 +306,11 @@ export function Navbar() {
               {/* Right: CTA Button & Mobile Menu Toggle */}
               <div className="flex items-center gap-2.5 shrink-0">
                 
-                {/* Installation (ajustements du 12/11/2026) : sur ordinateur et
-                    tablette, toujours visible dans la barre fixe ; sur
-                    téléphone, pastille flottante en bas (InstallCta). */}
-                <a
+                {/* Installation (ajustements du 12/11/2026) : désactivé le 13/11
+                    — le bouton flottant InstallCta est désormais le même sur
+                    tous les écrans. Gardé pour une réactivation
+                    (SHOW_INSTALL_IN_NAVBAR). */}
+                {SHOW_INSTALL_IN_NAVBAR && <a
                   href={INSTALL_URL}
                   aria-label="Installer TEKKIL sur mon appareil"
                   className={`hidden md:inline-flex items-center gap-1.5 rounded-full border border-[#27316F]/20 bg-white/90 font-bold text-[#27316F] shadow-xs transition-all duration-300 hover:border-[#0D9488]/50 hover:text-[#0D9488] ${
@@ -314,7 +319,7 @@ export function Navbar() {
                 >
                   <Smartphone size={15} strokeWidth={2.5} aria-hidden />
                   Installer TEKKIL
-                </a>
+                </a>}
 
                 {/* Primary CTA « Se connecter » (Smooth compaction on scroll) */}
                 <a
