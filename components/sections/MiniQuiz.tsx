@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { REGISTER_URL } from '@/lib/urls'
+import { LOGIN_URL, REGISTER_URL } from '@/lib/urls'
 
 // Trois exercices types, du genre des épreuves Verbal / Numérique annoncées
 // dans la FAQ. Exemples statiques (pas tirés de la base) : présentés comme tels.
@@ -110,11 +110,14 @@ export function MiniQuiz() {
                   : 'Chaque erreur est une notion à revoir : dans TEKKIL, la correction te renvoie vers la bonne leçon.'}
               </p>
               <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
+                {/* Lot conversion 6 (14/11/2026, point 14) : le score suit
+                    l'inscription (?quiz=2-3), rappelé sur le formulaire puis
+                    dans la fenêtre de bienvenue. */}
                 <a
-                  href={REGISTER_URL}
+                  href={`${REGISTER_URL}?quiz=${score}-${QUESTIONS.length}`}
                   className="inline-flex items-center justify-center rounded-full bg-[#14B09C] px-7 py-3.5 text-[15px] font-semibold text-white transition-colors hover:bg-[#0f9a88]"
                 >
-                  Continuer sur TEKKIL
+                  Crée ton compte pour garder ton score
                 </a>
                 <button
                   type="button"
@@ -124,6 +127,9 @@ export function MiniQuiz() {
                   Recommencer
                 </button>
               </div>
+              <a href={LOGIN_URL} className="mt-4 inline-block text-[14px] font-semibold text-[#1A2672] hover:underline">
+                J&apos;ai déjà un compte
+              </a>
             </div>
           ) : (
             <>
